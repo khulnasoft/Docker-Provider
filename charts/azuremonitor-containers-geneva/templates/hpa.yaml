@@ -1,0 +1,36 @@
+{{- if .Values.autoscaling.enabled }}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ama-logs-geneva-hpa
+  labels:
+   chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+   release: {{ .Release.Name }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ama-logs-geneva-deployment
+  minReplicas: {{ .Values.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.autoscaling.maxReplicas }}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.targetCPUUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.targetMemoryUtilizationPercentage }}
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 1200
+      policies:
+      - type: Percent
+        value: 5
+        periodSeconds: 180
+{{- end }}

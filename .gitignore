@@ -1,0 +1,34 @@
+# git ignore file for the Docker-Provider project
+
+/intermediate/
+/target/
+/build/config.mak
+.vscode/launch.json
+# ignore go packages
+source/plugins/go/pkg/
+# .net code build artificats
+build/windows/installer/certificategenerator/bin
+build/windows/installer/certificategenerator/obj
+# files under amalogswindows dir since this temp directory to build the docker image
+kubernetes/windows/amalogswindows
+# ignore everything under intermediate directory
+intermediate
+# ignore files which are having these extensions
+*.pyc
+*.so
+*.zip
+*.tar
+*.exe
+*.jar
+*.dll
+*.obj
+# ignore docker provider shell bundle
+kubernetes/linux/Linux_ULINUX_1.0_*_64_Release
+# ignore generated .h files for go
+source/plugins/go/src/*.h
+*_mock.go
+*_log.txt
+*.log
+*.byebug_history
+go.work.sum
+go.work

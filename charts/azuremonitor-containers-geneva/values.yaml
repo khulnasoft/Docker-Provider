@@ -1,0 +1,56 @@
+# Default values for azuremonitor-containers-logs.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+genevaLogsConfig:
+ aadpodidbinding: "<AAD_POD_IDENTITY_NAME>"                                                  # AAD POD Identity Name in case of AAD POD Managed Identity
+ authid:  "<client_id#<guid>>"                                                               # MUST be in this format: client_id#<guid of the user assigned managed identity>
+ environment: "<your_geneva_environment_name>"                                               # Supported values Test, Stage, DiagnosticsProd, FirstpartyProd, BillingProd, ExternalProd, CaMooncake, CaFairfax, CaBlackforest
+ account: "<your_geneva_account_name>"                                                       # name of the Geneva Logs account
+ namespace: "<your_geneva_account_namespace>"                                                # name of the Geneva Logs account namespace
+ region: "<your_geneva_account_gcs_region>"                                                  # GCS region of the Geneva Logs Account.
+ configversion: "<your_geneva_config_version>"                                               # config version of the agent xml config.
+
+image:
+  repository: mcr.microsoft.com/azuremonitor/containerinsights/ciprod
+  tag: "3.1.23"
+  pullPolicy: IfNotPresent
+  agentVersion: "azure-mdsd-1.31.4"
+nameOverride: ""
+enableInternalMetrics: false
+enableKubernetesMetadata: false
+kubernetesMetadataIncludeFields: "podlabels,podannotations,poduid,image,imageid,imagerepo,imagetag"
+fullnameOverride: ""
+podAnnotations: {}
+service:
+  type: ClusterIP
+  port: 24224
+resources:
+  limits:
+    cpu: 4
+    memory: 4Gi
+  requests:
+    cpu: 500m
+    memory: 900Mi
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 30
+  # hpa calculates the % usage against requests not limits
+  targetMemoryUtilizationPercentage: 200
+  targetCPUUtilizationPercentage: 200
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/os
+          operator: In
+          values:
+          - linux
+        - key: type
+          operator: NotIn
+          values:
+          - virtual-kubelet
