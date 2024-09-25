@@ -3,7 +3,7 @@
 package extension
 
 import (
-	winio "github.com/Microsoft/go-winio"
+	winio "github.com/khulnasoft/go-winio"
 )
 
 func getExtensionConfigResponse(jsonBytes []byte) ([]byte, error) {

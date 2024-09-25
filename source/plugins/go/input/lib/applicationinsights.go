@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/microsoft/ApplicationInsights-Go/appinsights"
+	"github.com/khulnasoft/ApplicationInsights-Go/appinsights"
 )
 
 const (

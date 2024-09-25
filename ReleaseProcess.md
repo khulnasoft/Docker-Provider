@@ -53,9 +53,9 @@ Here is the high level process
 > Note: This chart repo being used in the ARO v4 onboarding script as well.
 
 Since HELM charts repo being deprecated, Microsoft charts repo being used for HELM chart release of on-prem K8s clusters.
-To make chart release PR, fork [Microsoft-charts-repo]([https://github.com/microsoft/charts/tree/gh-pages) and make the PR against `gh-pages` branch of the upstream repo.
+To make chart release PR, fork [Microsoft-charts-repo]([https://github.com/khulnasoft/charts/tree/gh-pages) and make the PR against `gh-pages` branch of the upstream repo.
 
-Refer PR - https://github.com/microsoft/charts/pull/23 for example.
+Refer PR - https://github.com/khulnasoft/charts/pull/23 for example.
 Once the PR merged, latest version of HELM chart should be available in couple of mins in https://microsoft.github.io/charts/repo and https://artifacthub.io/.
 
 Instructions to create PR

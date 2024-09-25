@@ -12,7 +12,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/Microsoft/go-winio"
+	"github.com/khulnasoft/go-winio"
 )
 
 func CreateWindowsNamedPipeClient(namedPipe string, namedPipeConnection *net.Conn) error {
