@@ -19,7 +19,7 @@ spec:
           name: dotnet-test-scripts
       containers:
       - name: dotnet
-        image: mcr.microsoft.com/mirror/docker/library/ubuntu:18.04
+        image: mcr.khulnasoft.com/mirror/docker/library/ubuntu:18.04
 
         volumeMounts:
           - mountPath: /dotnet-test-scripts

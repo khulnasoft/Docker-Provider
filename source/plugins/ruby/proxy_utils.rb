@@ -1,4 +1,4 @@
-# Copyright (c) Microsoft Corporation.  All rights reserved.
+# Copyright (c) Khulnasoft Corporation.  All rights reserved.
 #!/usr/local/bin/ruby
 # frozen_string_literal: true
 

@@ -41,7 +41,7 @@
             "type": "string",
             "minLength": 1,
             "metadata": {
-                "description": "Full Resource ID of the kubernetes cluster emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.ContainerService/managedClusters/cluster-xyz"
+                "description": "Full Resource ID of the kubernetes cluster emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Khulnasoft.ContainerService/managedClusters/cluster-xyz"
             }
         },
         "operator": {
@@ -123,7 +123,7 @@
     "resources": [
         {
             "name": "[parameters('alertName')]",
-            "type": "Microsoft.Insights/metricAlerts",
+            "type": "Khulnasoft.Insights/metricAlerts",
             "location": "global",
             "apiVersion": "2018-03-01",
             "tags": {},
@@ -135,7 +135,7 @@
                 "evaluationFrequency":"[parameters('evaluationFrequency')]",
                 "windowSize": "[parameters('windowSize')]",
                 "criteria": {
-                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "odata.type": "Khulnasoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
                     "allOf": [
                         {
                             "name" : "1st criterion",

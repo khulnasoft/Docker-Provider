@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "aroResourceId": {
-      "value": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.ContainerService/openShiftManagedClusters/<clusterName>"
+      "value": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Khulnasoft.ContainerService/openShiftManagedClusters/<clusterName>"
     },
     "aroResourceLocation": {
       "value": "<azure region of the cluster e.g. westcentralus>"
     },
     "workspaceResourceId": {
-      "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>"
+      "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Khulnasoft.OperationalInsights/workspaces/<workspaceName>"
     }
   }
 }

@@ -45,13 +45,13 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
   }
 
   data_flow {
-    streams      = [ "Microsoft-Syslog"]
+    streams      = [ "Khulnasoft-Syslog"]
     destinations = ["ciworkspace"]
   }
 
   data_sources {
     syslog{
-      streams            = ["Microsoft-Syslog"]
+      streams            = ["Khulnasoft-Syslog"]
       facility_names      = var.syslog_facilities
       log_levels          = var.syslog_levels
       name               = "sysLogsDataSource"

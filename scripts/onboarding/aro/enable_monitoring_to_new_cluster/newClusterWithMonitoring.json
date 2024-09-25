@@ -70,7 +70,7 @@
     {
       "location": "[parameters('location')]",
       "name": "[parameters('clusterName')]",
-      "type": "Microsoft.ContainerService/openShiftManagedClusters",
+      "type": "Khulnasoft.ContainerService/openShiftManagedClusters",
       "apiVersion": "2019-09-30-preview",
       "properties": {
         "openShiftVersion": "v3.11",

@@ -3,8 +3,8 @@ This doc describes how to enable AKS Monitoring Addon using Azure Custom Policy.
 either at subscription or resource group scope. If Azure Log Analytics workspace and AKS cluster are in different subscriptions then Managed Identity used by Policy assignnment has to have required role permissions on both the subscriptions or least on the resource of the Azure Log Aalytics workspace. Similarly, If the policy scoped to Resource Group, then Managed Identity should have required role permissions on the Log Analytics workspace if the workspace not in the selected Resource Group scope.
 
 Monitoring Addon require following roles on the Managed Identity used by Azure Policy
- - [azure-kubernetes-service-contributor-role](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-contributor-role)
- - [log-analytics-contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#log-analytics-contributor)
+ - [azure-kubernetes-service-contributor-role](https://docs.khulnasoft.com/en-us/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-contributor-role)
+ - [log-analytics-contributor](https://docs.khulnasoft.com/en-us/azure/role-based-access-control/built-in-roles#log-analytics-contributor)
 
 ## Create and Assign Policy definition using Azure Portal
 
@@ -14,7 +14,7 @@ Monitoring Addon require following roles on the Managed Identity used by Azure P
 ``` sh
  curl -o azurepolicy.json -L https://aka.ms/aks-enable-monitoring-custom-policy
 ```
-2. Navigate to https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions and  create policy definition  with the following details in the Policy definition  create dialogue box
+2. Navigate to https://portal.azure.com/#blade/Khulnasoft_Azure_Policy/PolicyMenuBlade/Definitions and  create policy definition  with the following details in the Policy definition  create dialogue box
  
  - Pick any Azure Subscription where you want to store Policy Definition
  - Name - '(Preview)AKS-Monitoring-Addon'
@@ -26,9 +26,9 @@ Monitoring Addon require following roles on the Managed Identity used by Azure P
 
 > Note: Managed Identity will be created automatically and assigned specified roles in the Policy definition.
 
-3. Navigate to https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions and select the Policy Definition 'AKS Monitoring Addon'
+3. Navigate to https://portal.azure.com/#blade/Khulnasoft_Azure_Policy/PolicyMenuBlade/Definitions and select the Policy Definition 'AKS Monitoring Addon'
 4. Click an Assignment and select Scope, Exclusions (if any)
-5. Provide the Resource Id of the Azure Log Analytics Workspace. The Resource Id should be in this format `/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>`
+5. Provide the Resource Id of the Azure Log Analytics Workspace. The Resource Id should be in this format `/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Khulnasoft.OperationalInsights/workspaces/<workspaceName>`
 6. Create Remediation task in case if you want apply to policy to existing AKS clusters in selected scope
 7. Click and Review & Create Option to create Policy Assignment
    
@@ -54,11 +54,11 @@ Monitoring Addon require following roles on the Managed Identity used by Azure P
 3. Create policy assignment 
 
 ``` sh
-az policy assignment create --name aks-monitoring-addon --policy "(Preview)AKS-Monitoring-Addon" --assign-identity --identity-scope /subscriptions/<subscriptionId> --role Contributor --scope /subscriptions/<subscriptionId> --location <locatio> --role Contributor --scope /subscriptions/<subscriptionId> -p "{ \"workspaceResourceId\": { \"value\":  \"/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>\" } }"
+az policy assignment create --name aks-monitoring-addon --policy "(Preview)AKS-Monitoring-Addon" --assign-identity --identity-scope /subscriptions/<subscriptionId> --role Contributor --scope /subscriptions/<subscriptionId> --location <locatio> --role Contributor --scope /subscriptions/<subscriptionId> -p "{ \"workspaceResourceId\": { \"value\":  \"/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/khulnasoft.operationalinsights/workspaces/<workspaceName>\" } }"
 ```
 
 ## References
-- https://docs.microsoft.com/en-us/azure/governance/policy/
-- https://docs.microsoft.com/en-us/azure/governance/policy/how-to/remediate-resources#how-remediation-security-works
-- https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
-- https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-overview
+- https://docs.khulnasoft.com/en-us/azure/governance/policy/
+- https://docs.khulnasoft.com/en-us/azure/governance/policy/how-to/remediate-resources#how-remediation-security-works
+- https://docs.khulnasoft.com/en-us/cli/azure/install-azure-cli
+- https://docs.khulnasoft.com/en-us/azure/azure-monitor/insights/container-insights-overview

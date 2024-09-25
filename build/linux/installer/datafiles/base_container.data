@@ -4,39 +4,39 @@ SHLIB_EXT:               'so'
 
 SHORT_NAME:              'docker-cimprov'
 SHORT_NAME_PREFIX:       'MSFT'
-LONG_NAME:               'Microsoft CIM management interface for containers'
+LONG_NAME:               'Khulnasoft CIM management interface for containers'
 GROUP:                   'Applications/System'
 LICENSE:                 'none'
-VENDOR:                  'http://www.microsoft.com'
+VENDOR:                  'http://www.khulnasoft.com'
 PROVIDES:                'dockercimprovider'
 DESCRIPTION:             'Provides CIM management interface for containers'
-MAINTAINER:              'Microsoft Corporation'
+MAINTAINER:              'Khulnasoft Corporation'
 
 %Defines
 
 %Files
 
-/etc/opt/microsoft/docker-cimprov/conf/installinfo.txt;			build/linux/installer/conf/installinfo.txt;						644; root; root; conffile
+/etc/opt/khulnasoft/docker-cimprov/conf/installinfo.txt;			build/linux/installer/conf/installinfo.txt;						644; root; root; conffile
 
-/etc/opt/microsoft/docker-cimprov/container.conf;			    build/linux/installer/conf/container.conf;                      644; root; root
+/etc/opt/khulnasoft/docker-cimprov/container.conf;			    build/linux/installer/conf/container.conf;                      644; root; root
 
 /opt/fluent-bit/bin/out_oms.so;                                       intermediate/${{BUILD_CONFIGURATION}}/out_oms.so;  	755; root; root
 /opt/fluent-bit/bin/containerinventory.so;                                       intermediate/${{BUILD_CONFIGURATION}}/containerinventory.so;  	755; root; root
 /opt/fluent-bit/bin/perf.so;                                       intermediate/${{BUILD_CONFIGURATION}}/perf.so;  	755; root; root
-/etc/opt/microsoft/docker-cimprov/prometheus-side-car.conf;		         build/linux/installer/conf/prometheus-side-car.conf;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit.conf;			            build/linux/installer/conf/fluent-bit.conf;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-prom-side-car.conf;	   build/linux/installer/conf/fluent-bit-prom-side-car.conf;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-rs.conf;			         build/linux/installer/conf/fluent-bit-rs.conf;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/azm-containers-parser.conf;	         build/common/installer/conf/azm-containers-parser.conf;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/azm-containers-parser-multiline.conf;	 build/common/installer/conf/azm-containers-parser-multiline.conf;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/azm-containers-input-plugins.conf;	         build/common/installer/conf/azm-containers-input-plugins.conf;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/out_oms.conf;			                  build/linux/installer/conf/out_oms.conf;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/test.json;			                     build/linux/installer/conf/test.json;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/telegraf.conf;			               build/linux/installer/conf/telegraf.conf;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/telegraf-prom-side-car.conf;			   build/linux/installer/conf/telegraf-prom-side-car.conf;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/telegraf-rs.conf;			            build/linux/installer/conf/telegraf-rs.conf;                    644; root; root
-/etc/opt/microsoft/docker-cimprov/70-rsyslog-forward-mdsd-ci.conf;      build/linux/installer/conf/70-rsyslog-forward-mdsd-ci.conf;     644; root; root
-/opt/microsoft/docker-cimprov/bin/TelegrafTCPErrorTelemetry.sh;         build/linux/installer/scripts/TelegrafTCPErrorTelemetry.sh;      755; root; root
+/etc/opt/khulnasoft/docker-cimprov/prometheus-side-car.conf;		         build/linux/installer/conf/prometheus-side-car.conf;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit.conf;			            build/linux/installer/conf/fluent-bit.conf;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-prom-side-car.conf;	   build/linux/installer/conf/fluent-bit-prom-side-car.conf;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-rs.conf;			         build/linux/installer/conf/fluent-bit-rs.conf;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/azm-containers-parser.conf;	         build/common/installer/conf/azm-containers-parser.conf;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/azm-containers-parser-multiline.conf;	 build/common/installer/conf/azm-containers-parser-multiline.conf;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/azm-containers-input-plugins.conf;	         build/common/installer/conf/azm-containers-input-plugins.conf;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/out_oms.conf;			                  build/linux/installer/conf/out_oms.conf;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/test.json;			                     build/linux/installer/conf/test.json;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/telegraf.conf;			               build/linux/installer/conf/telegraf.conf;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/telegraf-prom-side-car.conf;			   build/linux/installer/conf/telegraf-prom-side-car.conf;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/telegraf-rs.conf;			            build/linux/installer/conf/telegraf-rs.conf;                    644; root; root
+/etc/opt/khulnasoft/docker-cimprov/70-rsyslog-forward-mdsd-ci.conf;      build/linux/installer/conf/70-rsyslog-forward-mdsd-ci.conf;     644; root; root
+/opt/khulnasoft/docker-cimprov/bin/TelegrafTCPErrorTelemetry.sh;         build/linux/installer/scripts/TelegrafTCPErrorTelemetry.sh;      755; root; root
 /opt/livenessprobe.sh;                                                  build/linux/installer/scripts/livenessprobe.sh;      755; root; root
 /opt/tomlparser-prom-customconfig.rb;                                   build/common/installer/scripts/tomlparser-prom-customconfig.rb;     755; root; root
 /opt/tomlparser-prom-agent-config.rb;                                   build/common/installer/scripts/tomlparser-prom-agent-config.rb;     755; root; root
@@ -45,24 +45,24 @@ MAINTAINER:              'Microsoft Corporation'
 
 /opt/tomlparser-geneva-config.rb;                                       build/common/installer/scripts/tomlparser-geneva-config.rb;     755; root; root
 
-/etc/opt/microsoft/azuremonitoragent/amacoreagent/PA.json;              build/linux/installer/conf/PA.json;                             755; root; root
+/etc/opt/khulnasoft/azuremonitoragent/amacoreagent/PA.json;              build/linux/installer/conf/PA.json;                             755; root; root
 
 /opt/fluent-bit-geneva-conf-customizer.rb;                     build/common/installer/scripts/fluent-bit-geneva-conf-customizer.rb;     755; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-input.conf;			       build/linux/installer/conf/fluent-bit-input.conf;                644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-common.conf;			    build/linux/installer/conf/fluent-bit-common.conf;                644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-geneva.conf;			    build/linux/installer/conf/fluent-bit-geneva.conf;                644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_infra.conf;  build/linux/installer/conf/fluent-bit-geneva-logs_infra.conf;   644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_infra_filter.conf;  build/linux/installer/conf/fluent-bit-geneva-logs_infra_filter.conf;   644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_tenant.conf; build/linux/installer/conf/fluent-bit-geneva-logs_tenant.conf;   644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_tenant_filter.conf; build/linux/installer/conf/fluent-bit-geneva-logs_tenant_filter.conf;   644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-telemetry-svc.conf;          build/linux/installer/conf/fluent-bit-geneva-telemetry-svc.conf;   644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-internal-metrics.conf;    build/linux/installer/conf/fluent-bit-internal-metrics.conf; 644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-input.conf;			       build/linux/installer/conf/fluent-bit-input.conf;                644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-common.conf;			    build/linux/installer/conf/fluent-bit-common.conf;                644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva.conf;			    build/linux/installer/conf/fluent-bit-geneva.conf;                644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_infra.conf;  build/linux/installer/conf/fluent-bit-geneva-logs_infra.conf;   644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_infra_filter.conf;  build/linux/installer/conf/fluent-bit-geneva-logs_infra_filter.conf;   644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_tenant.conf; build/linux/installer/conf/fluent-bit-geneva-logs_tenant.conf;   644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_tenant_filter.conf; build/linux/installer/conf/fluent-bit-geneva-logs_tenant_filter.conf;   644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-telemetry-svc.conf;          build/linux/installer/conf/fluent-bit-geneva-telemetry-svc.conf;   644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-internal-metrics.conf;    build/linux/installer/conf/fluent-bit-internal-metrics.conf; 644; root; root
 
 
-/etc/opt/microsoft/docker-cimprov/fluent-bit-azmon-multi-tenancy.conf;        build/linux/installer/conf/fluent-bit-azmon-multi-tenancy.conf;              644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-azmon-logs_tenant.conf;          build/linux/installer/conf/fluent-bit-azmon-logs_tenant.conf;                644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-azmon-logs_metadata_filter.conf; build/linux/installer/conf/fluent-bit-azmon-logs_metadata_filter.conf;         644; root; root
-/etc/opt/microsoft/docker-cimprov/fluent-bit-azmon-logs-svc.conf;             build/linux/installer/conf/fluent-bit-azmon-logs-svc.conf;                   644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-azmon-multi-tenancy.conf;        build/linux/installer/conf/fluent-bit-azmon-multi-tenancy.conf;              644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-azmon-logs_tenant.conf;          build/linux/installer/conf/fluent-bit-azmon-logs_tenant.conf;                644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-azmon-logs_metadata_filter.conf; build/linux/installer/conf/fluent-bit-azmon-logs_metadata_filter.conf;         644; root; root
+/etc/opt/khulnasoft/docker-cimprov/fluent-bit-azmon-logs-svc.conf;             build/linux/installer/conf/fluent-bit-azmon-logs-svc.conf;                   644; root; root
 
 /opt/tomlparser-agent-config.rb;                                build/common/installer/scripts/tomlparser-agent-config.rb;     755; root; root
 /opt/tomlparser-common-agent-config.rb;                         build/common/installer/scripts/tomlparser-common-agent-config.rb;     755; root; root
@@ -175,26 +175,26 @@ MAINTAINER:              'Microsoft Corporation'
 
 /opt/fluent;                                            755; root; root; sysdir
 
-/etc/opt/microsoft;                                     755; root; root; sysdir
-/etc/opt/microsoft/docker-cimprov;                      755; root; root
-/etc/opt/microsoft/docker-cimprov/conf;                 755; root; root
+/etc/opt/khulnasoft;                                     755; root; root; sysdir
+/etc/opt/khulnasoft/docker-cimprov;                      755; root; root
+/etc/opt/khulnasoft/docker-cimprov/conf;                 755; root; root
 
-/opt/microsoft;                                         755; root; root; sysdir
-/opt/microsoft/docker-cimprov;                          755; root; root
-/opt/microsoft/docker-cimprov/bin;                      755; root; root
-/opt/microsoft/docker-cimprov/lib;                      755; root; root
+/opt/khulnasoft;                                         755; root; root; sysdir
+/opt/khulnasoft/docker-cimprov;                          755; root; root
+/opt/khulnasoft/docker-cimprov/bin;                      755; root; root
+/opt/khulnasoft/docker-cimprov/lib;                      755; root; root
 
-/var/opt/microsoft;                                     755; root; root; sysdir
-/var/opt/microsoft/docker-cimprov;                      755; root; root
-/var/opt/microsoft/docker-cimprov/state;                755; root; root
-/var/opt/microsoft/docker-cimprov/state/flbstore;       755; root; root
-/var/opt/microsoft/docker-cimprov/state/ContainerInventory; 755; root; root
-/var/opt/microsoft/docker-cimprov/log;                  755; root; root
-/var/opt/microsoft/linuxmonagent/log;                   755; root; root
-/var/opt/microsoft/linuxmonagent/amaca;                 755; root; root
-/var/opt/microsoft/linuxmonagent/amaca/log;             755; root; root
+/var/opt/khulnasoft;                                     755; root; root; sysdir
+/var/opt/khulnasoft/docker-cimprov;                      755; root; root
+/var/opt/khulnasoft/docker-cimprov/state;                755; root; root
+/var/opt/khulnasoft/docker-cimprov/state/flbstore;       755; root; root
+/var/opt/khulnasoft/docker-cimprov/state/ContainerInventory; 755; root; root
+/var/opt/khulnasoft/docker-cimprov/log;                  755; root; root
+/var/opt/khulnasoft/linuxmonagent/log;                   755; root; root
+/var/opt/khulnasoft/linuxmonagent/amaca;                 755; root; root
+/var/opt/khulnasoft/linuxmonagent/amaca/log;             755; root; root
 
-/etc/opt/microsoft/azuremonitoragent/amacoreagent;      755; root; root
+/etc/opt/khulnasoft/azuremonitoragent/amacoreagent;      755; root; root
 
 /opt/fluent-bit;                          755; root; root;sysdir
 /opt/fluent-bit/bin;                      755; root; root;sysdir
@@ -214,75 +214,75 @@ MAINTAINER:              'Microsoft Corporation'
 
 %Postinstall_10
 WriteInstallInfo() {
-	date +%Y-%m-%dT%T.0Z > /etc/opt/microsoft/docker-cimprov/conf/installinfo.txt
-	echo ${{VERSION}}-${{RELEASE}} >> /etc/opt/microsoft/docker-cimprov/conf/installinfo.txt
+	date +%Y-%m-%dT%T.0Z > /etc/opt/khulnasoft/docker-cimprov/conf/installinfo.txt
+	echo ${{VERSION}}-${{RELEASE}} >> /etc/opt/khulnasoft/docker-cimprov/conf/installinfo.txt
 }
 WriteInstallInfo
 
 
 # Get the state file in place with proper permissions
-touch /var/opt/microsoft/docker-cimprov/state/LastEventQueryTime.txt
-chmod 644 /var/opt/microsoft/docker-cimprov/state/LastEventQueryTime.txt
+touch /var/opt/khulnasoft/docker-cimprov/state/LastEventQueryTime.txt
+chmod 644 /var/opt/khulnasoft/docker-cimprov/state/LastEventQueryTime.txt
 
-touch /var/opt/microsoft/docker-cimprov/state/KubeEventQueryState.yaml
-chmod 644 /var/opt/microsoft/docker-cimprov/state/KubeEventQueryState.yaml
+touch /var/opt/khulnasoft/docker-cimprov/state/KubeEventQueryState.yaml
+chmod 644 /var/opt/khulnasoft/docker-cimprov/state/KubeEventQueryState.yaml
 
-touch /var/opt/microsoft/docker-cimprov/state/KubeLogQueryState.yaml
-chmod 644 /var/opt/microsoft/docker-cimprov/state/KubeLogQueryState.yaml
+touch /var/opt/khulnasoft/docker-cimprov/state/KubeLogQueryState.yaml
+chmod 644 /var/opt/khulnasoft/docker-cimprov/state/KubeLogQueryState.yaml
 
-touch /var/opt/microsoft/docker-cimprov/log/kubernetes_client_log.txt
-chmod 666 /var/opt/microsoft/docker-cimprov/log/kubernetes_client_log.txt
+touch /var/opt/khulnasoft/docker-cimprov/log/kubernetes_client_log.txt
+chmod 666 /var/opt/khulnasoft/docker-cimprov/log/kubernetes_client_log.txt
 
-touch /var/opt/microsoft/docker-cimprov/log/kubernetes_perf_log.txt
-chmod 666 /var/opt/microsoft/docker-cimprov/log/kubernetes_perf_log.txt
+touch /var/opt/khulnasoft/docker-cimprov/log/kubernetes_perf_log.txt
+chmod 666 /var/opt/khulnasoft/docker-cimprov/log/kubernetes_perf_log.txt
 
 
-touch /var/opt/microsoft/docker-cimprov/log/filter_cadvisor2mdm.log
-chmod 666 /var/opt/microsoft/docker-cimprov/log/filter_cadvisor2mdm.log
+touch /var/opt/khulnasoft/docker-cimprov/log/filter_cadvisor2mdm.log
+chmod 666 /var/opt/khulnasoft/docker-cimprov/log/filter_cadvisor2mdm.log
 
-touch /var/opt/microsoft/docker-cimprov/log/filter_telegraf2mdm.log
-chmod 666 /var/opt/microsoft/docker-cimprov/log/filter_telegraf2mdm.log
+touch /var/opt/khulnasoft/docker-cimprov/log/filter_telegraf2mdm.log
+chmod 666 /var/opt/khulnasoft/docker-cimprov/log/filter_telegraf2mdm.log
 
-touch /var/opt/microsoft/docker-cimprov/log/filter_inventory2mdm.log
-chmod 666 /var/opt/microsoft/docker-cimprov/log/filter_inventory2mdm.log
+touch /var/opt/khulnasoft/docker-cimprov/log/filter_inventory2mdm.log
+chmod 666 /var/opt/khulnasoft/docker-cimprov/log/filter_inventory2mdm.log
 
-touch /var/opt/microsoft/docker-cimprov/log/mdm_metrics_generator.log
-chmod 666 /var/opt/microsoft/docker-cimprov/log/mdm_metrics_generator.log
+touch /var/opt/khulnasoft/docker-cimprov/log/mdm_metrics_generator.log
+chmod 666 /var/opt/khulnasoft/docker-cimprov/log/mdm_metrics_generator.log
 
-touch /var/opt/microsoft/docker-cimprov/log/fluent_forward_failed.log
-chmod 666 /var/opt/microsoft/docker-cimprov/log/fluent_forward_failed.log
+touch /var/opt/khulnasoft/docker-cimprov/log/fluent_forward_failed.log
+chmod 666 /var/opt/khulnasoft/docker-cimprov/log/fluent_forward_failed.log
 
-touch /var/opt/microsoft/docker-cimprov/log/arc_k8s_cluster_identity.log
-chmod 666 /var/opt/microsoft/docker-cimprov/log/arc_k8s_cluster_identity.log
+touch /var/opt/khulnasoft/docker-cimprov/log/arc_k8s_cluster_identity.log
+chmod 666 /var/opt/khulnasoft/docker-cimprov/log/arc_k8s_cluster_identity.log
 
-touch /var/opt/microsoft/docker-cimprov/log/appinsights_error.log
-chmod 666 /var/opt/microsoft/docker-cimprov/log/appinsights_error.log
+touch /var/opt/khulnasoft/docker-cimprov/log/appinsights_error.log
+chmod 666 /var/opt/khulnasoft/docker-cimprov/log/appinsights_error.log
 
-touch /var/opt/microsoft/docker-cimprov/log/fluentd.log
-chmod 666 /var/opt/microsoft/docker-cimprov/log/fluentd.log
+touch /var/opt/khulnasoft/docker-cimprov/log/fluentd.log
+chmod 666 /var/opt/khulnasoft/docker-cimprov/log/fluentd.log
 
-touch /var/opt/microsoft/docker-cimprov/log/telegraf_error.log
-chmod 666 /var/opt/microsoft/docker-cimprov/log/telegraf_error.log
+touch /var/opt/khulnasoft/docker-cimprov/log/telegraf_error.log
+chmod 666 /var/opt/khulnasoft/docker-cimprov/log/telegraf_error.log
 
 
 %Postuninstall_10
 # If we're an upgrade, skip all of this cleanup
 if ${{PERFORMING_UPGRADE_NOT}}; then
    # Clean up installinfo.txt file (registered as "conf" file to pass rpmcheck)
-   rm -f /etc/opt/microsoft/docker-cimprov/conf/installinfo.txt*
-   rm -f /var/opt/microsoft/docker-cimprov/state/LastEventQueryTime.txt
-   rm -f /var/opt/microsoft/docker-cimprov/state/KubeEventQueryState.yaml
-   rm -f /var/opt/microsoft/docker-cimprov/state/KubeLogQueryState.yaml
-   rm -f /var/opt/microsoft/docker-cimprov/log/kubernetes_client_log.txt
-   rm -f /var/opt/microsoft/docker-cimprov/log/kubernetes_perf_log.txt
-   rmdir /var/opt/microsoft/docker-cimprov/log 2> /dev/null
-   rmdir /var/opt/microsoft/docker-cimprov/state/ContainerInventory 2> /dev/null
-   rmdir /var/opt/microsoft/docker-cimprov/state/ImageInventory 2> /dev/null
-   rmdir /var/opt/microsoft/docker-cimprov/state 2> /dev/null
-   rmdir /var/opt/microsoft/docker-cimprov 2> /dev/null
-   rmdir /etc/opt/microsoft/docker-cimprov/conf 2> /dev/null
-   rmdir /etc/opt/microsoft/docker-cimprov 2> /dev/null
-   rmdir /etc/opt/microsoft 2> /dev/null
+   rm -f /etc/opt/khulnasoft/docker-cimprov/conf/installinfo.txt*
+   rm -f /var/opt/khulnasoft/docker-cimprov/state/LastEventQueryTime.txt
+   rm -f /var/opt/khulnasoft/docker-cimprov/state/KubeEventQueryState.yaml
+   rm -f /var/opt/khulnasoft/docker-cimprov/state/KubeLogQueryState.yaml
+   rm -f /var/opt/khulnasoft/docker-cimprov/log/kubernetes_client_log.txt
+   rm -f /var/opt/khulnasoft/docker-cimprov/log/kubernetes_perf_log.txt
+   rmdir /var/opt/khulnasoft/docker-cimprov/log 2> /dev/null
+   rmdir /var/opt/khulnasoft/docker-cimprov/state/ContainerInventory 2> /dev/null
+   rmdir /var/opt/khulnasoft/docker-cimprov/state/ImageInventory 2> /dev/null
+   rmdir /var/opt/khulnasoft/docker-cimprov/state 2> /dev/null
+   rmdir /var/opt/khulnasoft/docker-cimprov 2> /dev/null
+   rmdir /etc/opt/khulnasoft/docker-cimprov/conf 2> /dev/null
+   rmdir /etc/opt/khulnasoft/docker-cimprov 2> /dev/null
+   rmdir /etc/opt/khulnasoft 2> /dev/null
    rmdir /etc/opt 2> /dev/null
 fi
 

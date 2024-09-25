@@ -18,7 +18,7 @@
   "resources": [
     {
       "name": "[split(parameters('aroResourceId'),'/')[8]]",
-      "type": "Microsoft.ContainerService/openShiftManagedClusters",
+      "type": "Khulnasoft.ContainerService/openShiftManagedClusters",
       "location": "[parameters('aroResourceLocation')]",
       "apiVersion": "2019-09-30-preview",
       "properties": {

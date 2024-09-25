@@ -42,7 +42,7 @@ bash aro-v4.sh --subscription-id "<subscriptionId>" --resource-group "<rgName>" 
 ```
 
 ### Connecting
-To connect to the ARO Kubernetes cluster, follow the [ARO Tutorial - Connect Cluster](https://learn.microsoft.com/en-us/azure/openshift/tutorial-connect-cluster).
+To connect to the ARO Kubernetes cluster, follow the [ARO Tutorial - Connect Cluster](https://learn.khulnasoft.com/en-us/azure/openshift/tutorial-connect-cluster).
 
 
 ## Azure Arc Kubernetes Cluster

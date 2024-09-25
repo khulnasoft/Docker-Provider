@@ -1,5 +1,5 @@
 AZURE_PUBLIC_CLOUD_ENDPOINTS = {
-    "activeDirectory": "https://login.microsoftonline.com/",
+    "activeDirectory": "https://login.khulnasoftonline.com/",
     "activeDirectoryDataLakeResourceId": "https://datalake.azure.net/",
     "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "activeDirectoryResourceId": "https://management.core.windows.net/",
@@ -10,7 +10,7 @@ AZURE_PUBLIC_CLOUD_ENDPOINTS = {
     "logAnalytics": "https://api.loganalytics.io",
     "management": "https://management.core.windows.net/",
     "mediaResourceId": "https://rest.media.azure.net",
-    "microsoftGraphResourceId": "https://graph.microsoft.com/",
+    "khulnasoftGraphResourceId": "https://graph.khulnasoft.com/",
     "ossrdbmsResourceId": "https://ossrdbms-aad.database.windows.net",
     "resourceManager": "https://management.azure.com/",
     "sqlManagement": "https://management.core.windows.net:8443/",
@@ -29,7 +29,7 @@ AZURE_DOGFOOD_ENDPOINTS = {
     "logAnalytics": None,
     "management": "https://management-preview.core.windows-int.net/",
     "mediaResourceId": None,
-    "microsoftGraphResourceId": None,
+    "khulnasoftGraphResourceId": None,
     "ossrdbmsResourceId": None,
     "resourceManager": "https://api-dogfood.resources.windows-int.net/",
     "sqlManagement": None,
@@ -54,8 +54,8 @@ AGENT_WIN_DAEMONSET_NAME = 'ama-logs-windows'
 AGENT_DEPLOYMENT_PODS_LABEL_SELECTOR = 'rsName=ama-logs-rs'
 AGENT_DAEMON_SET_PODS_LABEL_SELECTOR = 'dsName=ama-logs-ds'
 AGENT_DAEMON_SET_PODS_LABEL_SELECTOR_NON_ARC = 'component=ama-logs-agent'
-AGENT_FLUENTD_LOG_PATH = '/var/opt/microsoft/docker-cimprov/log/fluentd.log'
-AGENT_AMA_LOGS_LOG_PATH = '/var/opt/microsoft/ama-logs/log/ama-logs.log'
+AGENT_FLUENTD_LOG_PATH = '/var/opt/khulnasoft/docker-cimprov/log/fluentd.log'
+AGENT_AMA_LOGS_LOG_PATH = '/var/opt/khulnasoft/ama-logs/log/ama-logs.log'
 AGENT_REPLICASET_WORKFLOWS = ["kubePodInventoryEmitStreamSuccess", "kubeNodeInventoryEmitStreamSuccess"]
 
 # override this through setting enviornment variable if the expected restart count is > 0 for example applying configmap

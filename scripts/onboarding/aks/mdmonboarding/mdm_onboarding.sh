@@ -3,10 +3,10 @@
 # Execute this directly in Azure Cloud Shell (https://shell.azure.com) by pasting (SHIFT+INS on Windows, CTRL+V on Mac or Linux)
 # the following line (beginning with curl...) at the command prompt and then replacing the args:
 # This script adds the Monitoring Metrics Publisher role assignment to specified AKS cluster
-#  Note: 'Microsoft.Authorization/roleAssignments/write'  permission required on the  cluster resource to add the role assignment.
+#  Note: 'Khulnasoft.Authorization/roleAssignments/write'  permission required on the  cluster resource to add the role assignment.
 #  Of the built-in roles, only Owner and User Access Administrator are granted access to this permission.
 # Prerequisites :
-#     Azure CLI:  https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
+#     Azure CLI:  https://docs.khulnasoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 # curl -sL https://git.io/aks-mdm-onboarding | bash -s subscriptionId clusterResourceGroup clusterName
 #
 #   [Required]  ${1}  subscriptionId    subscriptionId  of the AKS cluster

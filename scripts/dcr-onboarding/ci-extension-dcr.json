@@ -6,18 +6,18 @@
               {
                   "name": "ContainerInsightsExtension",
                   "streams": [
-                      "Microsoft-Perf",
-                      "Microsoft-ContainerInventory",
-                      "Microsoft-ContainerLog",
-                      "Microsoft-ContainerLogV2",
-                      "Microsoft-ContainerNodeInventory",
-                      "Microsoft-KubeEvents",
-                      "Microsoft-KubeMonAgentEvents",
-                      "Microsoft-KubeNodeInventory",
-                      "Microsoft-KubePodInventory",
-                      "Microsoft-KubePVInventory",
-                      "Microsoft-KubeServices",
-                      "Microsoft-InsightsMetrics"
+                      "Khulnasoft-Perf",
+                      "Khulnasoft-ContainerInventory",
+                      "Khulnasoft-ContainerLog",
+                      "Khulnasoft-ContainerLogV2",
+                      "Khulnasoft-ContainerNodeInventory",
+                      "Khulnasoft-KubeEvents",
+                      "Khulnasoft-KubeMonAgentEvents",
+                      "Khulnasoft-KubeNodeInventory",
+                      "Khulnasoft-KubePodInventory",
+                      "Khulnasoft-KubePVInventory",
+                      "Khulnasoft-KubeServices",
+                      "Khulnasoft-InsightsMetrics"
 
                   ],
                   "extensionName": "ContainerInsights"
@@ -27,7 +27,7 @@
       "destinations": {
         "logAnalytics": [
           {
-            "workspaceResourceId": "/subscriptions/<subId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<wsName>",
+            "workspaceResourceId": "/subscriptions/<subId>/resourcegroups/<rgName>/providers/khulnasoft.operationalinsights/workspaces/<wsName>",
             "name": "ciworkspace"
           }
         ]
@@ -35,18 +35,18 @@
       "dataFlows": [
         {
           "streams": [
-            "Microsoft-Perf",
-            "Microsoft-ContainerInventory",
-            "Microsoft-ContainerLog",
-            "Microsoft-ContainerLogV2",
-            "Microsoft-ContainerNodeInventory",
-            "Microsoft-KubeEvents",
-            "Microsoft-KubeMonAgentEvents",
-            "Microsoft-KubeNodeInventory",
-            "Microsoft-KubePodInventory",
-            "Microsoft-KubePVInventory",
-            "Microsoft-KubeServices",
-            "Microsoft-InsightsMetrics"
+            "Khulnasoft-Perf",
+            "Khulnasoft-ContainerInventory",
+            "Khulnasoft-ContainerLog",
+            "Khulnasoft-ContainerLogV2",
+            "Khulnasoft-ContainerNodeInventory",
+            "Khulnasoft-KubeEvents",
+            "Khulnasoft-KubeMonAgentEvents",
+            "Khulnasoft-KubeNodeInventory",
+            "Khulnasoft-KubePodInventory",
+            "Khulnasoft-KubePVInventory",
+            "Khulnasoft-KubeServices",
+            "Khulnasoft-InsightsMetrics"
           ],
           "destinations": [
             "ciworkspace"

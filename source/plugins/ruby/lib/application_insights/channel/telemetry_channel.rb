@@ -82,7 +82,7 @@ module ApplicationInsights
             :base_data => data
         }
         envelope_attributes = {
-          :name => 'Microsoft.ApplicationInsights.' + data_type[0..-5],
+          :name => 'Khulnasoft.ApplicationInsights.' + data_type[0..-5],
           :time => local_time,
           :i_key => local_context.instrumentation_key,
           :tags => get_tags(local_context),

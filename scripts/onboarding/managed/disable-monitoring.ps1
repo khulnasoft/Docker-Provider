@@ -214,19 +214,19 @@ if ($clusterResourceId.Split("/").Length -ne 9){
      exit 1
 }
 
-if (($clusterResourceId.ToLower().Contains("microsoft.kubernetes/connectedclusters") -ne $true) -and
-    ($clusterResourceId.ToLower().Contains("microsoft.redhatopenshift/openshiftclusters") -ne $true) -and
-    ($clusterResourceId.ToLower().Contains("microsoft.containerservice/managedclusters") -ne $true)
+if (($clusterResourceId.ToLower().Contains("khulnasoft.kubernetes/connectedclusters") -ne $true) -and
+    ($clusterResourceId.ToLower().Contains("khulnasoft.redhatopenshift/openshiftclusters") -ne $true) -and
+    ($clusterResourceId.ToLower().Contains("khulnasoft.containerservice/managedclusters") -ne $true)
   ) {
     Write-Host("Provided cluster ResourceId is not supported cluster type: $clusterResourceId") -ForegroundColor Red
     exit 1
 }
 
-if ($clusterResourceId.ToLower().Contains("microsoft.kubernetes/connectedclusters") -eq $true) {
+if ($clusterResourceId.ToLower().Contains("khulnasoft.kubernetes/connectedclusters") -eq $true) {
    $isArcK8sCluster = $true
-} elseif ($clusterResourceId.ToLower().Contains("microsoft.containerservice/managedclusters") -eq $true) {
+} elseif ($clusterResourceId.ToLower().Contains("khulnasoft.containerservice/managedclusters") -eq $true) {
    $isAksCluster =  $true
-} elseif ($clusterResourceId.ToLower().Contains("microsoft.redhatopenshift/openshiftclusters") -eq $true) {
+} elseif ($clusterResourceId.ToLower().Contains("khulnasoft.redhatopenshift/openshiftclusters") -eq $true) {
    $isAroV4Cluster = $true
 }
 

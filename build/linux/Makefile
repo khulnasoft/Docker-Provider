@@ -1,5 +1,5 @@
 # -*- mode: Makefile; -*-
-# Copyright (c) Microsoft Corporation
+# Copyright (c) Khulnasoft Corporation
 
 BASE_DIR := $(subst /build/linux,,$(PWD))
 

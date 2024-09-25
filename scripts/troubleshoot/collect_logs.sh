@@ -32,20 +32,20 @@ kubectl logs ${rs_pod} --container ama-logs --namespace=kube-system > logs_${rs_
 # now collect log files from in containers
 echo "Collecting log files from inside agent containers"
 
-kubectl cp ${ds_pod}:/var/opt/microsoft/docker-cimprov/log ama-logs-daemonset --namespace=kube-system --container ama-logs
-kubectl cp ${ds_pod}:/var/opt/microsoft/linuxmonagent/log ama-logs-daemonset-mdsd --namespace=kube-system --container ama-logs
+kubectl cp ${ds_pod}:/var/opt/khulnasoft/docker-cimprov/log ama-logs-daemonset --namespace=kube-system --container ama-logs
+kubectl cp ${ds_pod}:/var/opt/khulnasoft/linuxmonagent/log ama-logs-daemonset-mdsd --namespace=kube-system --container ama-logs
 kubectl cp ${ds_pod}:/etc/mdsd.d/config-cache/configchunks/ ama-logs-daemonset-dcr --namespace=kube-system --container ama-logs >/dev/null 2>&1
 
-kubectl cp ${ds_pod}:/var/opt/microsoft/docker-cimprov/log ama-logs-prom-daemonset --namespace=kube-system --container ama-logs-prometheus
-kubectl cp ${ds_pod}:/var/opt/microsoft/linuxmonagent/log ama-logs-prom-daemonset-mdsd --namespace=kube-system --container ama-logs-prometheus
+kubectl cp ${ds_pod}:/var/opt/khulnasoft/docker-cimprov/log ama-logs-prom-daemonset --namespace=kube-system --container ama-logs-prometheus
+kubectl cp ${ds_pod}:/var/opt/khulnasoft/linuxmonagent/log ama-logs-prom-daemonset-mdsd --namespace=kube-system --container ama-logs-prometheus
 
 # for some reason copying logs out of /etc/amalogswindows doesn't work (gives a permission error), but exec then cat does work.
 # skip collecting these logs for now, would be good to come back and fix this next time a windows support case comes up
 # kubectl cp ${ds_win_pod}:/etc/amalogswindows ama-logs-windows-daemonset --namespace=kube-system
 kubectl cp ${ds_win_pod}:/etc/fluent-bit ama-logs-windows-daemonset-fbit --namespace=kube-system
 
-kubectl cp ${rs_pod}:/var/opt/microsoft/docker-cimprov/log ama-logs-replicaset --namespace=kube-system
-kubectl cp ${rs_pod}:/var/opt/microsoft/linuxmonagent/log ama-logs-replicaset-mdsd --namespace=kube-system
+kubectl cp ${rs_pod}:/var/opt/khulnasoft/docker-cimprov/log ama-logs-replicaset --namespace=kube-system
+kubectl cp ${rs_pod}:/var/opt/khulnasoft/linuxmonagent/log ama-logs-replicaset-mdsd --namespace=kube-system
 
 zip -r -q ../azure-monitor-logs.zip *
 

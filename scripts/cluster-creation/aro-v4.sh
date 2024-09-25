@@ -8,14 +8,14 @@ DefaultWorkerSubnetName="worker-subnet"
 
 download-and-install-azure-cli()
 {
-  # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install-with-one-command
+  # https://docs.khulnasoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install-with-one-command
   sudo curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 }
 
 register_aro_v4_provider()
 {
-   echo "register Microsoft.RedHatOpenShift provider"
-   az provider register -n Microsoft.RedHatOpenShift --wait
+   echo "register Khulnasoft.RedHatOpenShift provider"
+   az provider register -n Khulnasoft.RedHatOpenShift --wait
 }
 
 usage()
@@ -101,10 +101,10 @@ create_aro_v4_cluster()
   az network vnet create --resource-group ${resourceGroupName} --name ${DefaultVnetName} --address-prefixes 10.0.0.0/22
 
   echo "adding empty subnet for master nodes"
-  az network vnet subnet create --resource-group ${resourceGroupName} --vnet-name ${DefaultVnetName} --name ${DefaultMasterSubnetName} --address-prefixes 10.0.0.0/23 --service-endpoints Microsoft.ContainerRegistry
+  az network vnet subnet create --resource-group ${resourceGroupName} --vnet-name ${DefaultVnetName} --name ${DefaultMasterSubnetName} --address-prefixes 10.0.0.0/23 --service-endpoints Khulnasoft.ContainerRegistry
 
   echo "adding empty subnet for worker nodes"
-  az network vnet subnet create --resource-group ${resourceGroupName}  --vnet-name ${DefaultVnetName} --name ${DefaultWorkerSubnetName} --address-prefixes 10.0.2.0/23 --service-endpoints Microsoft.ContainerRegistry
+  az network vnet subnet create --resource-group ${resourceGroupName}  --vnet-name ${DefaultVnetName} --name ${DefaultWorkerSubnetName} --address-prefixes 10.0.2.0/23 --service-endpoints Khulnasoft.ContainerRegistry
 
   echo "Please make sure to disable cleanup service on subnet nsgs of aor vnet for internal subscriptions"
   sleep 1m

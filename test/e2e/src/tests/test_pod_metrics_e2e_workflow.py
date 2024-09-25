@@ -100,7 +100,7 @@ def test_pod_metrics_e2e_workflow(env_dict):
     }
     params = {}
     # pod metric - PodCount
-    custommetricsUrl = '{0}{1}/providers/microsoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
+    custommetricsUrl = '{0}{1}/providers/khulnasoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
         resourceManager.rstrip("/"),
         clusterResourceId,
         starttime,

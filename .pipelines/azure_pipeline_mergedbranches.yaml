@@ -260,8 +260,8 @@ jobs:
   - bash: |
         set -euxo pipefail
         oras attach ${{ variables.repoImageName }}:$(linuxImagetag) \
-            --artifact-type 'application/vnd.microsoft.artifact.lifecycle' \
-            --annotation "vnd.microsoft.artifact.lifecycle.end-of-life.date=$(date -u -d '-1 hour' +"%Y-%m-%dT%H:%M:%SZ")"
+            --artifact-type 'application/vnd.khulnasoft.artifact.lifecycle' \
+            --annotation "vnd.khulnasoft.artifact.lifecycle.end-of-life.date=$(date -u -d '-1 hour' +"%Y-%m-%dT%H:%M:%SZ")"
     workingDirectory: $(Build.ArtifactStagingDirectory)/linux/
     displayName: "ORAS Push Artifacts in $(Build.ArtifactStagingDirectory)/linux/"
     condition: and(eq(variables.IS_RELEASE, false), eq(variables.IS_PR, false))
@@ -444,11 +444,11 @@ jobs:
                     "KeyCode" : "CP-230012",
                     "OperationCode" : "SigntoolSign",
                     "Parameters" : {
-                        "OpusName" : "Microsoft",
-                        "OpusInfo" : "http://www.microsoft.com",
+                        "OpusName" : "Khulnasoft",
+                        "OpusInfo" : "http://www.khulnasoft.com",
                         "FileDigest" : "/fd \"SHA256\"",
                         "PageHash" : "/NPH",
-                        "TimeStamp" : "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+                        "TimeStamp" : "/tr \"http://rfc3161.gtm.corp.khulnasoft.com/TSS/HttpTspServer\" /td sha256"
                     },
                     "ToolName" : "sign",
                     "ToolVersion" : "1.0"
@@ -483,12 +483,12 @@ jobs:
                     "KeyCode" : "CP-231522",
                     "OperationCode" : "SigntoolSign",
                     "Parameters" : {
-                        "OpusName" : "Microsoft",
-                        "OpusInfo" : "http://www.microsoft.com",
+                        "OpusName" : "Khulnasoft",
+                        "OpusInfo" : "http://www.khulnasoft.com",
                         "Append" : "/as",
                         "FileDigest" : "/fd \"SHA256\"",
                         "PageHash" : "/NPH",
-                        "TimeStamp" : "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+                        "TimeStamp" : "/tr \"http://rfc3161.gtm.corp.khulnasoft.com/TSS/HttpTspServer\" /td sha256"
                     },
                     "ToolName" : "sign",
                     "ToolVersion" : "1.0"
@@ -677,11 +677,11 @@ jobs:
                     "KeyCode" : "CP-230012",
                     "OperationCode" : "SigntoolSign",
                     "Parameters" : {
-                        "OpusName" : "Microsoft",
-                        "OpusInfo" : "http://www.microsoft.com",
+                        "OpusName" : "Khulnasoft",
+                        "OpusInfo" : "http://www.khulnasoft.com",
                         "FileDigest" : "/fd \"SHA256\"",
                         "PageHash" : "/NPH",
-                        "TimeStamp" : "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+                        "TimeStamp" : "/tr \"http://rfc3161.gtm.corp.khulnasoft.com/TSS/HttpTspServer\" /td sha256"
                     },
                     "ToolName" : "sign",
                     "ToolVersion" : "1.0"
@@ -716,12 +716,12 @@ jobs:
                     "KeyCode" : "CP-231522",
                     "OperationCode" : "SigntoolSign",
                     "Parameters" : {
-                        "OpusName" : "Microsoft",
-                        "OpusInfo" : "http://www.microsoft.com",
+                        "OpusName" : "Khulnasoft",
+                        "OpusInfo" : "http://www.khulnasoft.com",
                         "Append" : "/as",
                         "FileDigest" : "/fd \"SHA256\"",
                         "PageHash" : "/NPH",
-                        "TimeStamp" : "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+                        "TimeStamp" : "/tr \"http://rfc3161.gtm.corp.khulnasoft.com/TSS/HttpTspServer\" /td sha256"
                     },
                     "ToolName" : "sign",
                     "ToolVersion" : "1.0"
@@ -827,14 +827,14 @@ jobs:
     condition: eq(variables.IS_PR, true)
     inputs:
       BuildDropPath: '$(Build.ArtifactStagingDirectory)/windows'
-      DockerImagesToScan: 'mcr.microsoft.com/windows/servercore:ltsc2019,mcr.microsoft.com/windows/servercore:ltsc2022'
+      DockerImagesToScan: 'mcr.khulnasoft.com/windows/servercore:ltsc2019,mcr.khulnasoft.com/windows/servercore:ltsc2022'
 
   - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
     displayName: 'Generation Task'
     condition: eq(variables.IS_PR, false)
     inputs:
       BuildDropPath: '$(Build.ArtifactStagingDirectory)/windows'
-      DockerImagesToScan: 'mcr.microsoft.com/windows/servercore:ltsc2019,mcr.microsoft.com/windows/servercore:ltsc2022,${{ variables.repoImageName }}:$(windowsImageTag)'
+      DockerImagesToScan: 'mcr.khulnasoft.com/windows/servercore:ltsc2019,mcr.khulnasoft.com/windows/servercore:ltsc2022,${{ variables.repoImageName }}:$(windowsImageTag)'
 
   - powershell: |
       curl.exe -sLO  "https://github.com/oras-project/oras/releases/download/v1.0.0/oras_1.0.0_windows_amd64.zip"
@@ -898,7 +898,7 @@ jobs:
 
   - powershell: |
       $env:PATH = "$env:USERPROFILE\bin;$env:PATH"
-      oras attach ${{ variables.repoImageName }}:$(windowsImageTag) --artifact-type 'application/vnd.microsoft.artifact.lifecycle' --annotation "vnd.microsoft.artifact.lifecycle.end-of-life.date=$(powershell -Command "(Get-Date).AddHours(-1).ToString('yyyy-MM-ddTHH:mm:ssZ')")"
+      oras attach ${{ variables.repoImageName }}:$(windowsImageTag) --artifact-type 'application/vnd.khulnasoft.artifact.lifecycle' --annotation "vnd.khulnasoft.artifact.lifecycle.end-of-life.date=$(powershell -Command "(Get-Date).AddHours(-1).ToString('yyyy-MM-ddTHH:mm:ssZ')")"
     workingDirectory: $(Build.ArtifactStagingDirectory)/windows
     displayName: "Run oras attach"
     condition: and(eq(variables.IS_RELEASE, false), eq(variables.IS_PR, false))

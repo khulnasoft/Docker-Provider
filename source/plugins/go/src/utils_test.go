@@ -12,13 +12,13 @@ func Test_isValidUrl(t *testing.T) {
 	}
 
 	tests := []test_struct{
-		{true, "https://www.microsoft.com"},
+		{true, "https://www.khulnasoft.com"},
 		{true, "http://abc.xyz"},
-		{true, "https://www.microsoft.com/tests"},
+		{true, "https://www.khulnasoft.com/tests"},
 		{false, "()"},
-		{false, "https//www.microsoft.com"},
-		{false, "https:/www.microsoft.com"},
-		{false, "https:/www.microsoft.com*"},
+		{false, "https//www.khulnasoft.com"},
+		{false, "https:/www.khulnasoft.com"},
+		{false, "https:/www.khulnasoft.com*"},
 		{false, ""},
 	}
 

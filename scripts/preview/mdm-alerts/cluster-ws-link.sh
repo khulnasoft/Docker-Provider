@@ -6,7 +6,7 @@
 #      1. Installs Azure Monitor for containers mdm alerts private preview HELM chart to the K8s cluster in Kubeconfig
 #      2. Associates cluster with the LA workspace
 # Prerequisites :
-#     Azure CLI:  https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
+#     Azure CLI:  https://docs.khulnasoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 #     Helm3 : https://helm.sh/docs/intro/install/
 #
 # bash onboarding_azuremonitor_for_containers.sh <azureSubscriptionId of the cluster> <azureRegionforLogAnalyticsWorkspace> <clusterName> <kubeconfigContextNameOftheCluster>
@@ -56,7 +56,7 @@ echo "setting the subscription id of the workspace: ${workspaceSubscriptionId}"
 az account set -s ${workspaceSubscriptionId}
 
 echo "getting workspace Guid"
-export workspaceGuid=$(az resource show --ids $workspaceResourceId --resource-type Microsoft.OperationalInsights/workspaces --query properties.customerId)
+export workspaceGuid=$(az resource show --ids $workspaceResourceId --resource-type Khulnasoft.OperationalInsights/workspaces --query properties.customerId)
 workspaceGuid=$(echo $workspaceGuid | tr -d '"')
 echo $workspaceGuid | base64
 

@@ -25,7 +25,7 @@ func init() {
 	if strings.EqualFold(osType, "windows") {
 		logPath = "/etc/amalogswindows/fluent-bit-input.log"
 	} else {
-		logPath = "/var/opt/microsoft/docker-cimprov/log/fluent-bit-input.log"
+		logPath = "/var/opt/khulnasoft/docker-cimprov/log/fluent-bit-input.log"
 	}
 
 	isTestEnv := os.Getenv("GOUNITTEST") == "true"

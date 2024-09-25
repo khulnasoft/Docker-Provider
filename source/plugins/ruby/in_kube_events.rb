@@ -6,7 +6,7 @@ require "fluent/plugin/input"
 module Fluent::Plugin
   class Kube_Event_Input < Input
     Fluent::Plugin.register_input("kube_events", self)
-    @@KubeEventsStateFile = "/var/opt/microsoft/docker-cimprov/state/KubeEventQueryState.yaml"
+    @@KubeEventsStateFile = "/var/opt/khulnasoft/docker-cimprov/state/KubeEventQueryState.yaml"
 
     def initialize
       super
@@ -98,7 +98,7 @@ module Fluent::Plugin
             @agentConfigRefreshTracker = DateTime.now.to_time.to_i
           end
           if !KubernetesApiClient.isDCRStreamIdTag(@tag)
-            $log.warn("in_kube_events::enumerate: skipping Microsoft-KubeEvents stream since its opted-out @ #{Time.now.utc.iso8601}")
+            $log.warn("in_kube_events::enumerate: skipping Khulnasoft-KubeEvents stream since its opted-out @ #{Time.now.utc.iso8601}")
             return
           end
           @namespaces = ExtensionUtils.getNamespacesForDataCollection()

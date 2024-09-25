@@ -110,7 +110,7 @@ def clearTemplateFile(templatefilePath)
 end
 
 def getTenantTemplateFilePath()
-  templatefilePath = "/etc/opt/microsoft/docker-cimprov/fluent-bit-azmon-logs_tenant.conf"
+  templatefilePath = "/etc/opt/khulnasoft/docker-cimprov/fluent-bit-azmon-logs_tenant.conf"
    if is_windows?()
     templatefilePath =  "C:\\etc\\fluent-bit\\fluent-bit-azmon-logs_tenant.conf"
    end
@@ -118,7 +118,7 @@ def getTenantTemplateFilePath()
 end
 
 def getTenantFilePath(tenant_namespace)
-  tenant_file_path = "/etc/opt/microsoft/docker-cimprov/fluent-bit-azmon-logs_tenant_#{tenant_namespace}.conf"
+  tenant_file_path = "/etc/opt/khulnasoft/docker-cimprov/fluent-bit-azmon-logs_tenant_#{tenant_namespace}.conf"
   if is_windows?()
     tenant_file_path =  "C:\\etc\\fluent-bit\\fluent-bit-azmon-logs_tenant_#{tenant_namespace}.conf"
   end

@@ -225,7 +225,7 @@ func getAccessTokenFromIMDS() (string, int64, error) {
 
 	} else {
 		resourceId := os.Getenv("AKS_RESOURCE_ID")
-		if resourceId != "" && strings.Contains(strings.ToLower(resourceId), strings.ToLower("Microsoft.ContainerService/managedClusters")) {
+		if resourceId != "" && strings.Contains(strings.ToLower(resourceId), strings.ToLower("Khulnasoft.ContainerService/managedClusters")) {
 			Log("Info Reading IMDS Access Token from file : %s", IMDSTokenPathForWindows)
 			if _, err = os.Stat(IMDSTokenPathForWindows); os.IsNotExist(err) {
 				Log("getAccessTokenFromIMDS: IMDS token file doesnt exist: %s", err.Error())

@@ -65,7 +65,7 @@ module OMS
 
     def get_user_agent
       # We need to replace akswindowslog with a version number. (not necessary but it is cleaner and the right way to do it)
-      return "MicrosoftMonitoringAgent/akswindowslog"
+      return "KhulnasoftMonitoringAgent/akswindowslog"
     end
 
     def generate_request_headers()

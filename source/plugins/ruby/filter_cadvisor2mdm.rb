@@ -1,4 +1,4 @@
-# Copyright (c) Microsoft Corporation.  All rights reserved.
+# Copyright (c) Khulnasoft Corporation.  All rights reserved.
 
 # frozen_string_literal: true
 
@@ -17,7 +17,7 @@ module Fluent::Plugin
     Fluent::Plugin.register_filter("cadvisor2mdm", self)
 
     config_param :enable_log, :integer, :default => 0
-    config_param :log_path, :string, :default => "/var/opt/microsoft/docker-cimprov/log/filter_cadvisor2mdm.log"
+    config_param :log_path, :string, :default => "/var/opt/khulnasoft/docker-cimprov/log/filter_cadvisor2mdm.log"
     config_param :metrics_to_collect, :string, :default => "Constants::CPU_USAGE_NANO_CORES,Constants::MEMORY_WORKING_SET_BYTES,Constants::MEMORY_RSS_BYTES,Constants::PV_USED_BYTES"
 
     @@hostName = (OMS::Common.get_hostname)

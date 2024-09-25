@@ -100,7 +100,7 @@ def test_node_metrics_e2e_workflow(env_dict):
     }
     params = {}
     # node metric - memoryRssBytes
-    custommetricsUrl = '{0}{1}/providers/microsoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
+    custommetricsUrl = '{0}{1}/providers/khulnasoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
         resourceManager.rstrip("/"),
         clusterResourceId,
         starttime,
@@ -152,7 +152,7 @@ def test_node_metrics_e2e_workflow(env_dict):
                 constants.NODE_MEMORY_RSS_METRIC_NAME, constants.NODE_METRICS_NAMESPACE))
 
     # node metric - memoryRssPercentage
-    custommetricsUrl = '{0}{1}/providers/microsoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
+    custommetricsUrl = '{0}{1}/providers/khulnasoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
         resourceManager.rstrip("/"),
         clusterResourceId,
         starttime,
@@ -204,7 +204,7 @@ def test_node_metrics_e2e_workflow(env_dict):
                 constants.NODE_MEMORY_RSS_PERCENTAGE_METRIC_NAME, constants.NODE_METRICS_NAMESPACE))
 
     # node metric - memoryWorkingSetBytes
-    custommetricsUrl = '{0}{1}/providers/microsoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
+    custommetricsUrl = '{0}{1}/providers/khulnasoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
         resourceManager.rstrip("/"),
         clusterResourceId,
         starttime,
@@ -256,7 +256,7 @@ def test_node_metrics_e2e_workflow(env_dict):
                 constants.NODE_MEMORYE_WS_METRIC_NAME, constants.NODE_METRICS_NAMESPACE))
 
     # node metric - memoryWorkingSetPercentage
-    custommetricsUrl = '{0}{1}/providers/microsoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
+    custommetricsUrl = '{0}{1}/providers/khulnasoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
         resourceManager.rstrip("/"),
         clusterResourceId,
         starttime,
@@ -308,7 +308,7 @@ def test_node_metrics_e2e_workflow(env_dict):
                 constants.NODE_MEMORY_WS_PERCENTAGE_METRIC_NAME, constants.NODE_METRICS_NAMESPACE))
 
     # node metric - cpuUsageMilliCores
-    custommetricsUrl = '{0}{1}/providers/microsoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
+    custommetricsUrl = '{0}{1}/providers/khulnasoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
         resourceManager.rstrip("/"),
         clusterResourceId,
         starttime,
@@ -360,7 +360,7 @@ def test_node_metrics_e2e_workflow(env_dict):
                 constants.NODE_CPU_USAGE_MILLI_CORES_METRIC_NAME, constants.NODE_METRICS_NAMESPACE))
 
     # node metric - cpuUsagePercentage
-    custommetricsUrl = '{0}{1}/providers/microsoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
+    custommetricsUrl = '{0}{1}/providers/khulnasoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
         resourceManager.rstrip("/"),
         clusterResourceId,
         starttime,
@@ -412,7 +412,7 @@ def test_node_metrics_e2e_workflow(env_dict):
                 constants.NODE_CPU_USAGE_PERCENTAGE_METRIC_NAME, constants.NODE_METRICS_NAMESPACE))
 
     # node metric - nodesCount
-    custommetricsUrl = '{0}{1}/providers/microsoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
+    custommetricsUrl = '{0}{1}/providers/khulnasoft.Insights/metrics?timespan={2}/{3}&interval=FULL&metricnames={4}&aggregation={5}&metricNamespace={6}&validatedimensions=false&api-version={7}'.format(
         resourceManager.rstrip("/"),
         clusterResourceId,
         starttime,

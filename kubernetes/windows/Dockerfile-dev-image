@@ -1,7 +1,7 @@
 FROM ama-logs-windows-base
-LABEL maintainer="OMSContainers@microsoft.com"
-LABEL vendor=Microsoft\ Corp \
-    com.microsoft.product="Azure Monitor for containers"
+LABEL maintainer="OMSContainers@khulnasoft.com"
+LABEL vendor=Khulnasoft\ Corp \
+    com.khulnasoft.product="Azure Monitor for containers"
 
 #Uncomment below to test setup.ps1 changes
 #COPY setup.ps1 /opt/amalogswindows/scripts/powershell

@@ -1,5 +1,5 @@
 #!/bin/bash
-#Copyright (c) Microsoft Corporation.
+#Copyright (c) Khulnasoft Corporation.
 # Description: This script will collect all logs from the Replicaset Agent Pod and Daemonset Agent Pod.
 # Also collects onboarding logs with processes.
 # Original Author: Nina Li
@@ -71,22 +71,22 @@ ds_logCollection()
     kubectl logs ${ds_pod} --container ama-logs-prometheus --namespace=kube-system > logs_${ds_pod}_prom.txt
     kubectl exec ${ds_pod} -n kube-system --request-timeout=10m -- ps -ef > process_${ds_pod}.txt
 
-    cmd=`kubectl exec ${ds_pod} -n kube-system -- ls /var/opt/microsoft 2>&1`
+    cmd=`kubectl exec ${ds_pod} -n kube-system -- ls /var/opt/khulnasoft 2>&1`
     if [[ $cmd == *"cannot access"* ]];then
-        echo -e "${Red}/var/opt/microsoft not exist on ${ds_pod}${NC}" | tee -a Tool.log
+        echo -e "${Red}/var/opt/khulnasoft not exist on ${ds_pod}${NC}" | tee -a Tool.log
     else
         echo -e "Collecting the following logs from ${ds_pod}:"
-        echo -e "/var/opt/microsoft/docker-cimprov/log | Containers "ama-logs, ama-logs-prometheus""
-        echo -e "/var/opt/microsoft/linuxmonagent/log | Containers "ama-logs, ama-logs-prometheus""
+        echo -e "/var/opt/khulnasoft/docker-cimprov/log | Containers "ama-logs, ama-logs-prometheus""
+        echo -e "/var/opt/khulnasoft/linuxmonagent/log | Containers "ama-logs, ama-logs-prometheus""
         echo -e "/etc/mdsd.d/config-cache/configchunks/ | Data Collection Rule Config"
-        kubectl cp ${ds_pod}:/var/opt/microsoft/docker-cimprov/log ama-logs-daemonset --namespace=kube-system --container ama-logs > /dev/null
-        kubectl cp ${ds_pod}:/var/opt/microsoft/docker-cimprov/log ama-logs-prom-daemonset --namespace=kube-system --container ama-logs-prometheus > /dev/null
-        kubectl cp ${ds_pod}:/var/opt/microsoft/linuxmonagent/log ama-logs-daemonset-mdsd --namespace=kube-system --container ama-logs > /dev/null
-        kubectl cp ${ds_pod}:/var/opt/microsoft/linuxmonagent/log ama-logs-prom-daemonset-mdsd --namespace=kube-system --container ama-logs-prometheus > /dev/null
+        kubectl cp ${ds_pod}:/var/opt/khulnasoft/docker-cimprov/log ama-logs-daemonset --namespace=kube-system --container ama-logs > /dev/null
+        kubectl cp ${ds_pod}:/var/opt/khulnasoft/docker-cimprov/log ama-logs-prom-daemonset --namespace=kube-system --container ama-logs-prometheus > /dev/null
+        kubectl cp ${ds_pod}:/var/opt/khulnasoft/linuxmonagent/log ama-logs-daemonset-mdsd --namespace=kube-system --container ama-logs > /dev/null
+        kubectl cp ${ds_pod}:/var/opt/khulnasoft/linuxmonagent/log ama-logs-prom-daemonset-mdsd --namespace=kube-system --container ama-logs-prometheus > /dev/null
         kubectl cp ${ds_pod}:/etc/mdsd.d/config-cache/configchunks/ ama-logs-daemonset-dcr --namespace=kube-system --container ama-logs >/dev/null 2>&1
     fi
 
-    kubectl exec ${ds_pod} --namespace=kube-system -- ls /var/opt/microsoft/docker-cimprov/state/ContainerInventory > containerID_${ds_pod}.txt 2>&1
+    kubectl exec ${ds_pod} --namespace=kube-system -- ls /var/opt/khulnasoft/docker-cimprov/state/ContainerInventory > containerID_${ds_pod}.txt 2>&1
 
     cmd=`kubectl exec ${ds_pod} -n kube-system -- ls /etc/fluent 2>&1`
     if [[ $cmd == *"cannot access"* ]];then
@@ -98,17 +98,17 @@ ds_logCollection()
         kubectl cp ${ds_pod}:/etc/fluent/container.conf ama-logs-prom-daemonset/container_${ds_pod}_prom.conf --namespace=kube-system --container ama-logs-prometheus > /dev/null
     fi
     
-    cmd=`kubectl exec ${ds_pod} -n kube-system -- ls /etc/opt/microsoft/docker-cimprov 2>&1`
+    cmd=`kubectl exec ${ds_pod} -n kube-system -- ls /etc/opt/khulnasoft/docker-cimprov 2>&1`
     if [[ $cmd == *"cannot access"* ]];then
-        echo -e "${Red}/etc/opt/microsoft/docker-cimprov not exist on ${ds_pod}${NC}" | tee -a Tool.log
+        echo -e "${Red}/etc/opt/khulnasoft/docker-cimprov not exist on ${ds_pod}${NC}" | tee -a Tool.log
     else
         echo -e "Collecting the following logs from ${ds_pod}:"
-        echo -e "/etc/opt/microsoft/docker-cimprov/fluent-bit.conf | Containers "ama-logs, ama-logs-prometheus""
-        echo -e "/etc/opt/microsoft/docker-cimprov/telegraf.conf | Containers "ama-logs, ama-logs-prometheus""
-        kubectl cp ${ds_pod}:/etc/opt/microsoft/docker-cimprov/fluent-bit.conf ama-logs-daemonset/fluent-bit.conf --namespace=kube-system --container ama-logs > /dev/null
-        kubectl cp ${ds_pod}:/etc/opt/microsoft/docker-cimprov/telegraf.conf ama-logs-daemonset/telegraf.conf --namespace=kube-system --container ama-logs > /dev/null
-        kubectl cp ${ds_pod}:/etc/opt/microsoft/docker-cimprov/telegraf.conf ama-logs-prom-daemonset/telegraf.conf --namespace=kube-system --container ama-logs-prometheus > /dev/null
-        kubectl cp ${ds_pod}:/etc/opt/microsoft/docker-cimprov/fluent-bit.conf ama-logs-prom-daemonset/fluent-bit.conf --namespace=kube-system --container ama-logs-prometheus > /dev/null
+        echo -e "/etc/opt/khulnasoft/docker-cimprov/fluent-bit.conf | Containers "ama-logs, ama-logs-prometheus""
+        echo -e "/etc/opt/khulnasoft/docker-cimprov/telegraf.conf | Containers "ama-logs, ama-logs-prometheus""
+        kubectl cp ${ds_pod}:/etc/opt/khulnasoft/docker-cimprov/fluent-bit.conf ama-logs-daemonset/fluent-bit.conf --namespace=kube-system --container ama-logs > /dev/null
+        kubectl cp ${ds_pod}:/etc/opt/khulnasoft/docker-cimprov/telegraf.conf ama-logs-daemonset/telegraf.conf --namespace=kube-system --container ama-logs > /dev/null
+        kubectl cp ${ds_pod}:/etc/opt/khulnasoft/docker-cimprov/telegraf.conf ama-logs-prom-daemonset/telegraf.conf --namespace=kube-system --container ama-logs-prometheus > /dev/null
+        kubectl cp ${ds_pod}:/etc/opt/khulnasoft/docker-cimprov/fluent-bit.conf ama-logs-prom-daemonset/fluent-bit.conf --namespace=kube-system --container ama-logs-prometheus > /dev/null
     fi
     echo -e "Complete log collection from ${ds_pod}!" | tee -a Tool.log
 }
@@ -153,15 +153,15 @@ rs_logCollection()
     kubectl logs ${rs_pod} --container ama-logs --namespace=kube-system > logs_${rs_pod}.txt
     kubectl exec ${rs_pod} -n kube-system --request-timeout=10m -- ps -ef > process_${rs_pod}.txt
 
-    cmd=`kubectl exec ${rs_pod} -n kube-system -- ls /var/opt/microsoft 2>&1`
+    cmd=`kubectl exec ${rs_pod} -n kube-system -- ls /var/opt/khulnasoft 2>&1`
     if [[ $cmd == *"cannot access"* ]];then
-        echo -e "${Red}/var/opt/microsoft not exist on ${rs_pod}${NC}" | tee -a Tool.log
+        echo -e "${Red}/var/opt/khulnasoft not exist on ${rs_pod}${NC}" | tee -a Tool.log
     else
         echo -e "Collecting the following logs from ${rs_pod}:"
-        echo -e "/var/opt/microsoft/docker-cimprov/log"
-        echo -e "/var/opt/microsoft/linuxmonagent/log"
-        kubectl cp ${rs_pod}:/var/opt/microsoft/docker-cimprov/log ama-logs-replicaset --namespace=kube-system > /dev/null
-        kubectl cp ${rs_pod}:/var/opt/microsoft/linuxmonagent/log ama-logs-replicaset-mdsd --namespace=kube-system > /dev/null
+        echo -e "/var/opt/khulnasoft/docker-cimprov/log"
+        echo -e "/var/opt/khulnasoft/linuxmonagent/log"
+        kubectl cp ${rs_pod}:/var/opt/khulnasoft/docker-cimprov/log ama-logs-replicaset --namespace=kube-system > /dev/null
+        kubectl cp ${rs_pod}:/var/opt/khulnasoft/linuxmonagent/log ama-logs-replicaset-mdsd --namespace=kube-system > /dev/null
     fi
 
     cmd=`kubectl exec ${rs_pod} -n kube-system -- ls /etc/fluent 2>&1`
@@ -173,15 +173,15 @@ rs_logCollection()
         kubectl cp ${rs_pod}:/etc/fluent/kube.conf ama-logs-replicaset/kube_${rs_pod}.conf --namespace=kube-system --container ama-logs > /dev/null
     fi
 
-    cmd=`kubectl exec ${rs_pod} -n kube-system -- ls /etc/opt/microsoft/docker-cimprov 2>&1`
+    cmd=`kubectl exec ${rs_pod} -n kube-system -- ls /etc/opt/khulnasoft/docker-cimprov 2>&1`
     if [[ $cmd == *"cannot access"* ]];then
-        echo -e "${Red}/etc/opt/microsoft/docker-cimprov not exist on ${rs_pod}${NC}" | tee -a Tool.log
+        echo -e "${Red}/etc/opt/khulnasoft/docker-cimprov not exist on ${rs_pod}${NC}" | tee -a Tool.log
     else
         echo -e "Collecting the following logs from ${rs_pod}:"
-        echo -e "/etc/opt/microsoft/docker-cimprov/fluent-bit-rs.conf"
-        echo -e "/etc/opt/microsoft/docker-cimprov/telegraf-rs.conf"
-        kubectl cp ${rs_pod}:/etc/opt/microsoft/docker-cimprov/fluent-bit-rs.conf ama-logs-replicaset/fluent-bit.conf --namespace=kube-system --container ama-logs > /dev/null
-        kubectl cp ${rs_pod}:/etc/opt/microsoft/docker-cimprov/telegraf-rs.conf ama-logs-replicaset/telegraf-rs.conf --namespace=kube-system --container ama-logs > /dev/null
+        echo -e "/etc/opt/khulnasoft/docker-cimprov/fluent-bit-rs.conf"
+        echo -e "/etc/opt/khulnasoft/docker-cimprov/telegraf-rs.conf"
+        kubectl cp ${rs_pod}:/etc/opt/khulnasoft/docker-cimprov/fluent-bit-rs.conf ama-logs-replicaset/fluent-bit.conf --namespace=kube-system --container ama-logs > /dev/null
+        kubectl cp ${rs_pod}:/etc/opt/khulnasoft/docker-cimprov/telegraf-rs.conf ama-logs-replicaset/telegraf-rs.conf --namespace=kube-system --container ama-logs > /dev/null
     fi
     echo -e "Complete log collection from ${rs_pod}!" | tee -a Tool.log
 }
@@ -225,7 +225,7 @@ other_logCollection()
     # contains info regarding node image version, images present on disk, etc
     # TODO: add syslog doc link
     echo -e "If syslog collection is enabled please make sure that the node pool image is Nov 2022 or later.\
-        To check current version and upgrade: https://learn.microsoft.com/en-us/azure/aks/node-image-upgrade"
+        To check current version and upgrade: https://learn.khulnasoft.com/en-us/azure/aks/node-image-upgrade"
     kubectl get nodes -o json > node-detailed.json
 
     echo -e "Complete onboarding log collection!" | tee -a Tool.log

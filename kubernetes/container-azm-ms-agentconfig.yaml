@@ -176,7 +176,7 @@ data:
 # Doc - https://github.com/khulnasoft/docker-provider/blob/ci_prod/Documentation/AgentSettings/ReadMe.md
   agent-settings: |-
     # High log scale option for container logs high log volume scenarios. This mode is optimized for high log volume scenarios and have little higher resource utilization on low scale which will be addressed in subsequent agent releases.
-    # Refer to public documentation for more details - https://aka.ms/cihsmode before enabling this setting as this setting has additional dependencies such as Data Collection endpoint and Microsoft-ContainerLogV2-HighScale stream instead of Microsoft-ContainerLogV2.
+    # Refer to public documentation for more details - https://aka.ms/cihsmode before enabling this setting as this setting has additional dependencies such as Data Collection endpoint and Khulnasoft-ContainerLogV2-HighScale stream instead of Khulnasoft-ContainerLogV2.
     [agent_settings.high_log_scale]
       enabled = false
 
@@ -204,7 +204,7 @@ data:
       # tcp_listener_buffer_size = 1
       # tcp_listener_mem_buf_limit = 10
 
-    # The following settings are "undocumented", we don't recommend uncommenting them unless directed by Microsoft.
+    # The following settings are "undocumented", we don't recommend uncommenting them unless directed by Khulnasoft.
     # They increase the maximum stdout/stderr log collection rate but will also cause higher cpu/memory usage.
     ## Ref for more details about Ignore_Older -  https://docs.fluentbit.io/manual/v/1.7/pipeline/inputs/tail
     # [agent_settings.fbit_config]
@@ -225,14 +225,14 @@ data:
     #[agent_settings.windows_fluent_bit]
     #    disabled = "true"
 
-    # The following settings are "undocumented", we don't recommend uncommenting them unless directed by Microsoft.
+    # The following settings are "undocumented", we don't recommend uncommenting them unless directed by Khulnasoft.
     # Configuration settings for the waittime for the network listeners to be available
     # [agent_settings.network_listener_waittime]
     #   tcp_port_25226 = 45                           # Port 25226 is used for telegraf to fluent-bit data in ReplicaSet
     #   tcp_port_25228 = 60                           # Port 25228 is used for telegraf to fluentd data
     #   tcp_port_25229 = 45                           # Port 25229 is used for telegraf to fluent-bit data in DaemonSet
 
-    # The following settings are "undocumented", we don't recommend uncommenting them unless directed by Microsoft.
+    # The following settings are "undocumented", we don't recommend uncommenting them unless directed by Khulnasoft.
     # [agent_settings.mdsd_config]
     #   monitoring_max_event_rate = "50000" # default 20K eps
     #   backpressure_memory_threshold_in_mb = "1500" # default 3500MB
@@ -244,7 +244,7 @@ data:
     # [agent_settings.resource_optimization]
     #   enabled = false  # if this is not applied, default value is false
 
-    # The following settings are "undocumented", we don't recommend uncommenting them unless directed by Microsoft.
+    # The following settings are "undocumented", we don't recommend uncommenting them unless directed by Khulnasoft.
     # [agent_settings.telemetry_config]
     #   disable_telemetry = false  # if this is not applied, default value is false
 

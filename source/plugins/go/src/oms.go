@@ -85,8 +85,8 @@ const KubeMonAgentEventsFlushedEvent = "KubeMonAgentEventsFlushed"
 const InputPluginRecordsFlushedEvent = "InputPluginRecordsFlushed"
 
 // ContainerLogPluginConfFilePath --> config file path for container log plugin
-const DaemonSetContainerLogPluginConfFilePath = "/etc/opt/microsoft/docker-cimprov/out_oms.conf"
-const ReplicaSetContainerLogPluginConfFilePath = "/etc/opt/microsoft/docker-cimprov/out_oms.conf"
+const DaemonSetContainerLogPluginConfFilePath = "/etc/opt/khulnasoft/docker-cimprov/out_oms.conf"
+const ReplicaSetContainerLogPluginConfFilePath = "/etc/opt/khulnasoft/docker-cimprov/out_oms.conf"
 const WindowsContainerLogPluginConfFilePath = "/etc/amalogswindows/out_oms.conf"
 
 // IPName
@@ -406,7 +406,7 @@ func createLogger() *log.Logger {
 	var logPath string
 
 	if strings.Compare(strings.ToLower(osType), "windows") != 0 {
-		logPath = "/var/opt/microsoft/docker-cimprov/log/fluent-bit-out-oms-runtime.log"
+		logPath = "/var/opt/khulnasoft/docker-cimprov/log/fluent-bit-out-oms-runtime.log"
 	} else {
 		logPath = "/etc/amalogswindows/fluent-bit-out-oms-runtime.log"
 	}
@@ -842,7 +842,7 @@ func flushKubeMonAgentEventRecords() {
 				if IsAADMSIAuthMode == true {
 					MdsdKubeMonAgentEventsTagName = getOutputStreamIdTag(KubeMonAgentEventDataType, MdsdKubeMonAgentEventsTagName, &MdsdKubeMonAgentEventsTagRefreshTracker)
 					if MdsdKubeMonAgentEventsTagName == "" {
-						Log("Warn::mdsd::skipping Microsoft-KubeMonAgentEvents stream since its opted out")
+						Log("Warn::mdsd::skipping Khulnasoft-KubeMonAgentEvents stream since its opted out")
 						return
 					}
 				}
@@ -1074,7 +1074,7 @@ func PostTelegrafMetricsToLA(telegrafRecords []map[interface{}]interface{}) int 
 			if IsAADMSIAuthMode == true {
 				MdsdInsightsMetricsTagName = getOutputStreamIdTag(InsightsMetricsDataType, MdsdInsightsMetricsTagName, &MdsdInsightsMetricsTagRefreshTracker)
 				if MdsdInsightsMetricsTagName == "" {
-					Log("Warn::mdsd::skipping Microsoft-InsightsMetrics stream since its opted out")
+					Log("Warn::mdsd::skipping Khulnasoft-InsightsMetrics stream since its opted out")
 					return output.FLB_OK
 				}
 			}
@@ -1738,7 +1738,7 @@ func PostDataHelper(tailPluginRecords []map[interface{}]interface{}) int {
 			}
 			MdsdContainerLogTagName = getOutputStreamIdTag(containerlogDataType, MdsdContainerLogTagName, &MdsdContainerLogTagRefreshTracker)
 			if MdsdContainerLogTagName == "" {
-				Log("Warn::mdsd::skipping Microsoft-ContainerLog or Microsoft-ContainerLogV2 or Microsoft-ContainerLogV2-HighScale stream since its opted out")
+				Log("Warn::mdsd::skipping Khulnasoft-ContainerLog or Khulnasoft-ContainerLogV2 or Khulnasoft-ContainerLogV2-HighScale stream since its opted out")
 				return output.FLB_RETRY
 			}
 		}

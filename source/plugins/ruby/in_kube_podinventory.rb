@@ -162,13 +162,13 @@ module Fluent::Plugin
           @kubeservicesTag, _ = KubernetesApiClient.getOutputStreamIdAndSource(Constants::KUBE_SERVICES_DATA_TYPE, @kubeservicesTag, @agentConfigRefreshTracker)
           @containerInventoryTag, _ = KubernetesApiClient.getOutputStreamIdAndSource(Constants::CONTAINER_INVENTORY_DATA_TYPE, @containerInventoryTag, @agentConfigRefreshTracker)
           if !KubernetesApiClient.isDCRStreamIdTag(@kubeservicesTag)
-            $log.warn("in_kube_podinventory::enumerate: skipping Microsoft-KubeServices stream since its opted-out @ #{Time.now.utc.iso8601}")
+            $log.warn("in_kube_podinventory::enumerate: skipping Khulnasoft-KubeServices stream since its opted-out @ #{Time.now.utc.iso8601}")
           end
           if !KubernetesApiClient.isDCRStreamIdTag(@containerInventoryTag)
-            $log.info("in_kube_podinventory::enumerate: skipping Microsoft-ContainerInventory stream since its opted-out @ #{Time.now.utc.iso8601}")
+            $log.info("in_kube_podinventory::enumerate: skipping Khulnasoft-ContainerInventory stream since its opted-out @ #{Time.now.utc.iso8601}")
           end
           if !KubernetesApiClient.isDCRStreamIdTag(@tag)
-            $log.info("in_kube_podinventory::enumerate: skipping Microsoft-KubePodInventory stream since its opted-out @ #{Time.now.utc.iso8601}")
+            $log.info("in_kube_podinventory::enumerate: skipping Khulnasoft-KubePodInventory stream since its opted-out @ #{Time.now.utc.iso8601}")
           end
           if ExtensionUtils.isDataCollectionSettingsConfigured()
             @run_interval = ExtensionUtils.getDataCollectionIntervalSeconds()
@@ -524,7 +524,7 @@ module Fluent::Plugin
         end
         if podReadyCondition == false
           record["PodStatus"] = "Unknown"
-          # ICM - https://portal.microsofticm.com/imp/v3/incidents/details/187091803/home
+          # ICM - https://portal.khulnasofticm.com/imp/v3/incidents/details/187091803/home
         elsif !item["metadata"]["deletionTimestamp"].nil? && !item["metadata"]["deletionTimestamp"].empty?
           record["PodStatus"] = Constants::POD_STATUS_TERMINATING
         else

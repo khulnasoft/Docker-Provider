@@ -126,8 +126,8 @@ addArcK8sCLIExtension() {
 }
 
 createArcCIExtension() {
-	echo "creating extension type: Microsoft.AzureMonitor.Containers"
-    basicparameters="--cluster-name $CLUSTER_NAME --resource-group $RESOURCE_GROUP --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers --scope cluster --name azuremonitor-containers"
+	echo "creating extension type: Khulnasoft.AzureMonitor.Containers"
+    basicparameters="--cluster-name $CLUSTER_NAME --resource-group $RESOURCE_GROUP --cluster-type connectedClusters --extension-type Khulnasoft.AzureMonitor.Containers --scope cluster --name azuremonitor-containers"
     if [ ! -z "$CI_ARC_RELEASE_TRAIN" ]; then
        basicparameters="$basicparameters  --release-train $CI_ARC_RELEASE_TRAIN"
     fi

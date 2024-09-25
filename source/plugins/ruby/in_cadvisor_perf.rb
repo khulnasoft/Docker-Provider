@@ -77,10 +77,10 @@ module Fluent::Plugin
           end
           @insightsmetricstag, _ = KubernetesApiClient.getOutputStreamIdAndSource(Constants::INSIGHTS_METRICS_DATA_TYPE, @insightsmetricstag, @agentConfigRefreshTracker)
           if !KubernetesApiClient.isDCRStreamIdTag(@tag)
-            $log.warn("in_cadvisor_perf::enumerate: skipping Microsoft-Perf stream since its opted-out @ #{Time.now.utc.iso8601}")
+            $log.warn("in_cadvisor_perf::enumerate: skipping Khulnasoft-Perf stream since its opted-out @ #{Time.now.utc.iso8601}")
           end
           if !KubernetesApiClient.isDCRStreamIdTag(@insightsmetricstag)
-            $log.warn("in_cadvisor_perf::enumerate: skipping Microsoft-InsightsMetrics stream since its opted-out @ #{Time.now.utc.iso8601}")
+            $log.warn("in_cadvisor_perf::enumerate: skipping Khulnasoft-InsightsMetrics stream since its opted-out @ #{Time.now.utc.iso8601}")
           end
           if ExtensionUtils.isDataCollectionSettingsConfigured()
             @run_interval = ExtensionUtils.getDataCollectionIntervalSeconds()

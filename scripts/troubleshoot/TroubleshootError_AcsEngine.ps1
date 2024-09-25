@@ -211,10 +211,10 @@ if ((Test-Path $KubeConfig -PathType Leaf) -ne $true) {
 #
 Write-Host("Checking specified Resource Group has the AKS-Engine or ACS-Engine kubernetes cluster resources...")
 
-$k8sMasterVMsOrVMSSes = Get-AzureRmResource -ResourceType 'Microsoft.Compute/virtualMachines' -ResourceGroupName $ResourceGroupName | Where-Object { $_.Name -match "k8s-master" }
+$k8sMasterVMsOrVMSSes = Get-AzureRmResource -ResourceType 'Khulnasoft.Compute/virtualMachines' -ResourceGroupName $ResourceGroupName | Where-Object { $_.Name -match "k8s-master" }
 
 if ($null -eq $k8sMasterVMsOrVMSSes) {
-    $k8sMasterVMsOrVMSSes = Get-AzureRmResource -ResourceType 'Microsoft.Compute/virtualMachineScaleSets' -ResourceGroupName $ResourceGroupName | Where-Object { $_.Name -match "k8s-master" }
+    $k8sMasterVMsOrVMSSes = Get-AzureRmResource -ResourceType 'Khulnasoft.Compute/virtualMachineScaleSets' -ResourceGroupName $ResourceGroupName | Where-Object { $_.Name -match "k8s-master" }
 }
 
 $isKubernetesCluster = $false
@@ -436,7 +436,7 @@ else {
             Write-Host("Pricing tier of the configured LogAnalytics workspace is Free so you may need to upgrade to pricing tier to non-Free") -ForegroundColor Red
         }
         else {
-            Write-Host("Everything looks good according to this script. Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.microsoft.com/en-us/support/create-ticket") -ForegroundColor Green
+            Write-Host("Everything looks good according to this script. Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.khulnasoft.com/en-us/support/create-ticket") -ForegroundColor Green
         }
     }
     else {
@@ -477,11 +477,11 @@ else {
             }
             catch {
                 Write-Host ("Template deployment failed with an error: '" + $Error[0] + "' ") -ForegroundColor Red
-                Write-Host("Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.microsoft.com/en-us/support/create-ticket") -ForegroundColor Red
+                Write-Host("Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.khulnasoft.com/en-us/support/create-ticket") -ForegroundColor Red
             }
         }
         else {
-            Write-Host("The container health solution isn't onboarded to your cluster. This required for the monitoring to work. Please contact us by creating a support ticket in Azure if you need any help on this. Use this link: https://azure.microsoft.com/en-us/support/create-ticket") -ForegroundColor Red
+            Write-Host("The container health solution isn't onboarded to your cluster. This required for the monitoring to work. Please contact us by creating a support ticket in Azure if you need any help on this. Use this link: https://azure.khulnasoft.com/en-us/support/create-ticket") -ForegroundColor Red
         }
     }
 }
@@ -494,7 +494,7 @@ try {
     $amaLogsImage = $amaLogsInfo.items.spec.containers.image.split(":")[1]
 
     Write-Host('The version of the ama-logs running on your cluster is' + $amaLogsImage)
-    Write-Host('You can encounter problems with your cluster if your ama-logs isnt on the latest version. Please go to https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-manage-agent and validate that you have the latest ama-logs version running.') -ForegroundColor Yellow
+    Write-Host('You can encounter problems with your cluster if your ama-logs isnt on the latest version. Please go to https://docs.khulnasoft.com/en-us/azure/azure-monitor/insights/container-insights-manage-agent and validate that you have the latest ama-logs version running.') -ForegroundColor Yellow
 } catch {
     Write-Host ("Failed to execute the script  : '" + $Error[0] + "' ") -ForegroundColor Red
     Stop-Transcript

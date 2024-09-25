@@ -26,7 +26,7 @@ spec:
       emptyDir: {}
     containers:
     - name: second-log-app
-      image: mcr.microsoft.com/windows/servercore:ltsc2019
+      image: mcr.khulnasoft.com/windows/servercore:ltsc2019
       command: ["powershell", "-c"]
       args:
         - "$counter = 1; For(;;) { echo $counter; $counter++; Start-Sleep -Seconds 1; }"

@@ -10,10 +10,10 @@ keywords:
   - ama
   - containerinsights
   - geneva Logs
-home: https://docs.microsoft.com/en-us/azure/monitoring/monitoring-container-health
+home: https://docs.khulnasoft.com/en-us/azure/monitoring/monitoring-container-health
 icon: https://raw.githubusercontent.com/khulnasoft/docker-provider/ci_prod/img/azuremonitor-containers.svg
 sources:
   - https://github.com/khulnasoft/docker-provider/tree/ci_prod
 maintainers:
   - name: ganga1980
-    email: gangams@microsoft.com
+    email: gangams@khulnasoft.com

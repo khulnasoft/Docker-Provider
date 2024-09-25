@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "aksResourceId": {
-      "value": "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroup>/providers/Microsoft.ContainerService/managedClusters/<ResourceName>"
+      "value": "/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroup>/providers/Khulnasoft.ContainerService/managedClusters/<ResourceName>"
     },
     "aksResourceLocation": {
       "value": "<aksClusterLocation>"
     },
     "workspaceResourceId": {
-      "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>"
+      "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Khulnasoft.OperationalInsights/workspaces/<workspaceName>"
     },
     "workspaceRegion": {
       "value": "<workspaceRegion>"
@@ -35,7 +35,7 @@
       "value": false
     },
     "azureMonitorPrivateLinkScopeResourceId": {
-      "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/microsoft.insights/privateLinkScopes/<azureMonitorPrivateLinkScopeName>"
+      "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/khulnasoft.insights/privateLinkScopes/<azureMonitorPrivateLinkScopeName>"
     }
   }
 }

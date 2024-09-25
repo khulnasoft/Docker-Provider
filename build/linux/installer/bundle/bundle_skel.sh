@@ -429,7 +429,7 @@ if [ "$installMode" = "R" -o "$installMode" = "P" ]; then
 
     if [ "$installMode" = "P" ]; then
         echo "Purging all files in container agent ..."
-        rm -rf /etc/opt/microsoft/docker-cimprov /opt/microsoft/docker-cimprov /var/opt/microsoft/docker-cimprov
+        rm -rf /etc/opt/khulnasoft/docker-cimprov /opt/khulnasoft/docker-cimprov /var/opt/khulnasoft/docker-cimprov
     fi
 fi
 

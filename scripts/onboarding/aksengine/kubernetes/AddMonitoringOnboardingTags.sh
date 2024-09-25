@@ -5,7 +5,7 @@
 # This script adds the required monitoring onboarding tags like logAnalyticsWorkspaceResourceId and clusterName to the k8s master VMSSes or VMs of the AKS-Engine or ACS-Engine cluster
 # in specified group and subscription
 # Prerequisites :
-#     Azure CLI:  https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
+#     Azure CLI:  https://docs.khulnasoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 #
 #  [Required]  ${1} nameoftheCloud                    name of the cloud where AKS-Engine or ACS-Engine cluster in (AzureCloud or AzureChinaCloud or AzureUSGovernment)
 #  [Required]  ${2} subscriptionId                    subscriptionId  of the AKS-Engine or ACS-Engine cluster
@@ -14,7 +14,7 @@
 #  [Required]  ${5} clusterName                       Name of the cluster configured on the ama-logs (for amalogs.env.clusterName) of specified acs-engine Kubernetes cluster
 #
 #  For example
-# https://raw.githubusercontent.com/khulnasoft/docker-provider/ci_prod/scripts/onboarding/aksengine/kubernetes/AddMonitoringOnboardingTags.sh | bash -s "name of the cloud" "00000000-0000-0000-0000-000000000000"  "Resource Group Name of AKS-Engine cluster"  "/subscriptions/<SubscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>" "clusterName of AKS-Engine cluster"
+# https://raw.githubusercontent.com/khulnasoft/docker-provider/ci_prod/scripts/onboarding/aksengine/kubernetes/AddMonitoringOnboardingTags.sh | bash -s "name of the cloud" "00000000-0000-0000-0000-000000000000"  "Resource Group Name of AKS-Engine cluster"  "/subscriptions/<SubscriptionId>/resourceGroups/<resourceGroup>/providers/Khulnasoft.OperationalInsights/workspaces/<workspaceName>" "clusterName of AKS-Engine cluster"
 #
 
 nameoftheCloud=${1}
@@ -50,11 +50,11 @@ fi
 az resource show --ids $workspaceResourceId
 
 # get the all existing k8s master nodes
-resources=$(az resource list -g $clusterResourceGroup --resource-type "Microsoft.Compute/virtualMachines" --query "[?starts_with(name,'k8s-master')].id" --output tsv)
+resources=$(az resource list -g $clusterResourceGroup --resource-type "Khulnasoft.Compute/virtualMachines" --query "[?starts_with(name,'k8s-master')].id" --output tsv)
 
 if [ -z $resources ]; then
   # if no k8-master nodes, get all k8s-master VMSSes if exists
-  resources=$(az resource list -g $clusterResourceGroup --resource-type "Microsoft.Compute/virtualMachineScaleSets" --query "[?starts_with(name,'k8s-master')].id" --output tsv)
+  resources=$(az resource list -g $clusterResourceGroup --resource-type "Khulnasoft.Compute/virtualMachineScaleSets" --query "[?starts_with(name,'k8s-master')].id" --output tsv)
 fi
 
 if [ -z $resources ]; then

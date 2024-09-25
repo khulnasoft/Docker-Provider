@@ -62,9 +62,9 @@ $isArcK8sCluster = $false
 $isAksCluster = $false
 $isUsingServicePrincipal = $false
 
-# microsoft helm chart repo
-$microsoftHelmRepo="https://microsoft.github.io/charts/repo"
-$microsoftHelmRepoName="microsoft"
+# khulnasoft helm chart repo
+$khulnasoftHelmRepo="https://khulnasoft.github.io/charts/repo"
+$khulnasoftHelmRepoName="khulnasoft"
 
 $amaLogsDomainName="opinsights.azure.com"
 
@@ -235,9 +235,9 @@ if ($clusterResourceId.Split("/").Length -ne 9) {
     exit 1
 }
 
-if (($clusterResourceId.ToLower().Contains("microsoft.kubernetes/connectedclusters") -ne $true) -and
-    ($clusterResourceId.ToLower().Contains("microsoft.redhatopenshift/openshiftclusters") -ne $true) -and
-    ($clusterResourceId.ToLower().Contains("microsoft.containerservice/managedclusters") -ne $true)
+if (($clusterResourceId.ToLower().Contains("khulnasoft.kubernetes/connectedclusters") -ne $true) -and
+    ($clusterResourceId.ToLower().Contains("khulnasoft.redhatopenshift/openshiftclusters") -ne $true) -and
+    ($clusterResourceId.ToLower().Contains("khulnasoft.containerservice/managedclusters") -ne $true)
 ) {
     Write-Host("Provided cluster ResourceId is not supported cluster type: $clusterResourceId") -ForegroundColor Red
     exit 1
@@ -250,10 +250,10 @@ if (([string]::IsNullOrEmpty($servicePrincipalClientId) -eq $false) -and
     $isUsingServicePrincipal = $true
 }
 
-if ($clusterResourceId.ToLower().Contains("microsoft.kubernetes/connectedclusters") -eq $true) {
+if ($clusterResourceId.ToLower().Contains("khulnasoft.kubernetes/connectedclusters") -eq $true) {
     $isArcK8sCluster = $true
 }
-elseif ($clusterResourceId.ToLower().Contains("microsoft.containerservice/managedclusters") -eq $true) {
+elseif ($clusterResourceId.ToLower().Contains("khulnasoft.containerservice/managedclusters") -eq $true) {
     $isAksCluster = $true
 }
 
@@ -463,8 +463,8 @@ else {
         $workspaceResourceId = "/" + $workspaceResourceId
     }
 
-    if (($workspaceResourceId.ToLower().Contains("microsoft.operationalinsights/workspaces") -ne $true) -or ($workspaceResourceId.Split("/").Length -ne 9)) {
-        Write-Host("Provided workspace resource id should be in this format /subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>") -ForegroundColor Red
+    if (($workspaceResourceId.ToLower().Contains("khulnasoft.operationalinsights/workspaces") -ne $true) -or ($workspaceResourceId.Split("/").Length -ne 9)) {
+        Write-Host("Provided workspace resource id should be in this format /subscriptions/<subId>/resourceGroups/<rgName>/providers/Khulnasoft.OperationalInsights/workspaces/<workspaceName>") -ForegroundColor Red
         exit 1
     }
 
@@ -506,7 +506,7 @@ try {
 }
 catch {
     Write-Host ("Template deployment failed with an error: '" + $Error[0] + "' ") -ForegroundColor Red
-    Write-Host("Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.microsoft.com/en-us/support/create-ticket") -ForegroundColor Red
+    Write-Host("Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.khulnasoft.com/en-us/support/create-ticket") -ForegroundColor Red
 }
 
 $workspaceGUID = "";
@@ -546,12 +546,12 @@ Write-Host "Helm version" : $helmVersion
 Write-Host("Installing or upgrading if exists, Azure Monitor for containers HELM chart ...")
 try {
 
-    Write-Host("Add helm chart repo- ${microsoftHelmRepoName} with repo path: ${microsoftHelmRepo}")
-    helm repo add ${microsoftHelmRepoName} ${microsoftHelmRepo}
-    Write-Host("Updating the helm chart repo- ${microsoftHelmRepoName} to get latest chart versions")
-    helm repo update ${microsoftHelmRepoName}
+    Write-Host("Add helm chart repo- ${khulnasoftHelmRepoName} with repo path: ${khulnasoftHelmRepo}")
+    helm repo add ${khulnasoftHelmRepoName} ${khulnasoftHelmRepo}
+    Write-Host("Updating the helm chart repo- ${khulnasoftHelmRepoName} to get latest chart versions")
+    helm repo update ${khulnasoftHelmRepoName}
 
-    $helmChartRepoPath = "${microsoftHelmRepoName}" + "/" + "${helmChartName}"
+    $helmChartRepoPath = "${khulnasoftHelmRepoName}" + "/" + "${helmChartName}"
 
     Write-Host("helmChartRepoPath is : ${helmChartRepoPath}")
 

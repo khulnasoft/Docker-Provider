@@ -1,4 +1,4 @@
-# Copyright (c) Microsoft Corporation.  All rights reserved.
+# Copyright (c) Khulnasoft Corporation.  All rights reserved.
 #!/usr/local/bin/ruby
 # frozen_string_literal: true
 
@@ -13,7 +13,7 @@ class KubeletUtils
   if !@os_type.nil? && !@os_type.empty? && @os_type.strip.casecmp("windows") == 0
     @log_path = "/etc/amalogswindows/filter_cadvisor2mdm.log"
   else
-    @log_path = "/var/opt/microsoft/docker-cimprov/log/filter_cadvisor2mdm.log"
+    @log_path = "/var/opt/khulnasoft/docker-cimprov/log/filter_cadvisor2mdm.log"
   end
   @log = Logger.new(@log_path, 1, 5000000)
 

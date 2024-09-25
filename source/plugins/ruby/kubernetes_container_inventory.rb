@@ -389,7 +389,7 @@ class KubernetesContainerInventory
       true if Integer(value) rescue false
     end
 
-    # https://learn.microsoft.com/en-us/azure/aks/use-pod-sandboxing
+    # https://learn.khulnasoft.com/en-us/azure/aks/use-pod-sandboxing
     def isSandboxingPod(podItem)
       isKataRuntimePod = false
       begin

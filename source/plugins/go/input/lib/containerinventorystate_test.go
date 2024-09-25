@@ -36,7 +36,7 @@ func TestWriteAndReadContainerState(t *testing.T) {
 		if err != nil {
 			t.Fatalf("Failed to remove test directory: %v", err)
 		}
-		inventoryDirectory = "/var/opt/microsoft/docker-cimprov/state/ContainerInventory/"
+		inventoryDirectory = "/var/opt/khulnasoft/docker-cimprov/state/ContainerInventory/"
 	})
 }
 
@@ -65,7 +65,7 @@ func TestGetDeletedContainers(t *testing.T) {
 		if err != nil {
 			t.Fatalf("Failed to remove test directory: %v", err)
 		}
-		inventoryDirectory = "/var/opt/microsoft/docker-cimprov/state/ContainerInventory/"
+		inventoryDirectory = "/var/opt/khulnasoft/docker-cimprov/state/ContainerInventory/"
 	})
 }
 
@@ -115,7 +115,7 @@ func setup() {
 
 // teardown function to be called after running all tests
 func teardown() {
-	inventoryDirectory = "/var/opt/microsoft/docker-cimprov/state/ContainerInventory/"
+	inventoryDirectory = "/var/opt/khulnasoft/docker-cimprov/state/ContainerInventory/"
 }
 
 func TestMain(m *testing.M) {

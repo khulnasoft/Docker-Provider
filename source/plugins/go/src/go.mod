@@ -9,7 +9,7 @@ require (
 	github.com/fluent/fluent-bit-go v0.0.0-20230731091245-a7a013e2473c
 	github.com/golang/mock v1.6.0
 	github.com/google/uuid v1.6.0
-	github.com/khulnasoft/ApplicationInsights-Go v0.4.4
+	github.com/microsoft/ApplicationInsights-Go v0.4.4
 	github.com/stretchr/testify v1.9.0
 	github.com/tinylib/msgp v1.1.9
 	github.com/ugorji/go/codec v1.2.12

@@ -18,7 +18,7 @@ func getInventoryDirectory() string {
 	if osType == "windows" {
 		return "/opt/amalogswindows/state/ContainerInventory/"
 	} else {
-		return "/var/opt/microsoft/docker-cimprov/state/ContainerInventory/"
+		return "/var/opt/khulnasoft/docker-cimprov/state/ContainerInventory/"
 	}
 }
 

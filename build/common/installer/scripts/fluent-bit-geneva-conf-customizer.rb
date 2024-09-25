@@ -2,11 +2,11 @@
 require_relative "ConfigParseErrorLogger"
 
 LINUX_CONFIG_PATHS = {
-  "common" => "/etc/opt/microsoft/docker-cimprov/fluent-bit-geneva.conf",
-  "infra" => "/etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_infra.conf",
-  "infra_filter" => "/etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_infra_filter.conf",
-  "tenant" => "/etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_tenant.conf",
-  "tenant_filter" => "/etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_tenant_filter.conf",
+  "common" => "/etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva.conf",
+  "infra" => "/etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_infra.conf",
+  "infra_filter" => "/etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_infra_filter.conf",
+  "tenant" => "/etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_tenant.conf",
+  "tenant_filter" => "/etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_tenant_filter.conf",
 }
 
 WINDOWS_CONFIG_PATHS = {

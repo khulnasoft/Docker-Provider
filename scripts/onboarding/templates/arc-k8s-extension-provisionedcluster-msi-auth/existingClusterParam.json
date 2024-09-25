@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "clusterResourceId": {
-      "value": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.HybridContainerService/provisionedClusters/<clusterName>"
+      "value": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Khulnasoft.HybridContainerService/provisionedClusters/<clusterName>"
     },
     "clusterRegion": {
       "value": "<clusterRegion>"
     },
     "workspaceResourceId": {
-      "value": "/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
+      "value": "/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/khulnasoft.operationalinsights/workspaces/<workspaceName>"
     },
     "workspaceRegion": {
       "value": "<workspaceRegion>"
@@ -77,18 +77,18 @@
     },
     "streams": {
       "value": [
-        "Microsoft-ContainerLog",
-        "Microsoft-ContainerLogV2",
-        "Microsoft-KubeEvents",
-        "Microsoft-KubePodInventory",
-        "Microsoft-KubeNodeInventory",
-        "Microsoft-KubePVInventory",
-        "Microsoft-KubeServices",
-        "Microsoft-KubeMonAgentEvents",
-        "Microsoft-InsightsMetrics",
-        "Microsoft-ContainerInventory",
-        "Microsoft-ContainerNodeInventory",
-        "Microsoft-Perf"
+        "Khulnasoft-ContainerLog",
+        "Khulnasoft-ContainerLogV2",
+        "Khulnasoft-KubeEvents",
+        "Khulnasoft-KubePodInventory",
+        "Khulnasoft-KubeNodeInventory",
+        "Khulnasoft-KubePVInventory",
+        "Khulnasoft-KubeServices",
+        "Khulnasoft-KubeMonAgentEvents",
+        "Khulnasoft-InsightsMetrics",
+        "Khulnasoft-ContainerInventory",
+        "Khulnasoft-ContainerNodeInventory",
+        "Khulnasoft-Perf"
       ]
     }
   }

@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/fluent/fluent-bit-go/output"
-	"github.com/khulnasoft/ApplicationInsights-Go/appinsights"
+	"github.com/microsoft/ApplicationInsights-Go/appinsights"
 )
 import (
 	"C"

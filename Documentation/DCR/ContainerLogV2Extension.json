@@ -5,7 +5,7 @@
             "extensions": [
                 {
                     "streams": [
-                        "Microsoft-ContainerLogV2-HighScale"
+                        "Khulnasoft-ContainerLogV2-HighScale"
                     ],
                     "extensionName": "ContainerLogV2Extension",
                     "extensionSettings": {
@@ -20,7 +20,7 @@
         "destinations": {
             "logAnalytics": [
                 {
-                    "workspaceResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>",
+                    "workspaceResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgName>/providers/khulnasoft.operationalinsights/workspaces/<workspaceName>",
                     "name": "la-workspace"
                 }
             ]
@@ -28,7 +28,7 @@
         "dataFlows": [
             {
                 "streams": [
-                    "Microsoft-ContainerLogV2-HighScale"
+                    "Khulnasoft-ContainerLogV2-HighScale"
                 ],
                 "transformKql": "source | where LogLevel in ('CRITICAL', 'ERROR')",
                 "destinations": [

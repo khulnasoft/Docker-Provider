@@ -49,7 +49,7 @@ module OMS
       topology_request.EntityTypeId = entity_type_id
       topology_request.AuthenticationCertificate = auth_cert
       body_heartbeat = "<?xml version=\"1.0\"?>\n"
-      body_heartbeat.concat(Gyoku.xml({ "AgentTopologyRequest" => { :content! => obj_to_hash(topology_request), :'@xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", :'@xmlns:xsd' => "http://www.w3.org/2001/XMLSchema", :@xmlns => "http://schemas.microsoft.com/WorkloadMonitoring/HealthServiceProtocol/2014/09/" } }))
+      body_heartbeat.concat(Gyoku.xml({ "AgentTopologyRequest" => { :content! => obj_to_hash(topology_request), :'@xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", :'@xmlns:xsd' => "http://www.w3.org/2001/XMLSchema", :@xmlns => "http://schemas.khulnasoft.com/WorkloadMonitoring/HealthServiceProtocol/2014/09/" } }))
 
       return body_heartbeat
     end
