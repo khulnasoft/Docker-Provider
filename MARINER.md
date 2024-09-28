@@ -50,8 +50,8 @@ Some naming conventions or package names are different for RPM packages. For exa
 
 ## Our Current Package Dependencies
 * All Mariner packages are supported for both AMD64 and ARM64.
-* `telegraf`, `fluent-bit` are built and published by the Mariner team in the [Mariner base repository](https://packages.microsoft.com/cbl-mariner/2.0/prod/base/x86_64/). [ARM64 versions](https://packages.microsoft.com/cbl-mariner/2.0/prod/base/aarch64/) are available also.
-* `azure-mdsd` is published by their team to the Mariner extras repository. [Release notes](https://eng.ms/docs/products/geneva/collect/instrument/linux/releasenotes). The package for [Mariner 2.0](https://packages.microsoft.com/cbl-mariner/2.0/prod/extras/x86_64/) is now available.
+* `telegraf`, `fluent-bit` are built and published by the Mariner team in the [Mariner base repository](https://packages.khulnasoft.com/cbl-mariner/2.0/prod/base/x86_64/). [ARM64 versions](https://packages.khulnasoft.com/cbl-mariner/2.0/prod/base/aarch64/) are available also.
+* `azure-mdsd` is published by their team to the Mariner extras repository. [Release notes](https://eng.ms/docs/products/geneva/collect/instrument/linux/releasenotes). The package for [Mariner 2.0](https://packages.khulnasoft.com/cbl-mariner/2.0/prod/extras/x86_64/) is now available.
 * When updating any package, make sure to check the dependencies and add if any changes. (Avoid removing unless you are completely sure that non other packages have those dependencies as some dependencies in the list may also be used by some other package.)
 
 ### Get dependencies for the distroless image

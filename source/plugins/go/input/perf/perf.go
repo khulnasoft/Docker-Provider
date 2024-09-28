@@ -70,7 +70,7 @@ func (p *perfPlugin) Init(ctx context.Context, fbit *plugin.Fluentbit) error {
 	if strings.EqualFold(osType, "windows") {
 		logPath = "/etc/amalogswindows/fluent-bit-input.log"
 	} else {
-		logPath = "/var/opt/microsoft/docker-cimprov/log/fluent-bit-input.log"
+		logPath = "/var/opt/khulnasoft/docker-cimprov/log/fluent-bit-input.log"
 	}
 
 	isTestEnv := os.Getenv("GOUNITTEST") == "true"
@@ -184,11 +184,11 @@ func (p perfPlugin) enumerate() ([]map[string]interface{}, []map[string]interfac
 		insightsmetricstag, _ = lib.GetOutputStreamIdAndSource(e, lib.InsightsMetricsDataType, insightsmetricstag, agentConfigRefreshTracker)
 
 		if !lib.IsDCRStreamIdTag(tag) {
-			FLBLogger.Print("WARN::perf::enumerate: skipping Microsoft-Perf stream since its opted-out @", time.Now().UTC().Format(time.RFC3339))
+			FLBLogger.Print("WARN::perf::enumerate: skipping Khulnasoft-Perf stream since its opted-out @", time.Now().UTC().Format(time.RFC3339))
 		}
 
 		if !lib.IsDCRStreamIdTag(insightsmetricstag) {
-			FLBLogger.Print("WARN::perf::enumerate: skipping Microsoft-InsightsMetrics stream since its opted-out @", time.Now().UTC().Format(time.RFC3339))
+			FLBLogger.Print("WARN::perf::enumerate: skipping Khulnasoft-InsightsMetrics stream since its opted-out @", time.Now().UTC().Format(time.RFC3339))
 		}
 
 		if e.IsDataCollectionSettingsConfigured() {

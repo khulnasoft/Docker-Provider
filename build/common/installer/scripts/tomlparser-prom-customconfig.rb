@@ -198,7 +198,7 @@ def populateSettingValuesFromConfigMap(parsedConfig)
 
             file_name = "/opt/telegraf-test-rs.conf"
             # Copy the telegraf config file to a temp file to run telegraf in test mode with this config
-            FileUtils.cp("/etc/opt/microsoft/docker-cimprov/telegraf-rs.conf", file_name)
+            FileUtils.cp("/etc/opt/khulnasoft/docker-cimprov/telegraf-rs.conf", file_name)
 
             puts "config::Starting to substitute the placeholders in telegraf conf copy file for replicaset"
             #Replace the placeholder config values with values from custom config
@@ -304,7 +304,7 @@ def populateSettingValuesFromConfigMap(parsedConfig)
             else
               file_name = "/opt/telegraf-test-prom-side-car.conf"
               # Copy the telegraf config file to a temp file to run telegraf in test mode with this config
-              FileUtils.cp("/etc/opt/microsoft/docker-cimprov/telegraf-prom-side-car.conf", file_name)
+              FileUtils.cp("/etc/opt/khulnasoft/docker-cimprov/telegraf-prom-side-car.conf", file_name)
             end
             puts "config::Starting to substitute the placeholders in telegraf conf copy file for linux or conf file for windows for custom prometheus scraping"
             #Replace the placeholder config values with values from custom config
@@ -393,7 +393,7 @@ def populateSettingValuesFromConfigMap(parsedConfig)
 
             file_name = "/opt/telegraf-test.conf"
             # Copy the telegraf config file to a temp file to run telegraf in test mode with this config
-            FileUtils.cp("/etc/opt/microsoft/docker-cimprov/telegraf.conf", file_name)
+            FileUtils.cp("/etc/opt/khulnasoft/docker-cimprov/telegraf.conf", file_name)
 
             puts "config::Starting to substitute the placeholders in telegraf conf copy file for daemonset"
             #Replace the placeholder config values with values from custom config

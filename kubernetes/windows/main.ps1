@@ -101,7 +101,7 @@ function Set-CloudSpecificApplicationInsightsConfig {
         "ussec" {
             Write-Host "Set-CloudSpecificApplicationInsightsConfig: Setting Application Insights configuration for USSec Cloud"
             Set-ProcessAndMachineEnvVariables "APPLICATIONINSIGHTS_AUTH" "NTc5ZDRiZjUtMTA1Mi0wODQzLThhNTYtMjU5YzEyZmJhZTkyCg=="
-            Set-ProcessAndMachineEnvVariables "APPLICATIONINSIGHTS_ENDPOINT" "https://dc.applicationinsights.azure.microsoft.scloud/v2/track"
+            Set-ProcessAndMachineEnvVariables "APPLICATIONINSIGHTS_ENDPOINT" "https://dc.applicationinsights.azure.khulnasoft.scloud/v2/track"
         }
         default {
             Write-Host "Set-CloudSpecificApplicationInsightsConfig: defaulting to Public Cloud Application Insights configuration"
@@ -168,9 +168,9 @@ function Set-AMA3PEnvironmentVariables {
                 $mcs_globalendpoint = "https://global.handler.control.monitor.azure.eaglex.ic.gov"
                 $mcs_endpoint = "https://monitor.azure.eaglex.ic.gov/"
             }
-            elseif ($domain -eq "opinsights.azure.microsoft.scloud") {
-                $mcs_globalendpoint = "https://global.handler.control.monitor.azure.microsoft.scloud"
-                $mcs_endpoint = "https://monitor.azure.microsoft.scloud/"
+            elseif ($domain -eq "opinsights.azure.khulnasoft.scloud") {
+                $mcs_globalendpoint = "https://global.handler.control.monitor.azure.khulnasoft.scloud"
+                $mcs_endpoint = "https://monitor.azure.khulnasoft.scloud/"
             }
             else {
                 Write-Host "Invalid or Unsupported domain name $($domain). EXITING....."
@@ -241,9 +241,9 @@ function Set-EnvironmentVariables {
                 $cloud_environment = "usnat"
                 $mcs_endpoint = "monitor.azure.eaglex.ic.gov"
             }
-            elseif ($domain -eq "opinsights.azure.microsoft.scloud") {
+            elseif ($domain -eq "opinsights.azure.khulnasoft.scloud") {
                 $cloud_environment = "ussec"
-                $mcs_endpoint = "monitor.azure.microsoft.scloud"
+                $mcs_endpoint = "monitor.azure.khulnasoft.scloud"
             }
             else {
                 Write-Host "Invalid or Unsupported domain name $($domain). EXITING....."
@@ -923,7 +923,7 @@ $requiresCertBootstrap = [System.Environment]::GetEnvironmentVariable("REQUIRES_
 if (![string]::IsNullOrEmpty($requiresCertBootstrap) -and `
         $requiresCertBootstrap.ToLower() -eq 'true' -and `
         ![string]::IsNullOrEmpty($aksResourceId) -and `
-        $aksResourceId.ToLower().Contains("/microsoft.containerservice/managedclusters/")) {
+        $aksResourceId.ToLower().Contains("/khulnasoft.containerservice/managedclusters/")) {
     Bootstrap-CACertificates
 }
 

@@ -34,7 +34,7 @@ echo "replace linux agent image"
 linuxAgentImageTag=$CI_RELEASE$CI_IMAGE_TAG_SUFFIX
 echo "Linux Agent Image Tag:"$linuxAgentImageTag
 
-imageRepo="mcr.microsoft.com/azuremonitor/containerinsights/${CI_RELEASE}"
+imageRepo="mcr.khulnasoft.com/azuremonitor/containerinsights/${CI_RELEASE}"
 echo "image repo: ${imageRepo}"
 
 echo "replace windows agent image"

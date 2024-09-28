@@ -253,7 +253,7 @@ class KubernetesApiClient
       @@IsAROV3Cluster = false
       begin
         cluster = getClusterId
-        if !cluster.nil? && !cluster.empty? && cluster.downcase.include?("/microsoft.containerservice/openshiftmanagedclusters")
+        if !cluster.nil? && !cluster.empty? && cluster.downcase.include?("/khulnasoft.containerservice/openshiftmanagedclusters")
           @@IsAROV3Cluster = true
         end
       rescue => error

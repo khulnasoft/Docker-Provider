@@ -190,7 +190,7 @@
 				"containers": [
 					{
 						"name": "azure-ip-masq-agent",
-						"image": "mcr.microsoft.com/aks/ip-masq-agent-v2:v0.1.7",
+						"image": "mcr.khulnasoft.com/aks/ip-masq-agent-v2:v0.1.7",
 						"args": [
 							"--v=2",
 							"--resync-interval=60"
@@ -341,7 +341,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/aks/ip-masq-agent-v2:v0.1.7",
+						"image": "mcr.khulnasoft.com/aks/ip-masq-agent-v2:v0.1.7",
 						"imageID": "sha256:7f0239fd72a8664f0cc0c4203a7bbb616d3de1b64d1dac9094a5a28fb2b750b4",
 						"containerID": "containerd://3b988c9fb1dad91e191fbbc8f0db13c37eeaf9a0002b30e75b4fb62a37ee54eb",
 						"started": true
@@ -641,7 +641,7 @@
 				"containers": [
 					{
 						"name": "coredns",
-						"image": "mcr.microsoft.com/oss/kubernetes/coredns:v1.9.4",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/coredns:v1.9.4",
 						"args": [
 							"-conf",
 							"/etc/coredns/Corefile"
@@ -928,7 +928,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes/coredns:v1.9.4",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/coredns:v1.9.4",
 						"imageID": "sha256:4973d030453ebba0706b29c636612e8dcb299d34500ac5466ce535e0c53b866f",
 						"containerID": "containerd://acc8de4812ca48ba550254d4b1e261e531655e3a5e02bd9810d00d012edc6bca",
 						"started": true
@@ -1211,7 +1211,7 @@
 				"containers": [
 					{
 						"name": "metrics-server-vpa",
-						"image": "mcr.microsoft.com/oss/kubernetes/autoscaler/addon-resizer:1.8.19",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/autoscaler/addon-resizer:1.8.19",
 						"command": [
 							"/pod_nanny",
 							"--config-dir=/etc/config",
@@ -1287,7 +1287,7 @@
 					},
 					{
 						"name": "metrics-server",
-						"image": "mcr.microsoft.com/oss/kubernetes/metrics-server:v0.6.3",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/metrics-server:v0.6.3",
 						"command": [
 							"/metrics-server",
 							"--kubelet-insecure-tls",
@@ -1542,7 +1542,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes/metrics-server:v0.6.3",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/metrics-server:v0.6.3",
 						"imageID": "sha256:dc3fa6e8352e5890d46fe01ab84a7761a97de3d13a3d2858af461203532ba457",
 						"containerID": "containerd://c6bc424f12a76c3ec9340e700a2df9019bf560bf5294b7cfca49f42686088414",
 						"started": true
@@ -1557,7 +1557,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes/autoscaler/addon-resizer:1.8.19",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/autoscaler/addon-resizer:1.8.19",
 						"imageID": "sha256:7b8e7ae7c6d3057b8e80ce0349d4103a739444dba5226b88ab5a347fda66792e",
 						"containerID": "containerd://0f4daa52c9ce6ed30f14df868f0c7b21b01aadf7cb3ab6c864b854c84a721f58",
 						"started": true
@@ -1852,7 +1852,7 @@
 				"initContainers": [
 					{
 						"name": "kube-proxy-bootstrap",
-						"image": "mcr.microsoft.com/mirror/docker/library/busybox:1.35",
+						"image": "mcr.khulnasoft.com/mirror/docker/library/busybox:1.35",
 						"command": [
 							"/bin/sh",
 							"-c",
@@ -1889,7 +1889,7 @@
 				"containers": [
 					{
 						"name": "kube-proxy",
-						"image": "mcr.microsoft.com/oss/kubernetes/kube-proxy:v1.25.11",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/kube-proxy:v1.25.11",
 						"command": [
 							"kube-proxy",
 							"--conntrack-max-per-core=0",
@@ -2053,8 +2053,8 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/mirror/docker/library/busybox:1.35",
-						"imageID": "mcr.microsoft.com/mirror/docker/library/busybox@sha256:7ae8447f3a7f5bccaa765926f25fc038e425cf1b2be6748727bbea9a13102094",
+						"image": "mcr.khulnasoft.com/mirror/docker/library/busybox:1.35",
+						"imageID": "mcr.khulnasoft.com/mirror/docker/library/busybox@sha256:7ae8447f3a7f5bccaa765926f25fc038e425cf1b2be6748727bbea9a13102094",
 						"containerID": "containerd://d9393d12945fbba56d3521e9ac971806a7ec221423ed3072fd994bfb2da296f2"
 					}
 				],
@@ -2069,7 +2069,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes/kube-proxy:v1.25.11",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/kube-proxy:v1.25.11",
 						"imageID": "sha256:963969a959a09dd3b70ff62cfd53231a7cd793fff4c6fff4e355439f2bb28de3",
 						"containerID": "containerd://a549beaa8c2f93cee2c775ddce4f6af6401be63c9167b071bb2c60633c9b10a8",
 						"started": true
@@ -2463,7 +2463,7 @@
 				"containers": [
 					{
 						"name": "liveness-probe",
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/livenessprobe:v2.10.0",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/livenessprobe:v2.10.0",
 						"args": [
 							"--csi-address=/csi/csi.sock",
 							"--probe-timeout=3s",
@@ -2514,7 +2514,7 @@
 					},
 					{
 						"name": "node-driver-registrar",
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/csi-node-driver-registrar:v2.8.0",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/csi-node-driver-registrar:v2.8.0",
 						"args": [
 							"--csi-address=$(ADDRESS)",
 							"--kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)",
@@ -2590,7 +2590,7 @@
 					},
 					{
 						"name": "azurefile",
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/azurefile-csi:v1.24.3",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/azurefile-csi:v1.24.3",
 						"args": [
 							"--v=2",
 							"--endpoint=$(CSI_ENDPOINT)",
@@ -2788,7 +2788,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/azurefile-csi:v1.24.3",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/azurefile-csi:v1.24.3",
 						"imageID": "sha256:2344f81e67ed16789b737ecd9370450bae26c30ff14f5581a377db486682b0de",
 						"containerID": "containerd://4f1c7792df3a150f3ca0d1e77a5a131b200f3a29412e401f65b5abe10866140a",
 						"started": true
@@ -2803,7 +2803,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/livenessprobe:v2.10.0",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/livenessprobe:v2.10.0",
 						"imageID": "sha256:a0a744de06b9862ee665fcf47a17ec3425f67915a2e603f5636f6eba17378c7e",
 						"containerID": "containerd://a42757a4505f694f0e1e8b928bdf23a4ded7f38bfb106ef5c37a577adf8de233",
 						"started": true
@@ -2818,7 +2818,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/csi-node-driver-registrar:v2.8.0",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/csi-node-driver-registrar:v2.8.0",
 						"imageID": "sha256:aa15d611f49d8331e2266cf02d8f5fb0d32caad598897433fbd46234b88ebaf4",
 						"containerID": "containerd://db97714f36ee30d7dd7165122ae93c98dbbe70fd62a6de1895b6b30754376aca",
 						"started": true
@@ -3575,7 +3575,7 @@
 				"containers": [
 					{
 						"name": "addon-token-adapter",
-						"image": "mcr.microsoft.com/aks/msi/addon-token-adapter:master.221118.2",
+						"image": "mcr.khulnasoft.com/aks/msi/addon-token-adapter:master.221118.2",
 						"command": [
 							"/addon-token-adapter"
 						],
@@ -3653,7 +3653,7 @@
 					},
 					{
 						"name": "ama-logs",
-						"image": "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
+						"image": "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
 						"ports": [
 							{
 								"containerPort": 25225,
@@ -3729,7 +3729,7 @@
 							},
 							{
 								"name": "AKS_RESOURCE_ID",
-								"value": "/subscriptions/9b96ebbd-c57a-42d1-bbe9-b69296e4c7fb/resourceGroups/ci-logs-prod-aks/providers/Microsoft.ContainerService/managedClusters/ci-logs-prod-aks-syslog"
+								"value": "/subscriptions/9b96ebbd-c57a-42d1-bbe9-b69296e4c7fb/resourceGroups/ci-logs-prod-aks/providers/Khulnasoft.ContainerService/managedClusters/ci-logs-prod-aks-syslog"
 							},
 							{
 								"name": "AKS_REGION",
@@ -3844,7 +3844,7 @@
 					},
 					{
 						"name": "ama-logs-prometheus",
-						"image": "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
+						"image": "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
 						"env": [
 							{
 								"name": "KUBERNETES_SERVICE_HOST",
@@ -3882,7 +3882,7 @@
 							},
 							{
 								"name": "AKS_RESOURCE_ID",
-								"value": "/subscriptions/9b96ebbd-c57a-42d1-bbe9-b69296e4c7fb/resourceGroups/ci-logs-prod-aks/providers/Microsoft.ContainerService/managedClusters/ci-logs-prod-aks-syslog"
+								"value": "/subscriptions/9b96ebbd-c57a-42d1-bbe9-b69296e4c7fb/resourceGroups/ci-logs-prod-aks/providers/Khulnasoft.ContainerService/managedClusters/ci-logs-prod-aks-syslog"
 							},
 							{
 								"name": "AKS_NODE_RESOURCE_GROUP",
@@ -4085,7 +4085,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/aks/msi/addon-token-adapter:master.221118.2",
+						"image": "mcr.khulnasoft.com/aks/msi/addon-token-adapter:master.221118.2",
 						"imageID": "sha256:6284cbe7030dfa0d79382ea3f86cf3b892d0ee17807b01d921e97a7877e27313",
 						"containerID": "containerd://3af987aac7117b5b3731237eede5223579aea14011f13a1608c24584291cde25",
 						"started": true
@@ -4100,8 +4100,8 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
-						"imageID": "mcr.microsoft.com/azuremonitor/containerinsights/ciprod@sha256:e1568171272f7e1271cf41f9e7c82cb5dccf29a6d515de242f724b11edfdf7c6",
+						"image": "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
+						"imageID": "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod@sha256:e1568171272f7e1271cf41f9e7c82cb5dccf29a6d515de242f724b11edfdf7c6",
 						"containerID": "containerd://033f2a10bf36a43b21d1e8c72e45b575788f9c6c7ec1ae0469b36a9998c22cb6",
 						"started": true
 					},
@@ -4115,8 +4115,8 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
-						"imageID": "mcr.microsoft.com/azuremonitor/containerinsights/ciprod@sha256:e1568171272f7e1271cf41f9e7c82cb5dccf29a6d515de242f724b11edfdf7c6",
+						"image": "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
+						"imageID": "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod@sha256:e1568171272f7e1271cf41f9e7c82cb5dccf29a6d515de242f724b11edfdf7c6",
 						"containerID": "containerd://88e065eb0b1833f6e339f958bd0488d3d8b0db32117afbba69809d7680ac1c2a",
 						"started": true
 					}
@@ -4551,7 +4551,7 @@
 				"containers": [
 					{
 						"name": "liveness-probe",
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/livenessprobe:v2.10.0",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/livenessprobe:v2.10.0",
 						"args": [
 							"--csi-address=/csi/csi.sock",
 							"--probe-timeout=3s",
@@ -4602,7 +4602,7 @@
 					},
 					{
 						"name": "node-driver-registrar",
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/csi-node-driver-registrar:v2.8.0",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/csi-node-driver-registrar:v2.8.0",
 						"args": [
 							"--csi-address=$(ADDRESS)",
 							"--kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)",
@@ -4678,7 +4678,7 @@
 					},
 					{
 						"name": "azuredisk",
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/azuredisk-csi:v1.26.5",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/azuredisk-csi:v1.26.5",
 						"args": [
 							"--v=5",
 							"--endpoint=$(CSI_ENDPOINT)",
@@ -4883,7 +4883,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/azuredisk-csi:v1.26.5",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/azuredisk-csi:v1.26.5",
 						"imageID": "sha256:35ade7efb71746907aaaa59296b8cb93b7c400a9f4385c92ade5b30fa7e609b6",
 						"containerID": "containerd://5ee474a9546aa7972b6a599b7e2db0896e983eb40462165d1cae76f97b884ce6",
 						"started": true
@@ -4898,7 +4898,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/livenessprobe:v2.10.0",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/livenessprobe:v2.10.0",
 						"imageID": "sha256:a0a744de06b9862ee665fcf47a17ec3425f67915a2e603f5636f6eba17378c7e",
 						"containerID": "containerd://e59ec100b97f1f77362a735b70cb450859426c9ac92034ab8eed28b563306a1b",
 						"started": true
@@ -4913,7 +4913,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes-csi/csi-node-driver-registrar:v2.8.0",
+						"image": "mcr.khulnasoft.com/oss/kubernetes-csi/csi-node-driver-registrar:v2.8.0",
 						"imageID": "sha256:aa15d611f49d8331e2266cf02d8f5fb0d32caad598897433fbd46234b88ebaf4",
 						"containerID": "containerd://7862fea0a02ba813d57d6ae516b607f05c32fe28808e63cfcd2f934254562ab3",
 						"started": true
@@ -5093,7 +5093,7 @@
 				"containers": [
 					{
 						"name": "konnectivity-agent",
-						"image": "mcr.microsoft.com/oss/kubernetes/apiserver-network-proxy/agent:v0.0.33-hotfix.20221110",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/apiserver-network-proxy/agent:v0.0.33-hotfix.20221110",
 						"command": [
 							"/proxy-agent"
 						],
@@ -5338,7 +5338,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes/apiserver-network-proxy/agent:v0.0.33-hotfix.20221110",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/apiserver-network-proxy/agent:v0.0.33-hotfix.20221110",
 						"imageID": "sha256:d8d8810820ff9043fe0dab5c9650a2bbc5763163206bb1720190378c463b6a27",
 						"containerID": "containerd://8ff392398b4990f118d7df06e612b1bbe4776eff108caaf8544c875956668b70",
 						"started": true
@@ -5861,7 +5861,7 @@
 				"containers": [
 					{
 						"name": "addon-token-adapter",
-						"image": "mcr.microsoft.com/aks/msi/addon-token-adapter:master.221118.2",
+						"image": "mcr.khulnasoft.com/aks/msi/addon-token-adapter:master.221118.2",
 						"command": [
 							"/addon-token-adapter"
 						],
@@ -5939,7 +5939,7 @@
 					},
 					{
 						"name": "ama-logs",
-						"image": "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
+						"image": "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
 						"ports": [
 							{
 								"containerPort": 25225,
@@ -5997,7 +5997,7 @@
 							},
 							{
 								"name": "AKS_RESOURCE_ID",
-								"value": "/subscriptions/9b96ebbd-c57a-42d1-bbe9-b69296e4c7fb/resourceGroups/ci-logs-prod-aks/providers/Microsoft.ContainerService/managedClusters/ci-logs-prod-aks-syslog"
+								"value": "/subscriptions/9b96ebbd-c57a-42d1-bbe9-b69296e4c7fb/resourceGroups/ci-logs-prod-aks/providers/Khulnasoft.ContainerService/managedClusters/ci-logs-prod-aks-syslog"
 							},
 							{
 								"name": "KUBERNETES_PORT",
@@ -6256,7 +6256,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/aks/msi/addon-token-adapter:master.221118.2",
+						"image": "mcr.khulnasoft.com/aks/msi/addon-token-adapter:master.221118.2",
 						"imageID": "sha256:6284cbe7030dfa0d79382ea3f86cf3b892d0ee17807b01d921e97a7877e27313",
 						"containerID": "containerd://2f837f9fc3e8a785e78a12e8f863207b0977d369efaad74ea4e80f73a1b3e6af",
 						"started": true
@@ -6271,8 +6271,8 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
-						"imageID": "mcr.microsoft.com/azuremonitor/containerinsights/ciprod@sha256:e1568171272f7e1271cf41f9e7c82cb5dccf29a6d515de242f724b11edfdf7c6",
+						"image": "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:3.1.11",
+						"imageID": "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod@sha256:e1568171272f7e1271cf41f9e7c82cb5dccf29a6d515de242f724b11edfdf7c6",
 						"containerID": "containerd://264708b1e0a32d5d7fda007ffa244ebc0fac256168002eb46d1adad1e6916404",
 						"started": true
 					}
@@ -6295,7 +6295,7 @@
 					"pod-template-generation": "7"
 				},
 				"annotations": {
-					"aks.microsoft.com/temp-drain-annotation": "2023-08-03T16:10:07+0000",
+					"aks.khulnasoft.com/temp-drain-annotation": "2023-08-03T16:10:07+0000",
 					"cluster-autoscaler.kubernetes.io/daemonset-pod": "true",
 					"kubernetes.io/config.seen": "2023-08-03T16:07:48.216155477Z",
 					"kubernetes.io/config.source": "api"
@@ -6444,7 +6444,7 @@
 				"containers": [
 					{
 						"name": "cloud-node-manager",
-						"image": "mcr.microsoft.com/oss/kubernetes/azure-cloud-node-manager:v1.25.15",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/azure-cloud-node-manager:v1.25.15",
 						"command": [
 							"cloud-node-manager",
 							"--node-name=$(NODE_NAME)",
@@ -6596,7 +6596,7 @@
 						"lastState": {},
 						"ready": true,
 						"restartCount": 0,
-						"image": "mcr.microsoft.com/oss/kubernetes/azure-cloud-node-manager:v1.25.15",
+						"image": "mcr.khulnasoft.com/oss/kubernetes/azure-cloud-node-manager:v1.25.15",
 						"imageID": "sha256:ad40add5362ee2d4f14e8ee62a5d4939a5721efd195eb48a06dea840f944e9e8",
 						"containerID": "containerd://8776c462941b75dccd61d7e887cb88c7d75ba46df6d0172f265502c3cf7e2203",
 						"started": true

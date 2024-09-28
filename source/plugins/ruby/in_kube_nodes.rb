@@ -144,16 +144,16 @@ module Fluent::Plugin
           @insightsMetricsTag, _ = KubernetesApiClient.getOutputStreamIdAndSource(Constants::INSIGHTS_METRICS_DATA_TYPE, @insightsMetricsTag, @agentConfigRefreshTracker)
           @ContainerNodeInventoryTag, _ = KubernetesApiClient.getOutputStreamIdAndSource(Constants::CONTAINER_NODE_INVENTORY_DATA_TYPE, @ContainerNodeInventoryTag, @agentConfigRefreshTracker)
           if !KubernetesApiClient.isDCRStreamIdTag(@kubeperfTag)
-            $log.warn("in_kube_nodes::enumerate: skipping Microsoft-Perf stream since its opted-out @ #{Time.now.utc.iso8601}")
+            $log.warn("in_kube_nodes::enumerate: skipping Khulnasoft-Perf stream since its opted-out @ #{Time.now.utc.iso8601}")
           end
           if !KubernetesApiClient.isDCRStreamIdTag(@insightsMetricsTag)
-            $log.warn("in_kube_nodes::enumerate: skipping Microsoft-InsightsMetrics stream since its opted-out @ #{Time.now.utc.iso8601}")
+            $log.warn("in_kube_nodes::enumerate: skipping Khulnasoft-InsightsMetrics stream since its opted-out @ #{Time.now.utc.iso8601}")
           end
           if !KubernetesApiClient.isDCRStreamIdTag(@ContainerNodeInventoryTag)
-            $log.info("in_kube_nodes::enumerate: skipping Microsoft-ContainerNodeInventory stream since its opted-out @ #{Time.now.utc.iso8601}")
+            $log.info("in_kube_nodes::enumerate: skipping Khulnasoft-ContainerNodeInventory stream since its opted-out @ #{Time.now.utc.iso8601}")
           end
           if !KubernetesApiClient.isDCRStreamIdTag(@tag)
-            $log.info("in_kube_nodes::enumerate: skipping Microsoft-KubeNodeInventory stream since its opted-out @ #{Time.now.utc.iso8601}")
+            $log.info("in_kube_nodes::enumerate: skipping Khulnasoft-KubeNodeInventory stream since its opted-out @ #{Time.now.utc.iso8601}")
           end
           if ExtensionUtils.isDataCollectionSettingsConfigured()
             @run_interval = ExtensionUtils.getDataCollectionIntervalSeconds()

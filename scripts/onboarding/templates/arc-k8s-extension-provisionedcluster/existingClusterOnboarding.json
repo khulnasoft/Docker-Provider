@@ -33,7 +33,7 @@
         "opinsights.azure.cn",
         "opinsights.azure.us",
         "opinsights.azure.eaglex.ic.gov",
-        "opinsights.azure.microsoft.scloud"
+        "opinsights.azure.khulnasoft.scloud"
       ],
       "defaultValue": "opinsights.azure.com",
       "metadata": {
@@ -43,7 +43,7 @@
   },
   "resources": [
     {
-      "type": "Microsoft.Resources/deployments",
+      "type": "Khulnasoft.Resources/deployments",
       "name": "[Concat('ContainerInsights', '-',  uniqueString(parameters('workspaceResourceId')))]",
       "apiVersion": "2017-05-10",
       "subscriptionId": "[split(parameters('workspaceResourceId'),'/')[2]]",
@@ -58,7 +58,7 @@
           "resources": [
             {
               "apiVersion": "2015-11-01-preview",
-              "type": "Microsoft.OperationsManagement/solutions",
+              "type": "Khulnasoft.OperationsManagement/solutions",
               "location": "[parameters('workspaceRegion')]",
               "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceResourceId'),'/')[8], ')')]",
               "properties": {
@@ -68,7 +68,7 @@
                 "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceResourceId'),'/')[8], ')')]",
                 "product": "[Concat('OMSGallery/', 'ContainerInsights')]",
                 "promotionCode": "",
-                "publisher": "Microsoft"
+                "publisher": "Khulnasoft"
               }
             }
           ]
@@ -77,7 +77,7 @@
       }
     },
     {
-      "type": "Microsoft.Resources/deployments",
+      "type": "Khulnasoft.Resources/deployments",
       "name": "[Concat('arc-k8s-ci-extension', '-',  uniqueString(parameters('clusterResourceId')))]",
       "apiVersion": "2019-05-01",
       "subscriptionId": "[split(parameters('clusterResourceId'),'/')[2]]",
@@ -94,13 +94,13 @@
           "variables": {},
           "resources": [
             {
-              "type": "Microsoft.KubernetesConfiguration/extensions",
+              "type": "Khulnasoft.KubernetesConfiguration/extensions",
               "apiVersion": "2021-09-01",
               "name": "azuremonitor-containers",
               "location": "[parameters('clusterRegion')]",
               "identity": {"type": "systemassigned"},
               "properties": {
-                "extensionType": "Microsoft.AzureMonitor.Containers",
+                "extensionType": "Khulnasoft.AzureMonitor.Containers",
                 "configurationSettings": {
                   "logAnalyticsWorkspaceResourceID": "[parameters('workspaceResourceId')]",
                   "amalogs.domain": "[parameters('workspaceDomain')]"
@@ -117,7 +117,7 @@
                   }
                 }
               },
-              "scope": "[concat('Microsoft.HybridContainerService/provisionedClusters/', split(parameters('clusterResourceId'),'/')[8])]"
+              "scope": "[concat('Khulnasoft.HybridContainerService/provisionedClusters/', split(parameters('clusterResourceId'),'/')[8])]"
             }
           ]
         }

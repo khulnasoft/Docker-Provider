@@ -33,7 +33,7 @@ variable "dns_prefix" {
 
 variable "workspace_resource_id" {
   type = string
-  default = "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>"
+  default = "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Khulnasoft.OperationalInsights/workspaces/<workspaceName>"
 }
 
 variable "workspace_region" {
@@ -78,5 +78,5 @@ variable "enableContainerLogV2" {
 }
 
 variable "streams" {
- default = ["Microsoft-ContainerLog", "Microsoft-ContainerLogV2", "Microsoft-KubeEvents", "Microsoft-KubePodInventory", "Microsoft-KubeNodeInventory", "Microsoft-KubePVInventory","Microsoft-KubeServices", "Microsoft-KubeMonAgentEvents", "Microsoft-InsightsMetrics", "Microsoft-ContainerInventory",  "Microsoft-ContainerNodeInventory", "Microsoft-Perf"]
+ default = ["Khulnasoft-ContainerLog", "Khulnasoft-ContainerLogV2", "Khulnasoft-KubeEvents", "Khulnasoft-KubePodInventory", "Khulnasoft-KubeNodeInventory", "Khulnasoft-KubePVInventory","Khulnasoft-KubeServices", "Khulnasoft-KubeMonAgentEvents", "Khulnasoft-InsightsMetrics", "Khulnasoft-ContainerInventory",  "Khulnasoft-ContainerNodeInventory", "Khulnasoft-Perf"]
 }

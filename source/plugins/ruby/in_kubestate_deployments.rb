@@ -93,7 +93,7 @@ module Fluent::Plugin
             @agentConfigRefreshTracker = DateTime.now.to_time.to_i
           end
           if !KubernetesApiClient.isDCRStreamIdTag(@tag)
-            $log.warn("in_kubestate_deployments::enumerate: skipping Microsoft-InsightsMetrics stream since its opted-out @ #{Time.now.utc.iso8601}")
+            $log.warn("in_kubestate_deployments::enumerate: skipping Khulnasoft-InsightsMetrics stream since its opted-out @ #{Time.now.utc.iso8601}")
             return
           end
           if ExtensionUtils.isDataCollectionSettingsConfigured()

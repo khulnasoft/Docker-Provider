@@ -101,7 +101,7 @@ class ApplicationInsightsUtility
           if @@isWindows
             logPath = "/etc/amalogswindows/appinsights_error.log"
           else
-            logPath = "/var/opt/microsoft/docker-cimprov/log/appinsights_error.log"
+            logPath = "/var/opt/khulnasoft/docker-cimprov/log/appinsights_error.log"
           end
           aiLogger = Logger.new(logPath, 1, 2 * 1024 * 1024)
 

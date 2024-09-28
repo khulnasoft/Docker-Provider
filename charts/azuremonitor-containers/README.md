@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This article describes how to set up and use [Azure Monitor - Containers](https://docs.microsoft.com/en-us/azure/monitoring/monitoring-container-health) to monitor the health and performance of your workloads deployed to Kubernetes and OpenShift v4 environments.
+This article describes how to set up and use [Azure Monitor - Containers](https://docs.khulnasoft.com/en-us/azure/monitoring/monitoring-container-health) to monitor the health and performance of your workloads deployed to Kubernetes and OpenShift v4 environments.
 
 Monitoring your Kubernetes cluster and containers is critical, especially when running a production cluster, at scale, with multiple applications.
 
@@ -12,11 +12,11 @@ Monitoring your Kubernetes cluster and containers is critical, especially when r
 
 ## Pre-requisites
 
-- [Kubernetes versions and support policy  same as AKS supported versions](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions)
+- [Kubernetes versions and support policy  same as AKS supported versions](https://docs.khulnasoft.com/en-us/azure/aks/supported-kubernetes-versions)
 
 - You will need to create a location to store your monitoring data.
 
-1. [Create Azure Log Analytics Workspace](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-quick-create-workspace)
+1. [Create Azure Log Analytics Workspace](https://docs.khulnasoft.com/en-us/azure/log-analytics/log-analytics-quick-create-workspace)
 
 - You will need to add AzureMonitor-Containers solution to your workspace from #1 above
 
@@ -38,25 +38,25 @@ Monitoring your Kubernetes cluster and containers is critical, especially when r
 ### To Use Azure Log Analytics Workspace in Public Cloud
 
 ```bash
-$ helm repo add microsoft https://microsoft.github.io/charts/repo
+$ helm repo add khulnasoft https://khulnasoft.github.io/charts/repo
 $ helm install --name azmon-containers-release-1 \
---set amalogs.secret.wsid=<your_workspace_id>,amalogs.secret.key=<your_workspace_key>,amalogs.env.clusterName=<my_prod_cluster>  microsoft/azuremonitor-containers
+--set amalogs.secret.wsid=<your_workspace_id>,amalogs.secret.key=<your_workspace_key>,amalogs.env.clusterName=<my_prod_cluster>  khulnasoft/azuremonitor-containers
 ```
 
 ### To Use Azure Log Analytics Workspace in Azure China Cloud
 
 ```bash
-$ helm repo add microsoft https://microsoft.github.io/charts/repo
+$ helm repo add khulnasoft https://khulnasoft.github.io/charts/repo
 $ helm install --name azmon-containers-release-1 \
---set amalogs.domain=opinsights.azure.cn,amalogs.secret.wsid=<your_workspace_id>,amalogs.secret.key=<your_workspace_key>,amalogs.env.clusterName=<your_cluster_name>  microsoft/azuremonitor-containers
+--set amalogs.domain=opinsights.azure.cn,amalogs.secret.wsid=<your_workspace_id>,amalogs.secret.key=<your_workspace_key>,amalogs.env.clusterName=<your_cluster_name>  khulnasoft/azuremonitor-containers
 ```
 
 ### To Use Azure Log Analytics Workspace in Azure US Government Cloud
 
 ```bash
-$ helm repo add microsoft https://microsoft.github.io/charts/repo
+$ helm repo add khulnasoft https://khulnasoft.github.io/charts/repo
 $ helm install --name azmon-containers-release-1 \
---set amalogs.domain=opinsights.azure.us,amalogs.secret.wsid=<your_workspace_id>,amalogs.secret.key=<your_workspace_key>,amalogs.env.clusterName=<your_cluster_name>  microsoft/azuremonitor-containers
+--set amalogs.domain=opinsights.azure.us,amalogs.secret.wsid=<your_workspace_id>,amalogs.secret.key=<your_workspace_key>,amalogs.env.clusterName=<your_cluster_name>  khulnasoft/azuremonitor-containers
 ```
 
 ## Upgrading an existing Release to a new version
@@ -85,7 +85,7 @@ The following table lists the configurable parameters of the MSOMS chart and the
 | -----------------------      | --------------------------------------------------------| --------------------------------------------------------------------------------------------------------------------------- |
 | `amalogs.image.tag`         | image tag for Linux Agent.                              | Most recent release                                                                                                         |
 | `amalogs.image.tagWindows`  | image tag for Windows Agent.                            | Most recent release                                                                                                         |
-| `amalogs.image.imagerepo`   | image repo for Liunx & Windows.                         | Image repo path is mcr.microsoft.com/azuremonitor/containerinsights/ciprod
+| `amalogs.image.imagerepo`   | image repo for Liunx & Windows.                         | Image repo path is mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod
 | `amalogs.image.pullPolicy`  | image pull policy for the agent.                        | IfNotPresent                                                                                                                |
 | `amalogs.secret.wsid`       | Azure Log analytics workspace id                        | Does not have a default value, needs to be provided                                                                         |
 | `amalogs.secret.key`        | Azure Log analytics workspace key                       | Does not have a default value, needs to be provided                                                                         |
@@ -105,7 +105,7 @@ The following table lists the configurable parameters of the MSOMS chart and the
 
 ## Agent data collection settings
 
-Staring with chart version 1.0.0, agent data collection settings are controlled thru a config map. Refer to documentation about agent data collection settings [here](https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-agent-config)
+Staring with chart version 1.0.0, agent data collection settings are controlled thru a config map. Refer to documentation about agent data collection settings [here](https://docs.khulnasoft.com/en-us/azure/azure-monitor/insights/container-insights-agent-config)
 
 You can create a Azure Loganalytics workspace from portal.azure.com and get its ID & PRIMARY KEY from 'Advanced Settings' tab in the Ux.
 
@@ -116,13 +116,13 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 $ helm install --name myrelease-1 \
 --set amalogs.secret.wsid=<your_workspace_id>,amalogs.secret.key=<your_workspace_key>,amalogs.env.clusterName=<your_cluster_name>
-  microsoft/azuremonitor-containers
+  khulnasoft/azuremonitor-containers
 ```
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
 
-$ helm install --name myrelease-1 -f values.yaml microsoft/azuremonitor-containers
+$ helm install --name myrelease-1 -f values.yaml khulnasoft/azuremonitor-containers
 
 ```
 
@@ -131,7 +131,7 @@ After you successfully deploy the chart, you will be able to see your data in
 - [azure china cloud portal](https://aka.ms/azmon-containers-mooncake) for the clusters in Azure China Cloud
 - [azure us government cloud portal](https://aka.ms/azmon-containers-fairfax) for the clusters in Azure US Government Cloud
 
-If you need help with this chart, please reach us out by [creating a support ticket](https://azure.microsoft.com/en-us/support/create-ticket) in Azure.
+If you need help with this chart, please reach us out by [creating a support ticket](https://azure.khulnasoft.com/en-us/support/create-ticket) in Azure.
 
 ## Custom resource
 
@@ -177,4 +177,4 @@ Once the Azure Monitor for containers chart successfully onboarded, you should b
 
 # Contact
 
-If you have any questions or feedback regarding the container monitoring addon, please reach us by [creating a support ticket](https://azure.microsoft.com/en-us/support/create-ticket) in Azure.
+If you have any questions or feedback regarding the container monitoring addon, please reach us by [creating a support ticket](https://azure.khulnasoft.com/en-us/support/create-ticket) in Azure.

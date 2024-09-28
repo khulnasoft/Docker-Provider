@@ -9,7 +9,7 @@ else
     ARCH=$1
 fi
 
-sudo tdnf install ca-certificates-microsoft -y
+sudo tdnf install ca-certificates-khulnasoft -y
 sudo update-ca-trust
 
 # sudo tdnf install ruby-3.1.3 -y

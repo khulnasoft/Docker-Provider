@@ -28,7 +28,7 @@ const (
 	TokenFileName       = "/var/run/secrets/kubernetes.io/serviceaccount/token"
 	KubeSystemNamespace = "kube-system"
 	WindowsLogPath      = "/etc/amalogswindows/"
-	LinuxLogPath        = "/var/opt/microsoft/docker-cimprov/log/"
+	LinuxLogPath        = "/var/opt/khulnasoft/docker-cimprov/log/"
 )
 
 var (

@@ -1,8 +1,8 @@
 #!/usr/local/bin/ruby
 require_relative "ConfigParseErrorLogger"
 
-@fluent_bit_conf_path = "/etc/opt/microsoft/docker-cimprov/fluent-bit.conf"
-@fluent_bit_common_conf_path = "/etc/opt/microsoft/docker-cimprov/fluent-bit-common.conf"
+@fluent_bit_conf_path = "/etc/opt/khulnasoft/docker-cimprov/fluent-bit.conf"
+@fluent_bit_common_conf_path = "/etc/opt/khulnasoft/docker-cimprov/fluent-bit-common.conf"
 
 @os_type = ENV["OS_TYPE"]
 @isWindows = false
@@ -76,7 +76,7 @@ def substituteResourceOptimization(resourceOptimizationEnabled, new_contents)
     if (@isWindows)
       new_contents = new_contents.gsub("#${ResourceOptimizationPluginFile}", "plugins_file  /etc/fluent-bit/azm-containers-input-plugins.conf")
     else
-      new_contents = new_contents.gsub("#${ResourceOptimizationPluginFile}", "plugins_file  /etc/opt/microsoft/docker-cimprov/azm-containers-input-plugins.conf")
+      new_contents = new_contents.gsub("#${ResourceOptimizationPluginFile}", "plugins_file  /etc/opt/khulnasoft/docker-cimprov/azm-containers-input-plugins.conf")
     end
     new_contents = new_contents.gsub("#${ResourceOptimizationFBConfigFile}", "@INCLUDE fluent-bit-input.conf")
   end

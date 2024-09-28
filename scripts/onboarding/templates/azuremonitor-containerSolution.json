@@ -17,7 +17,7 @@
     },
     "resources": [
         {
-            "type": "Microsoft.Resources/deployments",
+            "type": "Khulnasoft.Resources/deployments",
             "name": "[Concat('ContainerInsights', '-',  uniqueString(parameters('workspaceResourceId')))]",
             "apiVersion": "2017-05-10",
             "subscriptionId": "[split(parameters('workspaceResourceId'),'/')[2]]",
@@ -32,7 +32,7 @@
                     "resources": [
                         {
                             "apiVersion": "2015-11-01-preview",
-                            "type": "Microsoft.OperationsManagement/solutions",
+                            "type": "Khulnasoft.OperationsManagement/solutions",
                             "location": "[parameters('workspaceRegion')]",
                             "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceResourceId'),'/')[8], ')')]",
                             "properties": {
@@ -42,7 +42,7 @@
                                 "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceResourceId'),'/')[8], ')')]",
                                 "product": "[Concat('OMSGallery/', 'ContainerInsights')]",
                                 "promotionCode": "",
-                                "publisher": "Microsoft"
+                                "publisher": "Khulnasoft"
                             }
                         }
                     ]

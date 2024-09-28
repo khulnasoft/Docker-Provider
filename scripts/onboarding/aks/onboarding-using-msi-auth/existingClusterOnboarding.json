@@ -29,13 +29,13 @@
         "workspaceResourceId": {
             "type": "string",
             "metadata": {
-                "description": "Full Resource ID of the log analitycs workspace that will be used for data destination. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.operationalinsights/workspaces/ws_xyz"
+                "description": "Full Resource ID of the log analitycs workspace that will be used for data destination. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Khulnasoft.operationalinsights/workspaces/ws_xyz"
             }
         },
         "streams": {
             "type": "array",
             "metadata": {
-                "description": "Array of default container insights streams. Use Microsoft-ContainerLogV2-HighScale instead of Microsoft-ContainerLogV2 when enabled in high log scale mode"
+                "description": "Array of default container insights streams. Use Khulnasoft-ContainerLogV2-HighScale instead of Khulnasoft-ContainerLogV2 when enabled in high log scale mode"
             }
         },
         "enableContainerLogV2": {
@@ -108,9 +108,9 @@
         "workspaceLocation": "[replace(parameters('workspaceRegion'),' ', '')]",
         "dcrNameFull": "[Concat('MSCI', '-', variables('workspaceLocation'), '-', variables('clusterName'))]",
         "dcrName": "[if(greater(length(variables('dcrNameFull')), 64), substring(variables('dcrNameFull'), 0, 64), variables('dcrNameFull'))]",
-        "enableHighLogScaleMode": "[if(contains(parameters('streams'),'Microsoft-ContainerLogV2-HighScale'), bool('true'), bool('false'))]",
+        "enableHighLogScaleMode": "[if(contains(parameters('streams'),'Khulnasoft-ContainerLogV2-HighScale'), bool('true'), bool('false'))]",
         "associationName": "ContainerInsightsExtension",
-        "dataCollectionRuleId": "[resourceId(variables('clusterSubscriptionId'), variables('clusterResourceGroup'), 'Microsoft.Insights/dataCollectionRules', variables('dcrName'))]",
+        "dataCollectionRuleId": "[resourceId(variables('clusterSubscriptionId'), variables('clusterResourceGroup'), 'Khulnasoft.Insights/dataCollectionRules', variables('dcrName'))]",
         "configDCENameFull": "[Concat('MSCI-config', '-', variables('clusterLocation'), '-', variables('clusterName'))]",
         "ingestionDCENameFull": "[Concat('MSCI-ingest', '-', variables('workspaceLocation'), '-', variables('clusterName'))]",
         "configDCEName": "[if(greater(length(variables('configDCENameFull')), 43), substring(variables('configDCENameFull'), 0, 43), variables('configDCENameFull'))]",
@@ -119,8 +119,8 @@
         "ingestionDCE": "[if(endsWith(variables('ingestionDCEName'), '-'), substring(variables('ingestionDCEName'), 0, 42), variables('ingestionDCEName'))]",
         "configDCEAssociationName": "configurationAccessEndpoint",
         "ingestionDCEAssociationName": "ingestionEndpoint",
-        "configDataCollectionEndpointId": "[resourceId(variables('clusterSubscriptionId'), variables('clusterResourceGroup'), 'Microsoft.Insights/dataCollectionEndpoints', variables('configDCE'))]",
-        "ingestionDataCollectionEndpointId": "[resourceId(variables('clusterSubscriptionId'), variables('clusterResourceGroup'), 'Microsoft.Insights/dataCollectionEndpoints', variables('ingestionDCE'))]",
+        "configDataCollectionEndpointId": "[resourceId(variables('clusterSubscriptionId'), variables('clusterResourceGroup'), 'Khulnasoft.Insights/dataCollectionEndpoints', variables('configDCE'))]",
+        "ingestionDataCollectionEndpointId": "[resourceId(variables('clusterSubscriptionId'), variables('clusterResourceGroup'), 'Khulnasoft.Insights/dataCollectionEndpoints', variables('ingestionDCE'))]",
         "privateLinkScopeName": "[split(parameters('azureMonitorPrivateLinkScopeResourceId'),'/')[8]]",
         "privateLinkScopeResourceGroup": "[split(parameters('azureMonitorPrivateLinkScopeResourceId'),'/')[4]]",
         "privateLinkScopeSubscriptionId": "[split(parameters('azureMonitorPrivateLinkScopeResourceId'),'/')[2]]",
@@ -131,7 +131,7 @@
             "variables": {},
             "resources": [
                 {
-                    "type": "Microsoft.Insights/dataCollectionRules",
+                    "type": "Khulnasoft.Insights/dataCollectionRules",
                     "apiVersion": "2022-06-01",
                     "name": "[variables('dcrName')]",
                     "location": "[parameters('workspaceRegion')]",
@@ -183,7 +183,7 @@
             "variables": {},
             "resources": [
                 {
-                    "type": "Microsoft.Insights/dataCollectionRules",
+                    "type": "Khulnasoft.Insights/dataCollectionRules",
                     "apiVersion": "2022-06-01",
                     "name": "[variables('dcrName')]",
                     "location": "[parameters('workspaceRegion')]",
@@ -194,7 +194,7 @@
                             "syslog": [
                                 {
                                     "streams": [
-                                        "Microsoft-Syslog"
+                                        "Khulnasoft-Syslog"
                                     ],
                                     "facilityNames": "[parameters('syslogFacilities')]",
                                     "logLevels": "[parameters('syslogLevels')]",
@@ -234,7 +234,7 @@
                             },
                             {
                                 "streams": [
-                                    "Microsoft-Syslog"
+                                    "Khulnasoft-Syslog"
                                 ],
                                 "destinations": [
                                     "ciworkspace"
@@ -251,7 +251,7 @@
     "resources": [
         {
             "condition": "[parameters('useAzureMonitorPrivateLinkScope')]",
-            "type": "Microsoft.Insights/dataCollectionEndpoints",
+            "type": "Khulnasoft.Insights/dataCollectionEndpoints",
             "apiVersion": "2022-06-01",
             "name": "[variables('configDCE')]",
             "location": "[variables('clusterLocation')]",
@@ -265,7 +265,7 @@
         },
         {
             "condition": "[variables('enableHighLogScaleMode')]",
-            "type": "Microsoft.Insights/dataCollectionEndpoints",
+            "type": "Khulnasoft.Insights/dataCollectionEndpoints",
             "apiVersion": "2022-06-01",
             "name": "[variables('ingestionDCE')]",
             "location": "[variables('workspaceLocation')]",
@@ -278,7 +278,7 @@
             }
         },
         {
-            "type": "Microsoft.Resources/deployments",
+            "type": "Khulnasoft.Resources/deployments",
             "name": "[Concat('aks-monitoring-msi-dcr', '-',  uniqueString(variables('dcrName')))]",
             "apiVersion": "2017-05-10",
             "subscriptionId": "[variables('clusterSubscriptionId')]",
@@ -290,7 +290,7 @@
             }
         },
         {
-            "type": "Microsoft.Resources/deployments",
+            "type": "Khulnasoft.Resources/deployments",
             "name": "[Concat('aks-monitoring-msi-dcra', '-',  uniqueString(parameters('aksResourceId')))]",
             "apiVersion": "2017-05-10",
             "subscriptionId": "[variables('clusterSubscriptionId')]",
@@ -307,8 +307,8 @@
                     "variables": {},
                     "resources": [
                         {
-                            "type": "Microsoft.ContainerService/managedClusters/providers/dataCollectionRuleAssociations",
-                            "name": "[concat(variables('clusterName'),'/microsoft.insights/', variables('associationName'))]",
+                            "type": "Khulnasoft.ContainerService/managedClusters/providers/dataCollectionRuleAssociations",
+                            "name": "[concat(variables('clusterName'),'/khulnasoft.insights/', variables('associationName'))]",
                             "apiVersion": "2022-06-01",
                             "properties": {
                                 "description": "Association of data collection rule. Deleting this association will break the data collection for this AKS Cluster.",
@@ -322,13 +322,13 @@
         },
         {
             "condition": "[parameters('useAzureMonitorPrivateLinkScope')]",
-            "type": "Microsoft.Resources/deployments",
+            "type": "Khulnasoft.Resources/deployments",
             "name": "[Concat('aks-monitoring-msi-dcea-config', '-',  uniqueString(parameters('aksResourceId')))]",
             "apiVersion": "2017-05-10",
             "subscriptionId": "[variables('clusterSubscriptionId')]",
             "resourceGroup": "[variables('clusterResourceGroup')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Insights/dataCollectionEndpoints/', variables('configDCE'))]"
+                "[resourceId('Khulnasoft.Insights/dataCollectionEndpoints/', variables('configDCE'))]"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -339,8 +339,8 @@
                     "variables": {},
                     "resources": [
                         {
-                            "type": "Microsoft.ContainerService/managedClusters/providers/dataCollectionRuleAssociations",
-                            "name": "[concat(variables('clusterName'),'/microsoft.insights/', variables('configDCEAssociationName'))]",
+                            "type": "Khulnasoft.ContainerService/managedClusters/providers/dataCollectionRuleAssociations",
+                            "name": "[concat(variables('clusterName'),'/khulnasoft.insights/', variables('configDCEAssociationName'))]",
                             "apiVersion": "2022-06-01",
                             "properties": {
                                 "description": "Association of data collection rule endpoint. Deleting this association will break the data collection endpoint for this AKS Cluster.",
@@ -354,13 +354,13 @@
         },
         {
             "condition": "[parameters('useAzureMonitorPrivateLinkScope')]",
-            "type": "Microsoft.Resources/deployments",
+            "type": "Khulnasoft.Resources/deployments",
             "name": "[Concat('aks-monitoring-msi-ampls-scope-config', '-',  uniqueString(parameters('aksResourceId')))]",
             "apiVersion": "2017-05-10",
             "subscriptionId": "[variables('privateLinkScopeSubscriptionId')]",
             "resourceGroup": "[variables('privateLinkScopeResourceGroup')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Insights/dataCollectionEndpoints/', variables('configDCE'))]"
+                "[resourceId('Khulnasoft.Insights/dataCollectionEndpoints/', variables('configDCE'))]"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -371,7 +371,7 @@
                     "variables": {},
                     "resources": [
                         {
-                            "type": "microsoft.insights/privatelinkscopes/scopedresources",
+                            "type": "khulnasoft.insights/privatelinkscopes/scopedresources",
                             "name": "[concat(variables('privateLinkScopeName'), '/', concat(variables('configDCE'), '-connection'))]",
                             "apiVersion": "2021-07-01-preview",
                             "properties": {
@@ -385,13 +385,13 @@
         },
         {
             "condition": "[and(parameters('useAzureMonitorPrivateLinkScope'), variables('enableHighLogScaleMode'))]",
-            "type": "Microsoft.Resources/deployments",
+            "type": "Khulnasoft.Resources/deployments",
             "name": "[Concat('aks-monitoring-msi-ampls-scope-ingest', '-',  uniqueString(parameters('aksResourceId')))]",
             "apiVersion": "2017-05-10",
             "subscriptionId": "[variables('privateLinkScopeSubscriptionId')]",
             "resourceGroup": "[variables('privateLinkScopeResourceGroup')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Insights/dataCollectionEndpoints/', variables('ingestionDCE'))]"
+                "[resourceId('Khulnasoft.Insights/dataCollectionEndpoints/', variables('ingestionDCE'))]"
             ],
             "properties": {
                 "mode": "Incremental",
@@ -402,7 +402,7 @@
                     "variables": {},
                     "resources": [
                         {
-                            "type": "microsoft.insights/privatelinkscopes/scopedresources",
+                            "type": "khulnasoft.insights/privatelinkscopes/scopedresources",
                             "name": "[concat(variables('privateLinkScopeName'), '/', concat(variables('ingestionDCE'), '-connection'))]",
                             "apiVersion": "2021-07-01-preview",
                             "properties": {
@@ -416,7 +416,7 @@
         },
         {
             "condition": "[parameters('useAzureMonitorPrivateLinkScope')]",
-            "type": "Microsoft.Resources/deployments",
+            "type": "Khulnasoft.Resources/deployments",
             "name": "[Concat('aks-monitoring-msi-ampls-scope', '-',  uniqueString(parameters('workspaceResourceId')))]",
             "apiVersion": "2017-05-10",
             "subscriptionId": "[variables('privateLinkScopeSubscriptionId')]",
@@ -430,7 +430,7 @@
                     "variables": {},
                     "resources": [
                         {
-                            "type": "microsoft.insights/privatelinkscopes/scopedresources",
+                            "type": "khulnasoft.insights/privatelinkscopes/scopedresources",
                             "name": "[concat(variables('privateLinkScopeName'), '/', concat(variables('workspaceName'), '-connection'))]",
                             "apiVersion": "2021-07-01-preview",
                             "properties": {
@@ -443,7 +443,7 @@
             }
         },
         {
-            "type": "Microsoft.Resources/deployments",
+            "type": "Khulnasoft.Resources/deployments",
             "name": "[Concat('aks-monitoring-msi-addon', '-',  uniqueString(parameters('aksResourceId')))]",
             "apiVersion": "2017-05-10",
             "subscriptionId": "[variables('clusterSubscriptionId')]",
@@ -462,7 +462,7 @@
                     "resources": [
                         {
                             "name": "[variables('clusterName')]",
-                            "type": "Microsoft.ContainerService/managedClusters",
+                            "type": "Khulnasoft.ContainerService/managedClusters",
                             "location": "[parameters('aksResourceLocation')]",
                             "tags": "[parameters('resourceTagValues')]",
                             "apiVersion": "2019-04-01",

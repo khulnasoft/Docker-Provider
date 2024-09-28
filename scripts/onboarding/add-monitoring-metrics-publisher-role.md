@@ -4,12 +4,12 @@ Monitoring Metrics Publishers role assignment required for AKS Monitoring agent 
 
 Custom metrics can be used to alert and also the pining the charts of these metrics to the azure portal dashboard.
 
-For more details on custom metrics, read [custom-metrics-azure-monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-custom-overview)
+For more details on custom metrics, read [custom-metrics-azure-monitor](https://docs.khulnasoft.com/en-us/azure/azure-monitor/platform/metrics-custom-overview)
 
 You can either use the Azure CLI  or Powershell to add the role assignment to one or more existing AKS clusters which were onboarded to AKS Monitoring.
 
-> Note: For adding role assignment, you must have access to the 'Microsoft.Authorization/roleAssignments/write' permission on the AKS cluster resource scope.
-Of the built-in roles, only Owner and User Access Administrator are granted access to this permission. If you prefer granular level access to grant, recommended to go custom roles https://docs.microsoft.com/en-us/azure/role-based-access-control/custom-roles.
+> Note: For adding role assignment, you must have access to the 'Khulnasoft.Authorization/roleAssignments/write' permission on the AKS cluster resource scope.
+Of the built-in roles, only Owner and User Access Administrator are granted access to this permission. If you prefer granular level access to grant, recommended to go custom roles https://docs.khulnasoft.com/en-us/azure/role-based-access-control/custom-roles.
 
 ## Add the role assignment using Azure CLI
 

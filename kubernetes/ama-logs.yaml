@@ -365,7 +365,7 @@ spec:
         #     - --health-server-listening-port=9999
         #     - --restart-pod-waiting-minutes-on-broken-connection=240
         #   # Make sure this matching with version in AKS RP side
-        #   image: mcr.microsoft.com/aks/msi/addon-token-adapter:master.230804.1
+        #   image: mcr.khulnasoft.com/aks/msi/addon-token-adapter:master.230804.1
         #   imagePullPolicy: IfNotPresent
         #   env:
         #     - name: AZMON_COLLECT_ENV
@@ -391,7 +391,7 @@ spec:
         #         - NET_ADMIN
         #         - NET_RAW
         - name: ama-logs
-          image: "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:3.1.23"
+          image: "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:3.1.23"
           imagePullPolicy: IfNotPresent
           resources:
             limits:
@@ -523,7 +523,7 @@ spec:
             timeoutSeconds: 15
 #Only in sidecar scraping mode
         - name: ama-logs-prometheus
-          image: "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:3.1.23"
+          image: "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:3.1.23"
           imagePullPolicy: IfNotPresent
           resources:
             limits:
@@ -785,7 +785,7 @@ spec:
             - --health-server-listening-port=9999
             - --restart-pod-waiting-minutes-on-broken-connection=240
           # Make sure this matching with version in AKS RP side
-          image: mcr.microsoft.com/aks/msi/addon-token-adapter:master.230804.1
+          image: mcr.khulnasoft.com/aks/msi/addon-token-adapter:master.230804.1
           imagePullPolicy: IfNotPresent
           env:
             - name: AZMON_COLLECT_ENV
@@ -811,7 +811,7 @@ spec:
                 - NET_ADMIN
                 - NET_RAW
         - name: ama-logs
-          image: "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:3.1.22"
+          image: "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:3.1.22"
           imagePullPolicy: IfNotPresent
           resources:
             limits:
@@ -950,7 +950,7 @@ spec:
       containers:
         # Uncomment below lines to enable VPA
         #   # Make sure this matching with version in AKS RP side
-        # - image: "mcr.microsoft.com/oss/kubernetes/autoscaler/addon-resizer:1.8.14"
+        # - image: "mcr.khulnasoft.com/oss/kubernetes/autoscaler/addon-resizer:1.8.14"
         #   imagePullPolicy: IfNotPresent
         #   name: ama-logs-vpa
         #   resources:
@@ -995,7 +995,7 @@ spec:
         #     - --health-server-listening-port=9999
         #     - --restart-pod-waiting-minutes-on-broken-connection=240
         #   # Make sure this matching with version in AKS RP side
-        #   image: mcr.microsoft.com/aks/msi/addon-token-adapter:master.230804.1
+        #   image: mcr.khulnasoft.com/aks/msi/addon-token-adapter:master.230804.1
         #   imagePullPolicy: IfNotPresent
         #   env:
         #     - name: AZMON_COLLECT_ENV
@@ -1021,7 +1021,7 @@ spec:
         #         - NET_ADMIN
         #         - NET_RAW
         - name: ama-logs
-          image: "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:3.1.23"
+          image: "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:3.1.23"
           imagePullPolicy: IfNotPresent
           # comment resources if VPA configured since the VPA will set these values
           resources:
@@ -1260,7 +1260,7 @@ spec:
       #     - --secret-name=aad-msi-auth-token
       #     - --token-server-listening-port=7777
       #     - --health-server-listening-port=9999
-      #    image: "mcr.microsoft.com/aks/msi/addon-token-adapter:master.240102.1"
+      #    image: "mcr.khulnasoft.com/aks/msi/addon-token-adapter:master.240102.1"
       #    imagePullPolicy: Always
       #    livenessProbe:
       #     httpGet:
@@ -1279,7 +1279,7 @@ spec:
       #       add:
       #         - NET_ADMIN
        - name: ama-logs-windows
-         image: "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:win-3.1.23"
+         image: "mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:win-3.1.23"
          imagePullPolicy: IfNotPresent
          resources:
           requests:

@@ -14,7 +14,7 @@ install-helm()
 
 download-and-install-azure-cli()
 {
-  # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install-with-one-command
+  # https://docs.khulnasoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest#install-with-one-command
   sudo curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 }
 
@@ -35,23 +35,23 @@ install-and-update-k8s-extensions()
 
 install_arc_k8s_prerequisites()
 {
-   echo "register Microsoft.Kubernetes provider"
-   az provider register --namespace Microsoft.Kubernetes --wait
+   echo "register Khulnasoft.Kubernetes provider"
+   az provider register --namespace Khulnasoft.Kubernetes --wait
 
-   echo "register Microsoft.KubernetesConfiguration provider"
-   az provider register --namespace Microsoft.KubernetesConfiguration --wait
+   echo "register Khulnasoft.KubernetesConfiguration provider"
+   az provider register --namespace Khulnasoft.KubernetesConfiguration --wait
 
-   k8sRegistrationState=$(az provider show -n Microsoft.Kubernetes --query registrationState -o tsv)
+   k8sRegistrationState=$(az provider show -n Khulnasoft.Kubernetes --query registrationState -o tsv)
    k8sRegistrationState=$(echo $k8sRegistrationState | tr "[:upper:]" "[:lower:]")
-   echo "Microsoft.Kubernetes registration state: ${k8sRegistrationState}"
+   echo "Khulnasoft.Kubernetes registration state: ${k8sRegistrationState}"
    if [ "$k8sRegistrationState" != "registered" ]; then
       echo "registartion requires around 5 to 10 mins so waiting for 5 mins"
       sleep 5m
    fi
 
-   k8sConfigState=$(az provider show -n Microsoft.KubernetesConfiguration --query registrationState -o tsv)
+   k8sConfigState=$(az provider show -n Khulnasoft.KubernetesConfiguration --query registrationState -o tsv)
    k8sConfigState=$(echo $k8sConfigState | tr "[:upper:]" "[:lower:]")
-   echo "Microsoft.KubernetesConfiguration registration state: ${k8sConfigState}"
+   echo "Khulnasoft.KubernetesConfiguration registration state: ${k8sConfigState}"
    if [ "$k8sConfigState" != "registered" ]; then
       echo "registartion requires around 5 to 10 mins so waiting for 5 mins"
       sleep 5m

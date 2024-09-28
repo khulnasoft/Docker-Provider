@@ -1,4 +1,4 @@
-# Copyright (c) Microsoft Corporation.  All rights reserved.
+# Copyright (c) Khulnasoft Corporation.  All rights reserved.
 
 # frozen_string_literal: true
 
@@ -81,7 +81,7 @@ class Inventory2MdmConvertor
   @process_incoming_stream = false
 
   def initialize()
-    @log_path = "/var/opt/microsoft/docker-cimprov/log/mdm_metrics_generator.log"
+    @log_path = "/var/opt/khulnasoft/docker-cimprov/log/mdm_metrics_generator.log"
     @log = Logger.new(@log_path, 1, 5000000)
     @pod_count_hash = {}
     @no_phase_dim_values_hash = {}

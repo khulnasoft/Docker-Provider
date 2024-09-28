@@ -6,7 +6,7 @@
 #
 #  1. Upgrades existing Azure Monitor for containers release to the K8s cluster in provided via --kube-context
 # Prerequisites :
-#     Azure CLI:  https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
+#     Azure CLI:  https://docs.khulnasoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 #     Helm3 : https://helm.sh/docs/intro/install/
 
 # download script
@@ -19,27 +19,27 @@
 set -e
 set -o pipefail
 
-# microsoft helm chart repo
-microsoftHelmRepo="https://microsoft.github.io/charts/repo"
-microsoftHelmRepoName="microsoft"
+# khulnasoft helm chart repo
+khulnasoftHelmRepo="https://khulnasoft.github.io/charts/repo"
+khulnasoftHelmRepoName="khulnasoft"
 # default to public cloud since only supported cloud is azure public clod
 defaultAzureCloud="AzureCloud"
-# microsoft helm chart repo
-microsoftHelmRepo="https://microsoft.github.io/charts/repo"
-microsoftHelmRepoName="microsoft"
+# khulnasoft helm chart repo
+khulnasoftHelmRepo="https://khulnasoft.github.io/charts/repo"
+khulnasoftHelmRepoName="khulnasoft"
 helmChartName="azuremonitor-containers"
 
 # default release name used during onboarding
 releaseName="azmon-containers-release-1"
 
 # resource provider for azure arc connected cluster
-arcK8sResourceProvider="Microsoft.Kubernetes/connectedClusters"
+arcK8sResourceProvider="Khulnasoft.Kubernetes/connectedClusters"
 
 # default of resourceProvider is Azure Arc enabled Kubernetes and this will get updated based on the provider cluster resource
-resourceProvider="Microsoft.Kubernetes/connectedClusters"
+resourceProvider="Khulnasoft.Kubernetes/connectedClusters"
 
 # resource provider for azure redhat openshift v4 cluster
-aroV4ResourceProvider="Microsoft.RedHatOpenShift/OpenShiftClusters"
+aroV4ResourceProvider="Khulnasoft.RedHatOpenShift/OpenShiftClusters"
 
 # Azure Arc enabled Kubernetes cluster resource
 isArcK8sCluster=false
@@ -161,21 +161,21 @@ parse_args() {
     exit 1
   fi
 
-  if [[ $providerName != microsoft.* ]]; then
+  if [[ $providerName != khulnasoft.* ]]; then
     echo "-e invalid azure cluster resource id format."
     exit 1
   fi
 
   # detect the resource provider from the provider name in the cluster resource id
-  if [ $providerName = "microsoft.kubernetes/connectedclusters" ]; then
+  if [ $providerName = "khulnasoft.kubernetes/connectedclusters" ]; then
     echo "provider cluster resource is of Azure Arc enabled Kubernetes cluster type"
     isArcK8sCluster=true
     resourceProvider=$arcK8sResourceProvider
-  elif [ $providerName = "microsoft.redhatopenshift/openshiftclusters" ]; then
+  elif [ $providerName = "khulnasoft.redhatopenshift/openshiftclusters" ]; then
     echo "provider cluster resource is of AROv4 cluster type"
     resourceProvider=$aroV4ResourceProvider
     isAroV4Cluster=true
-  elif [ $providerName = "microsoft.containerservice/managedclusters" ]; then
+  elif [ $providerName = "khulnasoft.containerservice/managedclusters" ]; then
     echo "provider cluster resource is of AKS cluster type"
     isAksCluster=true
     resourceProvider=$aksResourceProvider
@@ -256,7 +256,7 @@ upgrade_helm_chart_release() {
     echo "installing Azure Monitor for containers HELM chart on to the cluster with kubecontext:${kubeconfigContext} ..."
   fi
 
-  helmChartRepoPath=$microsoftHelmRepoName/$helmChartName
+  helmChartRepoPath=$khulnasoftHelmRepoName/$helmChartName
 
   echo "upgrading the release: $releaseName to chart version : ${mcrChartVersion}"
   helm get values $releaseName -o yaml | helm upgrade --install $releaseName $helmChartRepoPath -f -
@@ -297,9 +297,9 @@ validate_and_configure_supported_cloud() {
 
 # add helm chart repo and update repo to get latest chart version
 add_and_update_helm_chart_repo() {
-  echo "adding helm repo: ${microsoftHelmRepoName} with repo path: ${microsoftHelmRepo}"
-  helm repo add ${microsoftHelmRepoName} ${microsoftHelmRepo}
-  echo "updating helm repo: ${microsoftHelmRepoName} to get local charts updated with latest ones"
+  echo "adding helm repo: ${khulnasoftHelmRepoName} with repo path: ${khulnasoftHelmRepo}"
+  helm repo add ${khulnasoftHelmRepoName} ${khulnasoftHelmRepo}
+  echo "updating helm repo: ${khulnasoftHelmRepoName} to get local charts updated with latest ones"
   helm repo update
 }
 

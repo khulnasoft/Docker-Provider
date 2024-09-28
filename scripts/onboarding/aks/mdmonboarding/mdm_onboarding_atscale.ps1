@@ -210,7 +210,7 @@ for ($index = 0 ; $index -lt $clustersCount ; $index++) {
     else {
         $splitId = $allCLusters[$index].Id -split "(/)"
         $ClusterResourceGroup = $splitId[8]
-        $ResourceDetailsArray = Get-AzResource -ResourceGroupName $ClusterResourceGroup -Name $clusterName -ResourceType "Microsoft.ContainerService/managedClusters" -ExpandProperties -ErrorAction Stop -WarningAction Stop
+        $ResourceDetailsArray = Get-AzResource -ResourceGroupName $ClusterResourceGroup -Name $clusterName -ResourceType "Khulnasoft.ContainerService/managedClusters" -ExpandProperties -ErrorAction Stop -WarningAction Stop
         if ($ResourceDetailsArray -ne $null -and $ResourceDetailsArray[0].properties.addonprofiles.omsagent -ne $null -and $ResourceDetailsArray[0].properties.addonprofiles.omsagent.identity -ne $null) {
             Write-Host("Found MSI for the cluster: $clusterResourceId...")
             $servicePrincipalMsiClientId = $ResourceDetailsArray[0].properties.addonprofiles.omsagent.identity.clientId

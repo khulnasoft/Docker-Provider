@@ -1,4 +1,4 @@
-# Copyright (c) Microsoft Corporation.  All rights reserved.
+# Copyright (c) Khulnasoft Corporation.  All rights reserved.
 
 # frozen_string_literal: true
 
@@ -14,7 +14,7 @@ module Fluent::Plugin
 		Fluent::Plugin.register_filter('inventory2mdm', self)
 
 		config_param :enable_log, :integer, :default => 0
-        config_param :log_path, :string, :default => '/var/opt/microsoft/docker-cimprov/log/filter_inventory2mdm.log'
+        config_param :log_path, :string, :default => '/var/opt/khulnasoft/docker-cimprov/log/filter_inventory2mdm.log'
 
         @@node_count_metric_name = 'nodesCount'
         @@pod_count_metric_name = 'podCount'

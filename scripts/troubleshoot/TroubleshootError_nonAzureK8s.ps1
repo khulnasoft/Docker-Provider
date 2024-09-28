@@ -38,13 +38,13 @@ param(
 )
 
 $ErrorActionPreference = "Stop";
-$OptInLink = "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-hybrid-setup"
+$OptInLink = "https://docs.khulnasoft.com/en-us/azure/azure-monitor/insights/container-insights-hybrid-setup"
 Start-Transcript -path .\TroubleshootDumpForNonAzureK8s.txt -Force
-$contactUSMessage = "Please contact us by creating a support ticket for help. Use this link: https://azure.microsoft.com/en-us/support/create-ticket"
+$contactUSMessage = "Please contact us by creating a support ticket for help. Use this link: https://azure.khulnasoft.com/en-us/support/create-ticket"
 
 Write-Host("LogAnalyticsWorkspaceResourceId: : '" + $azureLogAnalyticsWorkspaceResourceId + "' ")
-if (($azureLogAnalyticsWorkspaceResourceId.ToLower().Contains("microsoft.operationalinsights/workspaces") -ne $true) -or ($azureLogAnalyticsWorkspaceResourceId.Split("/").Length -ne 9)) {
-    Write-Host("Provided Azure Log Analytics resource id should be in this format /subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>") -ForegroundColor Red
+if (($azureLogAnalyticsWorkspaceResourceId.ToLower().Contains("khulnasoft.operationalinsights/workspaces") -ne $true) -or ($azureLogAnalyticsWorkspaceResourceId.Split("/").Length -ne 9)) {
+    Write-Host("Provided Azure Log Analytics resource id should be in this format /subscriptions/<subId>/resourceGroups/<rgName>/providers/Khulnasoft.OperationalInsights/workspaces/<workspaceName>") -ForegroundColor Red
     Stop-Transcript
     exit 1
 }
@@ -474,7 +474,7 @@ try {
     $amaLogsImage = $amaLogsInfo.items.spec.containers.image.split(":")[1]
 
     Write-Host('The version of the ama-logs running on your cluster is ' + $amaLogsImage)
-    Write-Host('You can encounter problems with your cluster if your ama-logs isnt on the latest version. Please go to https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-manage-agent and validate that you have the latest ama-logs version running.') -ForegroundColor Yellow
+    Write-Host('You can encounter problems with your cluster if your ama-logs isnt on the latest version. Please go to https://docs.khulnasoft.com/en-us/azure/azure-monitor/insights/container-insights-manage-agent and validate that you have the latest ama-logs version running.') -ForegroundColor Yellow
 }
 catch {
     Write-Host ("Failed to execute the script  : '" + $Error[0] + "' ") -ForegroundColor Red
@@ -489,7 +489,7 @@ Write-Host("Performance charts (CPU or Memory) blank indicates that cAdvisor on 
 Write-Host("Please refer the cluster creation tool how to configure cAdvisor on the Kubelet to secure port:10250 or unsecure port: 10255") -ForegroundColor Yellow
 Write-Host("On all the nodes cAdvisor on the Kubelet MUST be configured either secure port:10250 or unsecure port:10255 to get the perfomance metrics") -ForegroundColor Yellow
 
-Write-Host("If you still have problem getting Azure Monitor for containers working for your K8s cluster. Please reach out us by creating a support ticket. Use this link: https://azure.microsoft.com/en-us/support/create-ticket") -ForegroundColor Yellow
+Write-Host("If you still have problem getting Azure Monitor for containers working for your K8s cluster. Please reach out us by creating a support ticket. Use this link: https://azure.khulnasoft.com/en-us/support/create-ticket") -ForegroundColor Yellow
 
 Write-Host("")
 Stop-Transcript

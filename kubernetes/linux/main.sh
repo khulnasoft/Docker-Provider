@@ -8,9 +8,9 @@ echo "startup script start @ $(date +'%Y-%m-%dT%H:%M:%S')"
 startAMACoreAgent() {
       echo "AMACoreAgent: Starting AMA Core Agent since High Log scale mode is enabled"
 
-      AMACALogFileDir="/var/opt/microsoft/linuxmonagent/amaca/log"
+      AMACALogFileDir="/var/opt/khulnasoft/linuxmonagent/amaca/log"
       AMACALogFilePath="$AMACALogFileDir"/amaca.log
-      AMACAConfigFilePath="/etc/opt/microsoft/azuremonitoragent/amacoreagent"
+      AMACAConfigFilePath="/etc/opt/khulnasoft/azuremonitoragent/amacoreagent"
       export PA_FLUENT_SOCKET_PORT=13000
       export PA_DATA_PORT=13000
       export PA_GIG_BRIDGE_MODE=true
@@ -30,7 +30,7 @@ startAMACoreAgent() {
       } >> ~/.bashrc
 
       source ~/.bashrc
-      /opt/microsoft/azure-mdsd/bin/amacoreagent -c $AMACAConfigFilePath --configport $PA_CONFIG_PORT --amacalog $AMACALogFilePath > /dev/null 2>&1 &
+      /opt/khulnasoft/azure-mdsd/bin/amacoreagent -c $AMACAConfigFilePath --configport $PA_CONFIG_PORT --amacalog $AMACALogFilePath > /dev/null 2>&1 &
 
       waitforlisteneronTCPport "$PA_FLUENT_SOCKET_PORT" "$WAITTIME_PORT_13000"
       waitforlisteneronTCPport "$PA_CONFIG_PORT" "$WAITTIME_PORT_12563"
@@ -71,7 +71,7 @@ setCloudSpecificApplicationInsightsConfig() {
             ;;
          "ussec")
             APPLICATIONINSIGHTS_AUTH="NTc5ZDRiZjUtMTA1Mi0wODQzLThhNTYtMjU5YzEyZmJhZTkyCg=="
-            APPLICATIONINSIGHTS_ENDPOINT="https://dc.applicationinsights.azure.microsoft.scloud/v2/track"
+            APPLICATIONINSIGHTS_ENDPOINT="https://dc.applicationinsights.azure.khulnasoft.scloud/v2/track"
             echo "export APPLICATIONINSIGHTS_AUTH=$APPLICATIONINSIGHTS_AUTH" >>~/.bashrc
             echo "export APPLICATIONINSIGHTS_ENDPOINT=$APPLICATIONINSIGHTS_ENDPOINT" >>~/.bashrc
             source ~/.bashrc
@@ -322,10 +322,10 @@ generateGenevaTenantNamespaceConfig() {
       for tenantNamespace in "${TenantNamespaces[@]}"; do
             tenantNamespace=$(echo $tenantNamespace | xargs)
             echo "tenant namespace onboarded to geneva logs:${tenantNamespace}"
-            cp /etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_tenant.conf /etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_tenant_${tenantNamespace}.conf
-            sed -i "s/<TENANT_NAMESPACE>/${tenantNamespace}/g" /etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_tenant_${tenantNamespace}.conf
+            cp /etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_tenant.conf /etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_tenant_${tenantNamespace}.conf
+            sed -i "s/<TENANT_NAMESPACE>/${tenantNamespace}/g" /etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_tenant_${tenantNamespace}.conf
       done
-      rm /etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_tenant.conf
+      rm /etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_tenant.conf
 }
 
 generateGenevaInfraNamespaceConfig() {
@@ -337,17 +337,17 @@ generateGenevaInfraNamespaceConfig() {
             infraNamespace=$(echo $infraNamespace | xargs)
             echo "infra namespace onboarded to geneva logs:${infraNamespace}"
             infraNamespaceWithoutSuffix=${infraNamespace%"$suffix"}
-            cp /etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_infra.conf /etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_infra_${infraNamespaceWithoutSuffix}.conf
-            sed -i "s/<INFRA_NAMESPACE>/${infraNamespace}/g" /etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_infra_${infraNamespaceWithoutSuffix}.conf
+            cp /etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_infra.conf /etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_infra_${infraNamespaceWithoutSuffix}.conf
+            sed -i "s/<INFRA_NAMESPACE>/${infraNamespace}/g" /etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_infra_${infraNamespaceWithoutSuffix}.conf
       done
-      rm /etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_infra.conf
+      rm /etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_infra.conf
 }
 
 echo "MARINER $(grep 'VERSION=' /etc/os-release)" >> packages_version.txt
 
-#using /var/opt/microsoft/docker-cimprov/state instead of /var/opt/microsoft/ama-logs/state since the latter gets deleted during onboarding
-mkdir -p /var/opt/microsoft/docker-cimprov/state
-echo "disabled" > /var/opt/microsoft/docker-cimprov/state/syslog.status
+#using /var/opt/khulnasoft/docker-cimprov/state instead of /var/opt/khulnasoft/ama-logs/state since the latter gets deleted during onboarding
+mkdir -p /var/opt/khulnasoft/docker-cimprov/state
+echo "disabled" > /var/opt/khulnasoft/docker-cimprov/state/syslog.status
 
 #Run inotify as a daemon to track changes to the mounted configmap.
 touch /opt/inotifyoutput.txt
@@ -472,7 +472,7 @@ elif [ $domain == "opinsights.azure.us" ]; then
       CLOUD_ENVIRONMENT="azureusgovernmentcloud"
 elif [ $domain == "opinsights.azure.eaglex.ic.gov" ]; then
       CLOUD_ENVIRONMENT="usnat"
-elif [ $domain == "opinsights.azure.microsoft.scloud" ]; then
+elif [ $domain == "opinsights.azure.khulnasoft.scloud" ]; then
       CLOUD_ENVIRONMENT="ussec"
 fi
 export CLOUD_ENVIRONMENT=$CLOUD_ENVIRONMENT
@@ -514,7 +514,7 @@ if [ -e "/etc/ama-logs-secret/WSID" ]; then
                        echo "successfully validated provided proxy endpoint is valid and expected format"
                   fi
 
-                  echo $pwd >/opt/microsoft/docker-cimprov/proxy_password
+                  echo $pwd >/opt/khulnasoft/docker-cimprov/proxy_password
 
                   export MDSD_PROXY_MODE=application
                   echo "export MDSD_PROXY_MODE=$MDSD_PROXY_MODE" >>~/.bashrc
@@ -523,7 +523,7 @@ if [ -e "/etc/ama-logs-secret/WSID" ]; then
                   if [ ! -z "$user" -a ! -z "$pwd" ]; then
                         export MDSD_PROXY_USERNAME=$user
                         echo "export MDSD_PROXY_USERNAME=$MDSD_PROXY_USERNAME" >> ~/.bashrc
-                        export MDSD_PROXY_PASSWORD_FILE=/opt/microsoft/docker-cimprov/proxy_password
+                        export MDSD_PROXY_PASSWORD_FILE=/opt/khulnasoft/docker-cimprov/proxy_password
                         echo "export MDSD_PROXY_PASSWORD_FILE=$MDSD_PROXY_PASSWORD_FILE" >> ~/.bashrc
                   fi
                   if [ -e "/etc/ama-logs-secret/PROXYCERT.crt" ]; then
@@ -561,7 +561,7 @@ if [ -e "/etc/ama-logs-secret/WSID" ]; then
       fi
 
       if [ $? -ne 0 ]; then
-            registry="https://mcr.microsoft.com/v2/"
+            registry="https://mcr.khulnasoft.com/v2/"
             if [ $CLOUD_ENVIRONMENT == "azurechinacloud" ]; then
                   registry="https://mcr.azk8s.cn/v2/"
             elif [ $CLOUD_ENVIRONMENT == "usnat" ] || [ $CLOUD_ENVIRONMENT == "ussec" ]; then
@@ -659,7 +659,7 @@ if [ "${ENABLE_FBIT_INTERNAL_METRICS}" == "true" ]; then
     echo "Fluent-bit Internal metrics configured"
 else
     # clear the conf file content
-    true > /etc/opt/microsoft/docker-cimprov/fluent-bit-internal-metrics.conf
+    true > /etc/opt/khulnasoft/docker-cimprov/fluent-bit-internal-metrics.conf
 fi
 
 setGlobalEnvVar GENEVA_LOGS_INTEGRATION "${GENEVA_LOGS_INTEGRATION}"
@@ -700,8 +700,8 @@ if [ "${GENEVA_LOGS_INTEGRATION_SERVICE_MODE}" != "true" ]; then
                   generateGenevaInfraNamespaceConfig
             else
                   # clear content of the files
-                  true > /etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_tenant.conf
-                  true > /etc/opt/microsoft/docker-cimprov/fluent-bit-geneva-logs_tenant_filter.conf
+                  true > /etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_tenant.conf
+                  true > /etc/opt/khulnasoft/docker-cimprov/fluent-bit-geneva-logs_tenant_filter.conf
             fi
       fi
 fi
@@ -895,9 +895,9 @@ else
 
       source ~/.bashrc
 
-      echo $NODE_NAME >/var/opt/microsoft/docker-cimprov/state/containerhostname
+      echo $NODE_NAME >/var/opt/khulnasoft/docker-cimprov/state/containerhostname
       #check if file was written successfully.
-      cat /var/opt/microsoft/docker-cimprov/state/containerhostname
+      cat /var/opt/khulnasoft/docker-cimprov/state/containerhostname
 fi
 
 #start cron daemon for logrotate
@@ -1007,7 +1007,7 @@ fi
 
 if [ -n "$SYSLOG_HOST_PORT" ] && [ "$SYSLOG_HOST_PORT" != "28330" ]; then
       echo "Updating rsyslog config file with non default SYSLOG_HOST_PORT value ${SYSLOG_HOST_PORT}"
-      if sed -i "s/Port=\"[0-9]*\"/Port=\"$SYSLOG_HOST_PORT\"/g" /etc/opt/microsoft/docker-cimprov/70-rsyslog-forward-mdsd-ci.conf; then
+      if sed -i "s/Port=\"[0-9]*\"/Port=\"$SYSLOG_HOST_PORT\"/g" /etc/opt/khulnasoft/docker-cimprov/70-rsyslog-forward-mdsd-ci.conf; then
             echo "Successfully updated the rsylog config file."
       else
             echo "Failed to update the rsyslog config file."
@@ -1108,7 +1108,7 @@ if [ "${CONTROLLER_TYPE}" == "ReplicaSet" ] && [ "${GENEVA_LOGS_INTEGRATION_SERV
     if [ "${ENABLE_CUSTOM_METRICS}" == "true" ]; then
         mv /etc/fluent/kube-cm.conf /etc/fluent/kube.conf
     fi
-    fluentd -c /etc/fluent/kube.conf -o /var/opt/microsoft/docker-cimprov/log/fluentd.log --log-rotate-age 5 --log-rotate-size 20971520 &
+    fluentd -c /etc/fluent/kube.conf -o /var/opt/khulnasoft/docker-cimprov/log/fluentd.log --log-rotate-age 5 --log-rotate-size 20971520 &
 elif [ "$AZMON_RESOURCE_OPTIMIZATION_ENABLED" != "true" ]; then
     # no dependency on fluentd for Prometheus sidecar container
     if [ "${CONTAINER_TYPE}" != "PrometheusSidecar" ] && [ "${GENEVA_LOGS_INTEGRATION_SERVICE_MODE}" != "true" ] && [ ! -e "/etc/config/kube.conf" ]; then
@@ -1117,7 +1117,7 @@ elif [ "$AZMON_RESOURCE_OPTIMIZATION_ENABLED" != "true" ]; then
             if [ "${ENABLE_CUSTOM_METRICS}" == "true" ]; then
                 mv /etc/fluent/container-cm.conf /etc/fluent/container.conf
             fi
-            fluentd -c /etc/fluent/container.conf -o /var/opt/microsoft/docker-cimprov/log/fluentd.log --log-rotate-age 5 --log-rotate-size 20971520 &
+            fluentd -c /etc/fluent/container.conf -o /var/opt/khulnasoft/docker-cimprov/log/fluentd.log --log-rotate-age 5 --log-rotate-size 20971520 &
         else
             echo "Skipping fluentd since LOGS_AND_EVENTS_ONLY is set to true"
         fi
@@ -1138,7 +1138,7 @@ else
                         echo "****************Start Telegraf in Test Mode**************************"
                         /opt/telegraf --config /opt/telegraf-test-prom-side-car.conf --input-filter file -test
                         if [ $? -eq 0 ]; then
-                              mv "/opt/telegraf-test-prom-side-car.conf" "/etc/opt/microsoft/docker-cimprov/telegraf-prom-side-car.conf"
+                              mv "/opt/telegraf-test-prom-side-car.conf" "/etc/opt/khulnasoft/docker-cimprov/telegraf-prom-side-car.conf"
                               echo "Moving test conf file to telegraf side-car conf since test run succeeded"
                         fi
                         echo "****************End Telegraf Run in Test Mode**************************"
@@ -1150,7 +1150,7 @@ else
                         echo "****************Start Telegraf in Test Mode**************************"
                         /opt/telegraf --config /opt/telegraf-test.conf --input-filter file -test
                         if [ $? -eq 0 ]; then
-                              mv "/opt/telegraf-test.conf" "/etc/opt/microsoft/docker-cimprov/telegraf.conf"
+                              mv "/opt/telegraf-test.conf" "/etc/opt/khulnasoft/docker-cimprov/telegraf.conf"
                               echo "Moving test conf file to telegraf daemonset conf since test run succeeded"
                         fi
                         echo "****************End Telegraf Run in Test Mode**************************"
@@ -1161,7 +1161,7 @@ else
                   echo "****************Start Telegraf in Test Mode**************************"
                   /opt/telegraf --config /opt/telegraf-test-rs.conf --input-filter file -test
                   if [ $? -eq 0 ]; then
-                        mv "/opt/telegraf-test-rs.conf" "/etc/opt/microsoft/docker-cimprov/telegraf-rs.conf"
+                        mv "/opt/telegraf-test-rs.conf" "/etc/opt/khulnasoft/docker-cimprov/telegraf-rs.conf"
                         echo "Moving test conf file to telegraf replicaset conf since test run succeeded"
                   fi
                   echo "****************End Telegraf Run in Test Mode**************************"
@@ -1172,10 +1172,10 @@ fi
 #telegraf & fluentbit requirements
 if [ ! -e "/etc/config/kube.conf" ]; then
       if [ "${CONTAINER_TYPE}" == "PrometheusSidecar" ]; then
-            telegrafConfFile="/etc/opt/microsoft/docker-cimprov/telegraf-prom-side-car.conf"
+            telegrafConfFile="/etc/opt/khulnasoft/docker-cimprov/telegraf-prom-side-car.conf"
             if [ "${MUTE_PROM_SIDECAR}" != "true" ]; then
                   echo "starting fluent-bit and setting telegraf conf file for prometheus sidecar"
-                  fluent-bit -c /etc/opt/microsoft/docker-cimprov/fluent-bit-prom-side-car.conf -e /opt/fluent-bit/bin/out_oms.so &
+                  fluent-bit -c /etc/opt/khulnasoft/docker-cimprov/fluent-bit-prom-side-car.conf -e /opt/fluent-bit/bin/out_oms.so &
             else
                   echo "not starting fluent-bit in prometheus sidecar (no metrics to scrape since MUTE_PROM_SIDECAR is true)"
             fi
@@ -1208,20 +1208,20 @@ if [ ! -e "/etc/config/kube.conf" ]; then
             fi
             echo "using fluentbitconf file: ${fluentBitConfFile} for fluent-bit"
             if [ "$CONTAINER_RUNTIME" == "docker" ]; then
-                  fluent-bit -c /etc/opt/microsoft/docker-cimprov/${fluentBitConfFile} -e /opt/fluent-bit/bin/out_oms.so &
-                  telegrafConfFile="/etc/opt/microsoft/docker-cimprov/telegraf.conf"
+                  fluent-bit -c /etc/opt/khulnasoft/docker-cimprov/${fluentBitConfFile} -e /opt/fluent-bit/bin/out_oms.so &
+                  telegrafConfFile="/etc/opt/khulnasoft/docker-cimprov/telegraf.conf"
             else
                   echo "since container run time is $CONTAINER_RUNTIME update the container log fluentbit Parser to cri from docker"
-                  sed -i 's/Parser.docker*/Parser cri/' /etc/opt/microsoft/docker-cimprov/${fluentBitConfFile}
-                  sed -i 's/Parser.docker*/Parser cri/' /etc/opt/microsoft/docker-cimprov/fluent-bit-common.conf
-                  fluent-bit -c /etc/opt/microsoft/docker-cimprov/${fluentBitConfFile} -e /opt/fluent-bit/bin/out_oms.so &
-                  telegrafConfFile="/etc/opt/microsoft/docker-cimprov/telegraf.conf"
+                  sed -i 's/Parser.docker*/Parser cri/' /etc/opt/khulnasoft/docker-cimprov/${fluentBitConfFile}
+                  sed -i 's/Parser.docker*/Parser cri/' /etc/opt/khulnasoft/docker-cimprov/fluent-bit-common.conf
+                  fluent-bit -c /etc/opt/khulnasoft/docker-cimprov/${fluentBitConfFile} -e /opt/fluent-bit/bin/out_oms.so &
+                  telegrafConfFile="/etc/opt/khulnasoft/docker-cimprov/telegraf.conf"
             fi
       fi
 else
       echo "starting fluent-bit and setting telegraf conf file for replicaset"
-      fluent-bit -c /etc/opt/microsoft/docker-cimprov/fluent-bit-rs.conf -e /opt/fluent-bit/bin/out_oms.so &
-      telegrafConfFile="/etc/opt/microsoft/docker-cimprov/telegraf-rs.conf"
+      fluent-bit -c /etc/opt/khulnasoft/docker-cimprov/fluent-bit-rs.conf -e /opt/fluent-bit/bin/out_oms.so &
+      telegrafConfFile="/etc/opt/khulnasoft/docker-cimprov/telegraf-rs.conf"
 fi
 
 #set env vars used by telegraf
@@ -1254,7 +1254,7 @@ echo "export TELEMETRY_CLUSTER_TYPE=$telemetry_cluster_type" >>~/.bashrc
 #   nodename=$(cat /hostfs/etc/hostname)
 #else
 if [ "${GENEVA_LOGS_INTEGRATION_SERVICE_MODE}" != "true" ]; then
-      nodename=$(cat /var/opt/microsoft/docker-cimprov/state/containerhostname)
+      nodename=$(cat /var/opt/khulnasoft/docker-cimprov/state/containerhostname)
       #fi
       echo "nodename: $nodename"
       echo "replacing nodename in telegraf config"

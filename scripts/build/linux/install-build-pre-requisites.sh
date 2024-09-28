@@ -86,13 +86,13 @@ install_python()
   echo "installation of python completed."
 }
 
-register_microsoft_gpg_keys()
+register_khulnasoft_gpg_keys()
 {
-  echo "download and register microsoft GPG keys ..."
+  echo "download and register khulnasoft GPG keys ..."
   export ubuntuVersion="$(echo $(lsb_release -rs))"
-  sudo curl -LO https://packages.microsoft.com/config/ubuntu/${ubuntuVersion}/packages-microsoft-prod.deb
-  sudo dpkg -i packages-microsoft-prod.deb
-  echo "completed registration of microsoft GPG keys"
+  sudo curl -LO https://packages.khulnasoft.com/config/ubuntu/${ubuntuVersion}/packages-khulnasoft-prod.deb
+  sudo dpkg -i packages-khulnasoft-prod.deb
+  echo "completed registration of khulnasoft GPG keys"
 }
 
 install_dotnet_sdk()
@@ -150,8 +150,8 @@ install_docker_buildx
 # install go
 install_go_lang
 
-# register microsoft GPG keys
-register_microsoft_gpg_keys
+# register khulnasoft GPG keys
+register_khulnasoft_gpg_keys
 
 # install cross platform gcc to build the go code for windows platform
 install_gcc_for_windows_platform
@@ -163,7 +163,7 @@ install_dotnet_sdk
 install_powershell_core
 
 # if its running on wsl/2, set DOCKER_HOST env to use docker for desktop docker endpoint on the windows host
-if [[ $(uname -r) =~ Microsoft$ ]]; then
+if [[ $(uname -r) =~ Khulnasoft$ ]]; then
     echo "****detected running on WSL/2 hence configuring remote docker daemon****"
     echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc && source ~/.bashrc
     echo "Make sure Docker Desktop for Windows running in Linux Containers mode and has Expose daemon on tcp://localhost:2375 without TLS enabled"

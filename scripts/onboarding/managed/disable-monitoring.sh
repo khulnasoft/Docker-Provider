@@ -7,7 +7,7 @@
 #      1. Deletes the existing Azure Monitor for containers helm release
 #      2. Deletes logAnalyticsWorkspaceResourceId tag  or disable monitoring addon (if AKS) on the provided Managed cluster
 # Prerequisites :
-#     Azure CLI:  https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
+#     Azure CLI:  https://docs.khulnasoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 #     Helm3 : https://helm.sh/docs/intro/install/
 # download script
 # curl -o disable-monitoring.sh -L https://aka.ms/disable-monitoring-bash-script
@@ -27,14 +27,14 @@ set -o pipefail
 # default release name used during onboarding
 releaseName="azmon-containers-release-1"
 # resource type for Azure Arc enabled Kubernetes clusters
-resourceProvider="Microsoft.Kubernetes/connectedClusters"
+resourceProvider="Khulnasoft.Kubernetes/connectedClusters"
 
 # resource provider for Azure Arc enabled Kubernetes cluster
-arcK8sResourceProvider="Microsoft.Kubernetes/connectedClusters"
+arcK8sResourceProvider="Khulnasoft.Kubernetes/connectedClusters"
 # resource provider for azure redhat openshift v4 cluster
-aroV4ResourceProvider="Microsoft.RedHatOpenShift/OpenShiftClusters"
+aroV4ResourceProvider="Khulnasoft.RedHatOpenShift/OpenShiftClusters"
 # resource provider for aks cluster
-aksResourceProvider="Microsoft.ContainerService/managedClusters"
+aksResourceProvider="Khulnasoft.ContainerService/managedClusters"
 
 # arc k8s cluster resource
 isArcK8sCluster=false
@@ -246,7 +246,7 @@ done
     exit 1
  fi
 
- if [[ $providerName != microsoft.* ]]; then
+ if [[ $providerName != khulnasoft.* ]]; then
    echo "-e invalid azure cluster resource id format."
    exit 1
  fi
@@ -256,15 +256,15 @@ done
  fi
 
  # detect the resource provider from the provider name in the cluster resource id
- if [ $providerName = "microsoft.kubernetes/connectedclusters" ]; then
+ if [ $providerName = "khulnasoft.kubernetes/connectedclusters" ]; then
     echo "provider cluster resource is of Azure Arc enabled Kubernetes cluster type"
     isArcK8sCluster=true
     resourceProvider=$arcK8sResourceProvider
- elif [ $providerName = "microsoft.redhatopenshift/openshiftclusters" ]; then
+ elif [ $providerName = "khulnasoft.redhatopenshift/openshiftclusters" ]; then
     echo "provider cluster resource is of AROv4 cluster type"
     resourceProvider=$aroV4ResourceProvider
     isAroV4Cluster=true
- elif [ $providerName = "microsoft.containerservice/managedclusters" ]; then
+ elif [ $providerName = "khulnasoft.containerservice/managedclusters" ]; then
     echo "provider cluster resource is of AKS cluster type"
     isAksCluster=true
     resourceProvider=$aksResourceProvider

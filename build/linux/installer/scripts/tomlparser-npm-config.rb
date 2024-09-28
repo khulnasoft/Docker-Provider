@@ -17,8 +17,8 @@ require_relative "ConfigParseErrorLogger"
 @collect_subnet_ip_usage_metrics = false
 @azure_subnet_ip_usage_metrics_node_urls = "[\"http://$NODE_IP:10092/metrics\"]"
 @azure_subnet_ip_usage_default_setting = "[]"
-@tgfConfigFileDS = "/etc/opt/microsoft/docker-cimprov/telegraf.conf"
-@tgfConfigFileRS = "/etc/opt/microsoft/docker-cimprov/telegraf-rs.conf"
+@tgfConfigFileDS = "/etc/opt/khulnasoft/docker-cimprov/telegraf.conf"
+@tgfConfigFileRS = "/etc/opt/khulnasoft/docker-cimprov/telegraf-rs.conf"
 @replicaset = "replicaset"
 
 # Use parser to parse the configmap toml file to a ruby structure

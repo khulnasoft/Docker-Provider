@@ -15,7 +15,7 @@ func Test_GetContainerInventoryHelper(t *testing.T) {
 	}
 	defer func() {
 		err = os.RemoveAll(inventoryDirectory)
-		inventoryDirectory = "/var/opt/microsoft/docker-cimprov/state/ContainerInventory/"
+		inventoryDirectory = "/var/opt/khulnasoft/docker-cimprov/state/ContainerInventory/"
 		if err != nil {
 			panic(err)
 		}

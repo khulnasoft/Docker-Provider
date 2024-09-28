@@ -60,7 +60,7 @@ func (p *containerInventoryPlugin) Init(ctx context.Context, fbit *plugin.Fluent
 	if strings.EqualFold(osType, "windows") {
 		logPath = "/etc/amalogswindows/fluent-bit-input.log"
 	} else {
-		logPath = "/var/opt/microsoft/docker-cimprov/log/fluent-bit-input.log"
+		logPath = "/var/opt/khulnasoft/docker-cimprov/log/fluent-bit-input.log"
 	}
 
 	isTestEnv := os.Getenv("GOUNITTEST") == "true"
@@ -149,7 +149,7 @@ func (p containerInventoryPlugin) enumerate() []map[string]interface{} {
 		}
 
 		if !lib.IsDCRStreamIdTag(tag) {
-			FLBLogger.Print("WARN::containerinventory::enumerate: skipping Microsoft-ContainerInventory stream since its opted-out @", time.Now().UTC().Format(time.RFC3339))
+			FLBLogger.Print("WARN::containerinventory::enumerate: skipping Khulnasoft-ContainerInventory stream since its opted-out @", time.Now().UTC().Format(time.RFC3339))
 			return nil
 		}
 

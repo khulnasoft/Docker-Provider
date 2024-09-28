@@ -24,7 +24,7 @@ class ArcK8sClusterIdentity
     if !@os_type.nil? && !@os_type.empty? && @os_type.strip.casecmp("windows") == 0
       @LogPath = "/etc/amalogswindows/arc_k8s_cluster_identity.log"
     else
-      @LogPath = "/var/opt/microsoft/docker-cimprov/log/arc_k8s_cluster_identity.log"
+      @LogPath = "/var/opt/khulnasoft/docker-cimprov/log/arc_k8s_cluster_identity.log"
     end
     @log = Logger.new(@LogPath, 1, 5000000)
     @log.info "initialize start @ #{Time.now.utc.iso8601}"

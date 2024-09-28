@@ -3,7 +3,7 @@
 You can either use the Azure Powershell or Azure cli to deploy the solution.
 
 ## Create Deployment files
-If you are not familiar with the concepts of deploying resources using a template with PowerShell, see [Deploy resources with Resource Manager templates and Azure PowerShell](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy)
+If you are not familiar with the concepts of deploying resources using a template with PowerShell, see [Deploy resources with Resource Manager templates and Azure PowerShell](https://review.docs.khulnasoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy)
 
 1. Get the below template files to your local computer.
    - Template file [azuremonitor-containerSolution.json](https://raw.githubusercontent.com/khulnasoft/docker-provider/ci_prod/scripts/onboarding/templates/azuremonitor-containerSolution.json)

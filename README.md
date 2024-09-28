@@ -15,7 +15,7 @@ Feel free to contact engineering team owners in case you have any questions abou
 > Note: If you are using WSL2, make sure you have cloned the code onto ubuntu not onto windows
 
 ## WSL2
-- [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+- [WSL2](https://docs.khulnasoft.com/en-us/windows/wsl/install-win10).
 - configure [Docker-for-windows-wsl2](https://docs.docker.com/docker-for-windows/wsl/)
 
 ## Linux
@@ -26,7 +26,7 @@ Feel free to contact engineering team owners in case you have any questions abou
 ## Windows
 - Windows 10 Professional machine to build  Windows Agent
 - [Docker for Windows](https://docs.docker.com/docker-for-windows/) to build docker image for Windows Agent
-- [.NET Core SDK](https://dotnet.microsoft.com/download) to build the Windows Agent code
+- [.NET Core SDK](https://dotnet.khulnasoft.com/download) to build the Windows Agent code
 - [gcc for windows](https://github.com/jmeubank/tdm-gcc/releases/download/v9.2.0-tdm64-1/tdm64-gcc-9.2.0.exe) to build go code
 
 
@@ -315,7 +315,7 @@ docker push <repo>/<imagename>:<imagetag>
 
 # Azure DevOps Build Pipeline
 
-Navigate to https://github-private.visualstudio.com/microsoft/_build?definitionId=444&_a=summary to see Linux and Windows Agent build pipelines. These pipelines are configured with CI triggers for ci_prod.
+Navigate to https://github-private.visualstudio.com/khulnasoft/_build?definitionId=444&_a=summary to see Linux and Windows Agent build pipelines. These pipelines are configured with CI triggers for ci_prod.
 
 Docker Images will be pushed to CDPX ACR repos and these needs to retagged and pushed to corresponding ACR or docker hub. Only onboarded Azure AD AppId has permission to pull the images from CDPx ACRs.
 
@@ -325,7 +325,7 @@ Please reach out the agent engineering team if you need access to it.
 
 Here are the instructions to onboard the feature branch to Azure Dev Ops pipeline
 
- 1. Navigate to https://github-private.visualstudio.com/microsoft/_apps/hub/azurecdp.cdpx-onboarding.cdpx-onboarding-tab
+ 1. Navigate to https://github-private.visualstudio.com/khulnasoft/_apps/hub/azurecdp.cdpx-onboarding.cdpx-onboarding-tab
  2. Select the repository as "docker-provider" from repository drop down
  3. click on validate repository
  4. select the your feature branch from Branch drop down
@@ -342,10 +342,10 @@ Integrated to Azure DevOps release pipeline for the ci_prod branch. With this, f
 
 When releasing the agent, we have a separate Azure DevOps pipeline which needs to be run to publish the image to prod MCR and our PROD AKS clusters.
 
-For development, agent image will be in this format mcr.microsoft.com/azuremonitor/containerinsights/cidev:`Major.Minor.Patch`-CommitAheadCount-<git-commit-id>. Image tag for windows will be win-`Major.Minor.Patch`-CommitAheadCount-<git-commit-id>.
-For releases, agent will be in this format mcr.microsoft.com/azuremonitor/containerinsights/ciprod:`Major.Minor.Patch`. Image tag for windows will be win-`Major.Minor.Patch`.
+For development, agent image will be in this format mcr.khulnasoft.com/azuremonitor/containerinsights/cidev:`Major.Minor.Patch`-CommitAheadCount-<git-commit-id>. Image tag for windows will be win-`Major.Minor.Patch`-CommitAheadCount-<git-commit-id>.
+For releases, agent will be in this format mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:`Major.Minor.Patch`. Image tag for windows will be win-`Major.Minor.Patch`.
 
-Navigate to https://github-private.visualstudio.com/microsoft/_release?_a=releases&view=all to see the release pipelines.
+Navigate to https://github-private.visualstudio.com/khulnasoft/_release?_a=releases&view=all to see the release pipelines.
 
 # Update Kubernetes yamls
 
@@ -405,6 +405,6 @@ If you have new interesting scenarios, please add/update them.
 
 # Code of Conduct
 
-This project has adopted the [Microsoft Open Source Code of Conduct] (https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ] (https://opensource.microsoft.com/codeofconduct/faq/) or contact opencode@microsoft.com with any additional questions or comments.
+This project has adopted the [Khulnasoft Open Source Code of Conduct] (https://opensource.khulnasoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ] (https://opensource.khulnasoft.com/codeofconduct/faq/) or contact opencode@khulnasoft.com with any additional questions or comments.
 

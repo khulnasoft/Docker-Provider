@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: win-prometheus-reference-app-golang
-          image: mcr.microsoft.com/azuremonitor/containerinsights/cidev:win-prometheus-reference-app-golang
+          image: mcr.khulnasoft.com/azuremonitor/containerinsights/cidev:win-prometheus-reference-app-golang
           env:
             - name: RUN_PERF_TEST
               value: "false"
@@ -31,7 +31,7 @@ spec:
             - containerPort: 2113
               protocol: TCP
         - name: win-prometheus-reference-app-python
-          image: mcr.microsoft.com/azuremonitor/containerinsights/cidev:win-prometheus-reference-app-python
+          image: mcr.khulnasoft.com/azuremonitor/containerinsights/cidev:win-prometheus-reference-app-python
           ports:
           - containerPort: 2114
             protocol: TCP

@@ -13,7 +13,7 @@ class MdmMetricsGenerator
   if !@os_type.nil? && !@os_type.empty? && @os_type.strip.casecmp("windows") == 0
     @log_path = "/etc/amalogswindows/mdm_metrics_generator.log"
   else
-    @log_path = "/var/opt/microsoft/docker-cimprov/log/mdm_metrics_generator.log"
+    @log_path = "/var/opt/khulnasoft/docker-cimprov/log/mdm_metrics_generator.log"
   end
   @log = Logger.new(@log_path, 1, 5000000)
   @@hostName = (OMS::Common.get_hostname)

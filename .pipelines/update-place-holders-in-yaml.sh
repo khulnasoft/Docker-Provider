@@ -33,16 +33,16 @@ echo "replace linux agent image"
 linuxAgentImageTag=$CI_RELEASE$CI_IMAGE_TAG_SUFFIX
 echo "Linux Agent Image Tag:"$linuxAgentImageTag
 
-linuxAgentImage="mcr.microsoft.com/azuremonitor/containerinsights/${CI_RELEASE}:${linuxAgentImageTag}"
-imagePrefixLinuxAgent="mcr.microsoft.com/azuremonitor/containerinsights/ciprod:ciprod[0-9]*(-[0-9])?"
+linuxAgentImage="mcr.khulnasoft.com/azuremonitor/containerinsights/${CI_RELEASE}:${linuxAgentImageTag}"
+imagePrefixLinuxAgent="mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:ciprod[0-9]*(-[0-9])?"
 sed -i -E "s=$imagePrefixLinuxAgent=$linuxAgentImage=g" ama-logs.yaml
 
 echo "replace windows agent image"
 windowsAgentImageTag="win-"$CI_RELEASE$CI_IMAGE_TAG_SUFFIX
 echo "Windows Agent Image Tag:"$windowsAgentImageTag
 
-windowsAgentImage="mcr.microsoft.com/azuremonitor/containerinsights/${CI_RELEASE}:${windowsAgentImageTag}"
-imagePrefixWindowsAgent="mcr.microsoft.com/azuremonitor/containerinsights/ciprod:win-ciprod[0-9]*(-[0-9])?"
+windowsAgentImage="mcr.khulnasoft.com/azuremonitor/containerinsights/${CI_RELEASE}:${windowsAgentImageTag}"
+imagePrefixWindowsAgent="mcr.khulnasoft.com/azuremonitor/containerinsights/ciprod:win-ciprod[0-9]*(-[0-9])?"
 sed -i -E "s=$imagePrefixWindowsAgent=$windowsAgentImage=g" ama-logs.yaml
 
 

@@ -1,12 +1,12 @@
 # Supported values of windows version are ltsc2019 or ltsc2022 which are being passed by the build script or build pipeline
 ARG WINDOWS_VERSION=
-FROM mcr.microsoft.com/windows/servercore:${WINDOWS_VERSION}
-LABEL maintainer="OMSContainers@microsoft.com"
-LABEL vendor=Microsoft\ Corp \
-    com.microsoft.product="Azure Monitor for containers"
+FROM mcr.khulnasoft.com/windows/servercore:${WINDOWS_VERSION}
+LABEL maintainer="OMSContainers@khulnasoft.com"
+LABEL vendor=Khulnasoft\ Corp \
+    com.khulnasoft.product="Azure Monitor for containers"
 
-RUN reg add "HKLM\Software\Microsoft\Cryptography\Wintrust\Config" /v "EnableCertPaddingCheck" /t REG_DWORD /d "1" /f
-RUN reg add "HKLM\Software\Wow6432Node\Microsoft\Cryptography\Wintrust\Config" /v "EnableCertPaddingCheck" /t REG_DWORD /d "1" /f
+RUN reg add "HKLM\Software\Khulnasoft\Cryptography\Wintrust\Config" /v "EnableCertPaddingCheck" /t REG_DWORD /d "1" /f
+RUN reg add "HKLM\Software\Wow6432Node\Khulnasoft\Cryptography\Wintrust\Config" /v "EnableCertPaddingCheck" /t REG_DWORD /d "1" /f
 
 # Do not split this into multiple RUN!
 # Docker creates a layer for every RUN-Statement

@@ -10,10 +10,10 @@
 	   | clusterName                          | <name of the cluster configured during agent installation>       |
 	   ----------------------------------------------------------------------------------------------------------
 
-     https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags
+     https://docs.khulnasoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags
 
 	See below reference to get the Log Analytics workspace resource Id
-	https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace?view=azurermps-6.11.0
+	https://docs.khulnasoft.com/en-us/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace?view=azurermps-6.11.0
 
 	.PARAMETER NameoftheCloud
 		Name of the cloud that the AKS-engine(or ACS-engine) Kubernetes cluster is in. Supported clouds are AzureCloud, AzureChinaCloud and AzureUSGovernment.
@@ -159,9 +159,9 @@ $isKubernetesCluster = $false
 #
 #  Validate the specified Resource Group has the acs-engine Kuberentes cluster resources (VMs or VMSSes)
 #
-$k8sMasterVMsOrVMSSes = Get-AzResource -ResourceType 'Microsoft.Compute/virtualMachines' -ResourceGroupName $ResourceGroupName | Where-Object { $_.Name -match "k8s-master" }
+$k8sMasterVMsOrVMSSes = Get-AzResource -ResourceType 'Khulnasoft.Compute/virtualMachines' -ResourceGroupName $ResourceGroupName | Where-Object { $_.Name -match "k8s-master" }
 if ($null -eq $k8sMasterVMsOrVMSSes) {
-    $k8sMasterVMsOrVMSSes = Get-AzResource -ResourceType 'Microsoft.Compute/virtualMachineScaleSets' -ResourceGroupName $ResourceGroupName | Where-Object { $_.Name -match "k8s-master" }
+    $k8sMasterVMsOrVMSSes = Get-AzResource -ResourceType 'Khulnasoft.Compute/virtualMachineScaleSets' -ResourceGroupName $ResourceGroupName | Where-Object { $_.Name -match "k8s-master" }
 }
 
 foreach ($k8MasterVM in $k8sMasterVMsOrVMSSes) {

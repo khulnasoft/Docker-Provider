@@ -4,7 +4,7 @@
 class ContainerInventoryState
     require 'json'
     require_relative 'omslog'
-    @@InventoryDirectory = "/var/opt/microsoft/docker-cimprov/state/ContainerInventory/"
+    @@InventoryDirectory = "/var/opt/khulnasoft/docker-cimprov/state/ContainerInventory/"
 
     def initialize
     end

@@ -24,7 +24,7 @@
     "resources": [
         {
             "name": "[split(parameters('aksResourceId'),'/')[8]]",
-            "type": "Microsoft.ContainerService/managedClusters",
+            "type": "Khulnasoft.ContainerService/managedClusters",
             "location": "[parameters('aksResourceLocation')]",
             "apiVersion": "2019-04-01",
             "properties": {

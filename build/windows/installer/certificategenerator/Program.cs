@@ -49,7 +49,7 @@ namespace certificategenerator
 
             certificateGenerator.SetSerialNumber(serialNumber);
 
-            var dirName = string.Format("CN={0}, CN={1}, OU=Microsoft Monitoring Agent, O=Microsoft", logAnalyticsWorkspaceId, agentGuid);
+            var dirName = string.Format("CN={0}, CN={1}, OU=Khulnasoft Monitoring Agent, O=Khulnasoft", logAnalyticsWorkspaceId, agentGuid);
 
             X509Name certName = new X509Name(dirName);
 
@@ -182,7 +182,7 @@ namespace certificategenerator
             string date = DateTime.Now.ToString("O");
 
             string xmlContent = "<?xml version=\"1.0\"?>" +
-                "<AgentTopologyRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://schemas.microsoft.com/WorkloadMonitoring/HealthServiceProtocol/2014/09/\">" +
+                "<AgentTopologyRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://schemas.khulnasoft.com/WorkloadMonitoring/HealthServiceProtocol/2014/09/\">" +
                 "<FullyQualfiedDomainName>"
                  + hostName
                 + "</FullyQualfiedDomainName>" +

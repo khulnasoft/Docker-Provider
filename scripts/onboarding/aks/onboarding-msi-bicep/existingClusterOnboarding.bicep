@@ -10,7 +10,7 @@ param resourceTagValues object
 @description('Workspace Region for data collection rule')
 param workspaceRegion string
 
-@description('Full Resource ID of the log analitycs workspace that will be used for data destination. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.operationalinsights/workspaces/ws_xyz')
+@description('Full Resource ID of the log analitycs workspace that will be used for data destination. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Khulnasoft.operationalinsights/workspaces/ws_xyz')
 param workspaceResourceId string
 
 @description('Data collection interval e.g. "5m" for metrics and inventory. Supported value range from 1m to 30m')
@@ -40,9 +40,9 @@ var workspaceLocation = replace(workspaceRegion, ' ', '')
 var dcrNameFull = 'MSCI-${workspaceLocation}-${clusterName}'
 var dcrName = ((length(dcrNameFull) > 64) ? substring(dcrNameFull, 0, 64) : dcrNameFull)
 var associationName = 'ContainerInsightsExtension'
-var dataCollectionRuleId = resourceId(clusterSubscriptionId, clusterResourceGroup, 'Microsoft.Insights/dataCollectionRules', dcrName)
+var dataCollectionRuleId = resourceId(clusterSubscriptionId, clusterResourceGroup, 'Khulnasoft.Insights/dataCollectionRules', dcrName)
 
-resource aks_monitoring_msi_dcr 'Microsoft.Insights/dataCollectionRules@2022-06-01' = {
+resource aks_monitoring_msi_dcr 'Khulnasoft.Insights/dataCollectionRules@2022-06-01' = {
   name: dcrName
   location: workspaceRegion
   tags: resourceTagValues
@@ -84,7 +84,7 @@ resource aks_monitoring_msi_dcr 'Microsoft.Insights/dataCollectionRules@2022-06-
   }
 }
 
-resource aks_monitoring_msi_addon 'Microsoft.ContainerService/managedClusters@2019-04-01' = {
+resource aks_monitoring_msi_addon 'Khulnasoft.ContainerService/managedClusters@2019-04-01' = {
   name: clusterName
   location: aksResourceLocation
   tags: resourceTagValues
@@ -105,8 +105,8 @@ resource aks_monitoring_msi_addon 'Microsoft.ContainerService/managedClusters@20
 }
 
 #disable-next-line BCP174
-resource aks_monitoring_msi_dcra 'Microsoft.ContainerService/managedClusters/providers/dataCollectionRuleAssociations@2022-06-01' = {
-  name: '${clusterName}/microsoft.insights/${associationName}'
+resource aks_monitoring_msi_dcra 'Khulnasoft.ContainerService/managedClusters/providers/dataCollectionRuleAssociations@2022-06-01' = {
+  name: '${clusterName}/khulnasoft.insights/${associationName}'
   properties: {
     description: 'Association of data collection rule. Deleting this association will break the data collection for this AKS Cluster.'
     dataCollectionRuleId: dataCollectionRuleId

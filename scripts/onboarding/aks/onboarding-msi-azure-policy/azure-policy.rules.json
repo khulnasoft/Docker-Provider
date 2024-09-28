@@ -1,18 +1,18 @@
 {
 	"if": {
 	  "field": "type",
-	  "equals": "Microsoft.ContainerService/managedClusters"
+	  "equals": "Khulnasoft.ContainerService/managedClusters"
 	},
 	"then": {
 	  "effect": "deployIfNotExists",
 	  "details": {
-		"type": "Microsoft.ContainerService/managedClusters",
+		"type": "Khulnasoft.ContainerService/managedClusters",
 		"name": "[field('name')]",
 		"roleDefinitionIds": [
-			"/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+			"/providers/Khulnasoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
 		],
 		"existenceCondition": {
-			"field": "Microsoft.ContainerService/managedClusters/addonProfiles.omsagent.enabled",
+			"field": "Khulnasoft.ContainerService/managedClusters/addonProfiles.omsagent.enabled",
 			"equals": "true"
 		},
 		"deployment": {
@@ -77,7 +77,7 @@
 				"dcrNameFull": "[Concat('MSCI', '-', variables('workspaceLocation'), '-', variables('clusterName'))]",
 				"dcrName":"[if(greater(length(variables('dcrNameFull')), 64), substring(variables('dcrNameFull'), 0, 64), variables('dcrNameFull'))]",
 				"associationName":  "ContainerInsightsExtension",
-				"dataCollectionRuleId": "[resourceId(variables('clusterSubscriptionId'), variables('clusterResourceGroup'), 'Microsoft.Insights/dataCollectionRules', variables('dcrName'))]",
+				"dataCollectionRuleId": "[resourceId(variables('clusterSubscriptionId'), variables('clusterResourceGroup'), 'Khulnasoft.Insights/dataCollectionRules', variables('dcrName'))]",
 				"ciOnlyTemplate": {
 					"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
 					"contentVersion": "1.0.0.0",
@@ -85,7 +85,7 @@
 					"variables": {},
 					"resources": [
 						{
-							"type": "Microsoft.Insights/dataCollectionRules",
+							"type": "Khulnasoft.Insights/dataCollectionRules",
 							"apiVersion": "2022-06-01",
 							"name": "[variables('dcrName')]",
 							"location": "[parameters('workspaceRegion')]",
@@ -136,7 +136,7 @@
 					"variables": {},
 					"resources": [
 						{
-							"type": "Microsoft.Insights/dataCollectionRules",
+							"type": "Khulnasoft.Insights/dataCollectionRules",
 							"apiVersion": "2022-06-01",
 							"name": "[variables('dcrName')]",
 							"location": "[parameters('workspaceRegion')]",
@@ -147,7 +147,7 @@
 									"syslog": [
 										{
 											"streams": [
-												"Microsoft-Syslog"
+												"Khulnasoft-Syslog"
 											],
 											"facilityNames": "[parameters('syslogFacilities')]",
 											"logLevels": "[parameters('syslogLevels')]",
@@ -187,7 +187,7 @@
 									},
 									{
 										"streams": [
-											"Microsoft-Syslog"
+											"Khulnasoft-Syslog"
 										],
 										"destinations": [
 											"ciworkspace"
@@ -201,7 +201,7 @@
 			  },
 			  "resources": [
 				{
-					"type": "Microsoft.Resources/deployments",
+					"type": "Khulnasoft.Resources/deployments",
 					"name": "[Concat('aks-monitoring-msi-dcr', '-',  uniqueString(variables('dcrName')))]",
 					"apiVersion": "2017-05-10",
 					"subscriptionId": "[variables('clusterSubscriptionId')]",
@@ -213,7 +213,7 @@
 				    }
 				},
 				{
-					"type": "Microsoft.Resources/deployments",
+					"type": "Khulnasoft.Resources/deployments",
 					"name": "[Concat('aks-monitoring-msi-dcra', '-',  uniqueString(parameters('aksResourceId')))]",
 					"apiVersion": "2017-05-10",
 					"subscriptionId": "[variables('clusterSubscriptionId')]",
@@ -230,8 +230,8 @@
 						"variables": {},
 						"resources": [
 						  {
-							"type": "Microsoft.ContainerService/managedClusters/providers/dataCollectionRuleAssociations",
-							"name": "[concat(variables('clusterName'),'/microsoft.insights/', variables('associationName'))]",
+							"type": "Khulnasoft.ContainerService/managedClusters/providers/dataCollectionRuleAssociations",
+							"name": "[concat(variables('clusterName'),'/khulnasoft.insights/', variables('associationName'))]",
 							"apiVersion": "2022-06-01",
 							"properties": {
 								"description": "Association of data collection rule. Deleting this association will break the data collection for this AKS Cluster.",
@@ -245,7 +245,7 @@
 					}
 				},
 				{
-					"type": "Microsoft.Resources/deployments",
+					"type": "Khulnasoft.Resources/deployments",
 					"name": "[Concat('aks-monitoring-msi-addon', '-',  uniqueString(parameters('aksResourceId')))]",
 					"apiVersion": "2017-05-10",
 					"subscriptionId": "[variables('clusterSubscriptionId')]",
@@ -263,7 +263,7 @@
 						"resources": [
 							{
 								"name": "[variables('clusterName')]",
-								"type": "Microsoft.ContainerService/managedClusters",
+								"type": "Khulnasoft.ContainerService/managedClusters",
 								"location": "[parameters('aksResourceLocation')]",
 								"tags": "[parameters('resourceTagValues')]",
 								"apiVersion": "2019-04-01",

@@ -42,7 +42,7 @@ spec:
         kubernetes.io/os: windows
       containers:
       - name: windows-resource-intensive-app
-        image: mcr.microsoft.com/windows/servercore:ltsc2022
+        image: mcr.khulnasoft.com/windows/servercore:ltsc2022
         command: ["powershell", "-c"]
         args:
           - |

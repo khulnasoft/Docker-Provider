@@ -29,7 +29,7 @@ module Fluent::Plugin
       @@azure_json_path = "/etc/kubernetes/host/azure.json"
       @@public_metrics_endpoint_template = "https://%{aks_region}.monitoring.azure.com"
       @@post_request_url_template = "%{metrics_endpoint}%{aks_resource_id}/metrics"
-      @@aad_token_url_template = "https://login.microsoftonline.com/%{tenant_id}/oauth2/token"
+      @@aad_token_url_template = "https://login.khulnasoftonline.com/%{tenant_id}/oauth2/token"
 
       # msiEndpoint is the well known endpoint for getting MSI authentications tokens
       @@msi_endpoint_template = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=%{user_assigned_client_id}&resource=%{resource}"
@@ -79,7 +79,7 @@ module Fluent::Plugin
         if aks_resource_id.to_s.empty?
           @log.info "Environment Variable AKS_RESOURCE_ID is not set.. "
           @can_send_data_to_mdm = false
-        elsif !aks_resource_id.downcase.include?("/microsoft.containerservice/managedclusters/") && !aks_resource_id.downcase.include?("/microsoft.kubernetes/connectedclusters/") && !aks_resource_id.downcase.include?("/microsoft.hybridcontainerservice/provisionedclusters/")
+        elsif !aks_resource_id.downcase.include?("/khulnasoft.containerservice/managedclusters/") && !aks_resource_id.downcase.include?("/khulnasoft.kubernetes/connectedclusters/") && !aks_resource_id.downcase.include?("/khulnasoft.hybridcontainerservice/provisionedclusters/")
           @log.info "MDM Metris not supported for this cluster type resource: #{aks_resource_id}"
           @can_send_data_to_mdm = false
         end
@@ -97,7 +97,7 @@ module Fluent::Plugin
         if @can_send_data_to_mdm
           @log.info "MDM Metrics supported in #{aks_region} region"
 
-          if aks_resource_id.downcase.include?("microsoft.kubernetes/connectedclusters") || aks_resource_id.downcase.include?("microsoft.hybridcontainerservice/provisionedclusters")
+          if aks_resource_id.downcase.include?("khulnasoft.kubernetes/connectedclusters") || aks_resource_id.downcase.include?("khulnasoft.hybridcontainerservice/provisionedclusters")
             @isArcK8sCluster = true
           end
 
@@ -251,7 +251,7 @@ module Fluent::Plugin
     end
 
     def write_status_file(success, message)
-      fn = "/var/opt/microsoft/docker-cimprov/log/MDMIngestion.status"
+      fn = "/var/opt/khulnasoft/docker-cimprov/log/MDMIngestion.status"
       status = '{ "operation": "MDMIngestion", "success": "%s", "message": "%s" }' % [success, message]
       begin
         File.open(fn, "w") { |file| file.write(status) }

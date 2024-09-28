@@ -8,8 +8,8 @@
     .PARAMETER ClusterResourceId
         Resource Id of the AKS (Azure Kubernetes Service) or ARO (Azure Redhat Openshift)
         Example :
-        AKS cluster ResourceId should be in this format : /subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.ContainerService/managedClusters/<clusterName>
-        ARO Cluster ResourceId should be in this format : /subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.ContainerService/openShiftManagedClusters/<clusterName>
+        AKS cluster ResourceId should be in this format : /subscriptions/<subId>/resourceGroups/<rgName>/providers/Khulnasoft.ContainerService/managedClusters/<clusterName>
+        ARO Cluster ResourceId should be in this format : /subscriptions/<subId>/resourceGroups/<rgName>/providers/Khulnasoft.ContainerService/openShiftManagedClusters/<clusterName>
 #>
 
 param(
@@ -19,21 +19,21 @@ param(
 
 $ErrorActionPreference = "Stop"
 Start-Transcript -path .\TroubleshootDump.txt -Force
-$AksOptOutLink = "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-optout"
-$AksOptInLink = "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-onboard"
-$AroOptOutLink = "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-optout-openshift"
-$AroOptInLink = "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-azure-redhat-setup"
-$contactUSMessage = "Please contact us by creating a support ticket in Azure if you need any help. Use this link: https://azure.microsoft.com/en-us/support/create-ticket"
+$AksOptOutLink = "https://docs.khulnasoft.com/en-us/azure/azure-monitor/insights/container-insights-optout"
+$AksOptInLink = "https://docs.khulnasoft.com/en-us/azure/azure-monitor/insights/container-insights-onboard"
+$AroOptOutLink = "https://docs.khulnasoft.com/en-us/azure/azure-monitor/insights/container-insights-optout-openshift"
+$AroOptInLink = "https://docs.khulnasoft.com/en-us/azure/azure-monitor/insights/container-insights-azure-redhat-setup"
+$contactUSMessage = "Please contact us by creating a support ticket in Azure if you need any help. Use this link: https://azure.khulnasoft.com/en-us/support/create-ticket"
 
 $MonitoringMetricsRoleDefinitionName = "Monitoring Metrics Publisher"
 
 Write-Host("ClusterResourceId: '" + $ClusterResourceId + "' ")
 
-if (($null -eq $ClusterResourceId) -or ($ClusterResourceId.Split("/").Length -ne 9) -or (($ClusterResourceId.ToLower().Contains("microsoft.containerservice/managedclusters") -ne $true) -and ($ClusterResourceId.ToLower().Contains("microsoft.containerservice/openshiftmanagedclusters") -ne $true))
+if (($null -eq $ClusterResourceId) -or ($ClusterResourceId.Split("/").Length -ne 9) -or (($ClusterResourceId.ToLower().Contains("khulnasoft.containerservice/managedclusters") -ne $true) -and ($ClusterResourceId.ToLower().Contains("khulnasoft.containerservice/openshiftmanagedclusters") -ne $true))
 ) {
     Write-Host("Provided Cluster resource id should be fully qualified resource id of AKS or ARO cluster") -ForegroundColor Red
-    Write-Host("Resource Id Format for AKS cluster is : /subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.ContainerService/managedClusters/<clusterName>") -ForegroundColor Red
-    Write-Host("Resource Id Format for ARO cluster is : /subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.ContainerService/openShiftManagedClusters/<clusterName>") -ForegroundColor Red
+    Write-Host("Resource Id Format for AKS cluster is : /subscriptions/<subId>/resourceGroups/<rgName>/providers/Khulnasoft.ContainerService/managedClusters/<clusterName>") -ForegroundColor Red
+    Write-Host("Resource Id Format for ARO cluster is : /subscriptions/<subId>/resourceGroups/<rgName>/providers/Khulnasoft.ContainerService/openShiftManagedClusters/<clusterName>") -ForegroundColor Red
     Stop-Transcript
     exit 1
 }
@@ -42,7 +42,7 @@ $UseAADAuth = $false
 $ClusterRegion = ""
 $isClusterAndWorkspaceInDifferentSubs = $false
 $ClusterType = "AKS"
-if ($ClusterResourceId.ToLower().Contains("microsoft.containerservice/openshiftmanagedclusters") -eq $true) {
+if ($ClusterResourceId.ToLower().Contains("khulnasoft.containerservice/openshiftmanagedclusters") -eq $true) {
     $ClusterType = "ARO";
 }
 
@@ -350,7 +350,7 @@ Write-Host("Checking '" + $ClusterType + "' Cluster details...")
 $ResourceDetailsArray = $null
 try {
     if ("AKS" -eq $ClusterType) {
-        $ResourceDetailsArray = Get-AzResource -ResourceGroupName $ResourceGroupName -Name $ClusterName -ResourceType "Microsoft.ContainerService/managedClusters" -ExpandProperties -ErrorAction Stop -WarningAction Stop
+        $ResourceDetailsArray = Get-AzResource -ResourceGroupName $ResourceGroupName -Name $ClusterName -ResourceType "Khulnasoft.ContainerService/managedClusters" -ExpandProperties -ErrorAction Stop -WarningAction Stop
         if ($null -eq $ResourceDetailsArray) {
             Write-Host("")
             Write-Host("Could not fetch cluster details: Please make sure that the '" + $ClusterType + "' Cluster name: '" + $ClusterName + "' is correct and you have access to the cluster") -ForegroundColor Red
@@ -363,7 +363,7 @@ try {
             $ClusterRegion = $ResourceDetailsArray.Location
             Write-Host("")
             foreach ($ResourceDetail in $ResourceDetailsArray) {
-                if ($ResourceDetail.ResourceType -eq "Microsoft.ContainerService/managedClusters") {
+                if ($ResourceDetail.ResourceType -eq "Khulnasoft.ContainerService/managedClusters") {
                     $addonProfiles = ($ResourceDetail.Properties.addonProfiles | ConvertTo-Json).toLower() | ConvertFrom-Json
 
                     if (($nul -eq $addonProfiles)  -or  ($null -eq $addonProfiles.omsagent) -or ($null -eq $addonProfiles.omsagent.config)) {
@@ -389,7 +389,7 @@ try {
         }
     }
     else {
-        $argQuery = "where resourceGroup =~ '" + $ResourceGroupName + "' and name=~ '" + $ClusterName + "' and type =~ 'Microsoft.ContainerService/openshiftmanagedclusters'  | project id, name, aroproperties = parse_json(tolower(properties)), location"
+        $argQuery = "where resourceGroup =~ '" + $ResourceGroupName + "' and name=~ '" + $ClusterName + "' and type =~ 'Khulnasoft.ContainerService/openshiftmanagedclusters'  | project id, name, aroproperties = parse_json(tolower(properties)), location"
         $ResourceDetail = Search-AzGraph -Subscription $ClusterSubscriptionId -Query $argQuery
         if ($null -eq $ResourceDetail) {
             Write-Host("")
@@ -459,7 +459,7 @@ if (("AKS" -eq $ClusterType ) -and ($false -eq $UseAADAuth)) {
                 }
                 if ($null -eq $clusterSpnMsiObjectID) {
                     Write-Host("Couldn't convert Client ID to Object ID or msi for ama-logs is not present") -ForegroundColor Red
-                    Write-Host("Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.microsoft.com/en-us/support/create-ticket") -ForegroundColor Red
+                    Write-Host("Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.khulnasoft.com/en-us/support/create-ticket") -ForegroundColor Red
                     Write-Host("");
                 }
 
@@ -789,11 +789,11 @@ else {
                 }
                 catch {
                     Write-Host ("Template deployment failed with an error: '" + $Error[0] + "' ") -ForegroundColor Red
-                    Write-Host("Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.microsoft.com/en-us/support/create-ticket") -ForegroundColor Red
+                    Write-Host("Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.khulnasoft.com/en-us/support/create-ticket") -ForegroundColor Red
                 }
             }
             else {
-                Write-Host("The container health solution isn't onboarded to your cluster. This required for the monitoring to work. Please contact us by creating a support ticket in Azure if you need any help on this. Use this link: https://azure.microsoft.com/en-us/support/create-ticket") -ForegroundColor Red
+                Write-Host("The container health solution isn't onboarded to your cluster. This required for the monitoring to work. Please contact us by creating a support ticket in Azure if you need any help on this. Use this link: https://azure.khulnasoft.com/en-us/support/create-ticket") -ForegroundColor Red
             }
         }
     }
@@ -962,7 +962,7 @@ if ("AKS" -eq $ClusterType ) {
             }
         }
         Write-Host('The version of the ama-logs running on your cluster is ' + $amaLogsImage)
-        Write-Host('You can encounter problems with your cluster if your ama-logs version isnt on the latest version. Please go to https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-manage-agent and validate that you have the latest ama-logs version running.') -ForegroundColor Yellow
+        Write-Host('You can encounter problems with your cluster if your ama-logs version isnt on the latest version. Please go to https://docs.khulnasoft.com/en-us/azure/azure-monitor/insights/container-insights-manage-agent and validate that you have the latest ama-logs version running.') -ForegroundColor Yellow
     } catch {
         Write-Host ("Failed to execute the script  : '" + $Error[0] + "' ") -ForegroundColor Red
         Stop-Transcript
@@ -970,6 +970,6 @@ if ("AKS" -eq $ClusterType ) {
     }
 }
 
-Write-Host("Everything looks good according to this script. Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.microsoft.com/en-us/support/create-ticket") -ForegroundColor Green
+Write-Host("Everything looks good according to this script. Please contact us by creating a support ticket in Azure for help. Use this link: https://azure.khulnasoft.com/en-us/support/create-ticket") -ForegroundColor Green
 Write-Host("")
 Stop-Transcript

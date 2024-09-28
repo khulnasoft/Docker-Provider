@@ -8,7 +8,7 @@
 #      2. Adds the ContainerInsights solution to the Azure log analytics workspace
 #      3. Installs Azure Monitor for containers HELM chart to the K8s cluster in Kubeconfig
 # Prerequisites :
-#     Azure CLI:  https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
+#     Azure CLI:  https://docs.khulnasoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 #     Helm3 : https://helm.sh/docs/intro/install/
 #
 # bash onboarding_azuremonitor_for_containers.sh <azureSubscriptionId> <azureRegionforLogAnalyticsWorkspace> <clusterName> <kubeconfigContextNameOftheCluster>
@@ -129,22 +129,22 @@ else
   az group create -g $defaultWorkspaceResourceGroup -l $workspaceRegion
 fi
 
-export workspaceList=$(az resource list -g $defaultWorkspaceResourceGroup -n $defaultWorkspaceName  --resource-type Microsoft.OperationalInsights/workspaces)
+export workspaceList=$(az resource list -g $defaultWorkspaceResourceGroup -n $defaultWorkspaceName  --resource-type Khulnasoft.OperationalInsights/workspaces)
 if [ "$workspaceList" = "[]" ];
 then
 # create new default workspace since no mapped existing default workspace
 echo '{"location":"'"$workspaceRegion"'", "properties":{"sku":{"name": "standalone"}}}' > WorkspaceProps.json
 cat WorkspaceProps.json
-workspace=$(az resource create -g $defaultWorkspaceResourceGroup -n $defaultWorkspaceName --resource-type Microsoft.OperationalInsights/workspaces --is-full-object -p @WorkspaceProps.json)
+workspace=$(az resource create -g $defaultWorkspaceResourceGroup -n $defaultWorkspaceName --resource-type Khulnasoft.OperationalInsights/workspaces --is-full-object -p @WorkspaceProps.json)
 else
   echo "using existing default workspace:"$defaultWorkspaceName
 fi
 
-workspaceResourceId=$(az resource show -g $defaultWorkspaceResourceGroup -n $defaultWorkspaceName  --resource-type Microsoft.OperationalInsights/workspaces --query id)
+workspaceResourceId=$(az resource show -g $defaultWorkspaceResourceGroup -n $defaultWorkspaceName  --resource-type Khulnasoft.OperationalInsights/workspaces --query id)
 workspaceResourceId=$(echo $workspaceResourceId | tr -d '"')
 
 # get the workspace guid
-export workspaceGuid=$(az resource show -g $defaultWorkspaceResourceGroup -n $defaultWorkspaceName  --resource-type Microsoft.OperationalInsights/workspaces --query properties.customerId)
+export workspaceGuid=$(az resource show -g $defaultWorkspaceResourceGroup -n $defaultWorkspaceName  --resource-type Khulnasoft.OperationalInsights/workspaces --query properties.customerId)
 workspaceGuid=$(echo $workspaceGuid | tr -d '"')
 
 echo "workspaceResourceId:"$workspaceResourceId

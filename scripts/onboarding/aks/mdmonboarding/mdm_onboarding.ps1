@@ -206,7 +206,7 @@ if ($cluster.ServicePrincipalProfile -ne $null -and $cluster.ServicePrincipalPro
     $servicePrincipalMsiClientId = $cluster.ServicePrincipalProfile.clientId
     $clusterResourceId = $cluster.Id
 } else {
-    $ResourceDetailsArray = Get-AzResource -ResourceGroupName $ClusterResourceGroup -Name $clusterName -ResourceType "Microsoft.ContainerService/managedClusters" -ExpandProperties -ErrorAction Stop -WarningAction Stop
+    $ResourceDetailsArray = Get-AzResource -ResourceGroupName $ClusterResourceGroup -Name $clusterName -ResourceType "Khulnasoft.ContainerService/managedClusters" -ExpandProperties -ErrorAction Stop -WarningAction Stop
     if ($ResourceDetailsArray -ne $null -and $ResourceDetailsArray[0].properties.addonprofiles.omsagent -ne $null -and $ResourceDetailsArray[0].properties.addonprofiles.omsagent.identity -ne $null) {
         $servicePrincipalMsiClientId = $ResourceDetailsArray[0].properties.addonprofiles.omsagent.identity.clientId
         $clusterResourceId = $ResourceDetailsArray[0].ResourceId

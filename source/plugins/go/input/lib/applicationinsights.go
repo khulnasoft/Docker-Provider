@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/khulnasoft/ApplicationInsights-Go/appinsights"
+	"github.com/microsoft/ApplicationInsights-Go/appinsights"
 )
 
 const (
@@ -55,7 +55,7 @@ func init() {
 	if isWindows {
 		logPath = "/etc/amalogswindows/appinsights_error.log"
 	} else {
-		logPath = "/var/opt/microsoft/docker-cimprov/log/appinsights_error.log"
+		logPath = "/var/opt/khulnasoft/docker-cimprov/log/appinsights_error.log"
 	}
 
 	isTestEnv := os.Getenv("GOUNITTEST") == "true"

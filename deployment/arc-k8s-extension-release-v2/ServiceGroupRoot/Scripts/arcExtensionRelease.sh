@@ -9,11 +9,11 @@ REGISTER_REGIONS_BATCH='"'$(echo "$REGISTER_REGIONS_BATCH" | sed 's/,/","/g')'"'
 IS_CUSTOMER_HIDDEN=$IS_CUSTOMER_HIDDEN
 CHART_VERSION=${CHART_VERSION}
 
-PACKAGE_CONFIG_NAME="${PACKAGE_CONFIG_NAME:-microsoft.azuremonitor.containers-pkg022022}"
+PACKAGE_CONFIG_NAME="${PACKAGE_CONFIG_NAME:-khulnasoft.azuremonitor.containers-pkg022022}"
 API_VERSION="${API_VERSION:-2021-05-01}"
 METHOD="${METHOD:-put}"
-REGISTRY_PATH_CANARY_STABLE="https://mcr.microsoft.com/azuremonitor/containerinsights/canary/stable/azuremonitor-containers"
-REGISTRY_PATH_PROD_STABLE="https://mcr.microsoft.com/azuremonitor/containerinsights/prod1/stable/azuremonitor-containers"
+REGISTRY_PATH_CANARY_STABLE="https://mcr.khulnasoft.com/azuremonitor/containerinsights/canary/stable/azuremonitor-containers"
+REGISTRY_PATH_PROD_STABLE="https://mcr.khulnasoft.com/azuremonitor/containerinsights/prod1/stable/azuremonitor-containers"
 
 if [ -z "$REGISTER_REGIONS_CANARY" ]; then
     echo "-e error release region must be provided "
@@ -37,7 +37,7 @@ if [ -z "$RELEASE_TRAINS_PREVIEW_PATH" ]; then
     echo "-e error preview release train must be provided "
     exit 1
 fi
-MCR_NAME_PATH="oci://mcr.microsoft.com/azuremonitor/containerinsights/canary/stable/azuremonitor-containers"
+MCR_NAME_PATH="oci://mcr.khulnasoft.com/azuremonitor/containerinsights/canary/stable/azuremonitor-containers"
 echo "Pulling chart from MCR:${MCR_NAME_PATH}"
 helm pull ${MCR_NAME_PATH} --version ${CHART_VERSION}
 if [ $? -eq 0 ]; then
@@ -81,7 +81,7 @@ if [ -z "$RELEASE_TRAINS_STABLE_PATH" ]; then
     echo "-e error stable release train must be provided "
     exit 1
 fi
-MCR_NAME_PATH="oci://mcr.microsoft.com/azuremonitor/containerinsights/canary/stable/azuremonitor-containers"
+MCR_NAME_PATH="oci://mcr.khulnasoft.com/azuremonitor/containerinsights/canary/stable/azuremonitor-containers"
 echo "Pulling chart from MCR:${MCR_NAME_PATH}"
 helm pull ${MCR_NAME_PATH} --version ${CHART_VERSION}
 if [ $? -eq 0 ]; then
@@ -145,7 +145,7 @@ if [ -z "$REGISTER_REGIONS_BATCH" ]; then
     echo "-e error stable release regions must be provided "
     exit 1
 fi
-MCR_NAME_PATH="oci://mcr.microsoft.com/azuremonitor/containerinsights/prod1/stable/azuremonitor-containers"
+MCR_NAME_PATH="oci://mcr.khulnasoft.com/azuremonitor/containerinsights/prod1/stable/azuremonitor-containers"
 echo "Pulling chart from MCR:${MCR_NAME_PATH}"
 helm pull ${MCR_NAME_PATH} --version ${CHART_VERSION}
 if [ $? -eq 0 ]; then
@@ -227,7 +227,7 @@ RESOURCE_AUDIENCE=${RESOURCE_AUDIENCE}
 echo "Request parameter preparation, SUBSCRIPTION is $SUBSCRIPTION, RESOURCE_AUDIENCE is $RESOURCE_AUDIENCE, CHART_VERSION is $CHART_VERSION, SPN_CLIENT_ID is $SPN_CLIENT_ID, SPN_TENANT_ID is $SPN_TENANT_ID"
 
 echo "Login cli using Managed Identity"
-# Retries needed due to: https://stackoverflow.microsoft.com/questions/195032
+# Retries needed due to: https://stackoverflow.khulnasoft.com/questions/195032
 n=0
 signInExitCode=-1
 until [ "$n" -ge 5 ]
@@ -254,7 +254,7 @@ fi
 ACCESS_TOKEN=$(echo $ACCESS_TOKEN | tr -d '"' | tr -d '"\r\n')
 
 ARC_API_URL="https://eastus2euap.dp.kubernetesconfiguration.azure.com"
-EXTENSION_NAME="microsoft.azuremonitor.containers"
+EXTENSION_NAME="khulnasoft.azuremonitor.containers"
 
 echo "start send request"
 az rest --method $METHOD --headers "{\"Authorization\": \"Bearer $ACCESS_TOKEN\", \"Content-Type\": \"application/json\"}" --body @request.json --uri $ARC_API_URL/subscriptions/$SUBSCRIPTION/extensionTypeRegistrations/$EXTENSION_NAME/versions/$CHART_VERSION?api-version=$API_VERSION

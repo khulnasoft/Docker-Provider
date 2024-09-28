@@ -130,7 +130,7 @@ class Constants
   #Tag prefix for output stream
   EXTENSION_OUTPUT_STREAM_ID_TAG_PREFIX = "dcr-"
 
-  LINUX_LOG_PATH = $in_unit_test.nil? ? "/var/opt/microsoft/docker-cimprov/log/" : "./"
+  LINUX_LOG_PATH = $in_unit_test.nil? ? "/var/opt/khulnasoft/docker-cimprov/log/" : "./"
   WINDOWS_LOG_PATH = $in_unit_test.nil? ? "/etc/amalogswindows/" : "./"
 
   #This is for telemetry to track if any of the windows customer has any of the field size >= 64KB
@@ -138,9 +138,9 @@ class Constants
   MAX_RECORD_OR_FIELD_SIZE_FOR_TELEMETRY = 65536
 
   # FileName for MDM POD Inventory state
-  MDM_POD_INVENTORY_STATE_FILE = "/var/opt/microsoft/docker-cimprov/state/MDMPodInventoryState.json"
+  MDM_POD_INVENTORY_STATE_FILE = "/var/opt/khulnasoft/docker-cimprov/state/MDMPodInventoryState.json"
   # FileName for NodeAllocatable Records state
-  NODE_ALLOCATABLE_RECORDS_STATE_FILE = "/var/opt/microsoft/docker-cimprov/state/NodeAllocatableRecords.json"
+  NODE_ALLOCATABLE_RECORDS_STATE_FILE = "/var/opt/khulnasoft/docker-cimprov/state/NodeAllocatableRecords.json"
   # Emit Stream size for Pod MDM metric
   POD_MDM_EMIT_STREAM_BATCH_SIZE = 5000 # each record is 200 bytes, 5k records ~2MB
   # only used in windows in AAD MSI auth mode

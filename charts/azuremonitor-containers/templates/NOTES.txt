@@ -29,7 +29,7 @@ This deployment will not complete. To proceed, run
    --set amalogs.secret.wsid=<your_workspace_id> \
    --set amalogs.secret.key=<your_workspace_key> \
    --set amalogs.env.clusterName=<your_cluster_name> \
-   microsoft/azuremonitor-containers
+   khulnasoft/azuremonitor-containers
 
 {{- else -}}
 

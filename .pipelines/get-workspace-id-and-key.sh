@@ -16,7 +16,7 @@ done
 echo "Log Analytics Workspace ResourceId: ${WorkspaceResourceId}"
 
 echo "getting workspace Guid"
-workspaceGuid=$(az resource show --ids $WorkspaceResourceId --resource-type Microsoft.OperationalInsights/workspaces --query properties.customerId -o tsv)
+workspaceGuid=$(az resource show --ids $WorkspaceResourceId --resource-type Khulnasoft.OperationalInsights/workspaces --query properties.customerId -o tsv)
 echo "writing workspace guid to WSID file"
 echo $workspaceGuid > ~/WSID
 

@@ -14,7 +14,7 @@ Here are the high-level instructions to get the CIPROD:`MAJOR.MINOR.PATCH` image
 3. Latest bits of ci_dev automatically deployed to CIDEV cluster in build subscription so just validated E2E to make sure everthing works
 4. If everything validated in DEV, make merge PR from ci_dev and ci_prod and merge once this reviewed by dev team
 5. Once the PR to ci_prod approved, please go-ahead and merge, and wait for ci_prod build successfully completed
-6. Once the merged PR build successfully completed, update the value of AGENT_IMAGE_TAG_SUFFIX pipeline  variable by editing the Release [ci-prod-release](https://github-private.visualstudio.com/microsoft/_release?_a=releases&view=mine&definitionId=38)
+6. Once the merged PR build successfully completed, update the value of AGENT_IMAGE_TAG_SUFFIX pipeline  variable by editing the Release [ci-prod-release](https://github-private.visualstudio.com/khulnasoft/_release?_a=releases&view=mine&definitionId=38)
    > Note - value format of AGENT_IMAGE_TAG_SUFFIX pipeline should be in `MAJOR.MINOR.PATCH` for our releases
 7. Create a release by selecting the targetted build version  of the _docker-provider_Official-ci_prod release
 8. Validate all the scenarios against clusters in build subscription and scale clusters
@@ -42,21 +42,21 @@ Make PR against [AKS-Engine](https://github.com/Azure/aks-engine). Refer PR http
 Ev2 pipeline used to deploy the chart of the Arc K8s Container Insights Extension as per Safe Deployment Process.
 Here is the high level process
 ```
- 1. Specify chart version of the release candidate and trigger [container-insights-arc-k8s-extension-ci_prod-release](https://github-private.visualstudio.com/microsoft/_release?_a=releases&view=all)
+ 1. Specify chart version of the release candidate and trigger [container-insights-arc-k8s-extension-ci_prod-release](https://github-private.visualstudio.com/khulnasoft/_release?_a=releases&view=all)
  2. Get the approval from one of team member for the release
  3. Once the approved, release should be triggered automatically
  4. use `cimon-arck8s-eastus2euap` for validating latest release in canary region
  5. TBD - Notify vendor team for the validation on all Arc K8s supported platforms
 ```
 
-## Microsoft Charts Repo release for On-prem K8s
+## Khulnasoft Charts Repo release for On-prem K8s
 > Note: This chart repo being used in the ARO v4 onboarding script as well.
 
-Since HELM charts repo being deprecated, Microsoft charts repo being used for HELM chart release of on-prem K8s clusters.
-To make chart release PR, fork [Microsoft-charts-repo]([https://github.com/khulnasoft/charts/tree/gh-pages) and make the PR against `gh-pages` branch of the upstream repo.
+Since HELM charts repo being deprecated, Khulnasoft charts repo being used for HELM chart release of on-prem K8s clusters.
+To make chart release PR, fork [Khulnasoft-charts-repo]([https://github.com/khulnasoft/charts/tree/gh-pages) and make the PR against `gh-pages` branch of the upstream repo.
 
 Refer PR - https://github.com/khulnasoft/charts/pull/23 for example.
-Once the PR merged, latest version of HELM chart should be available in couple of mins in https://microsoft.github.io/charts/repo and https://artifacthub.io/.
+Once the PR merged, latest version of HELM chart should be available in couple of mins in https://khulnasoft.github.io/charts/repo and https://artifacthub.io/.
 
 Instructions to create PR
 ```
@@ -68,7 +68,7 @@ Instructions to create PR
 
 # 2. clone your fork repo and checkout gh_pages branch # gh_pages branch used as release branch
    cd ~
-   git clone <your-forked-repo-of-microsoft-charts-repo>
+   git clone <your-forked-repo-of-khulnasoft-charts-repo>
    cd  ~/charts # assumed the root dir of the clone is charts
    git checkout gh_pages
 
